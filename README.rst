@@ -43,7 +43,7 @@ To use it within your udata local instance, follow these steps:
     $ pip install requirements.txt
 
 Put udata_gouvfr and udata_harvest within your PYTHON_PATH
-and then alter your udata settings.py file with these values:
+and then alter your udata settings.py file with these values::
 
     PLUGINS = ['gouvfr', 'harvest']
     THEME = 'gouvfr'
