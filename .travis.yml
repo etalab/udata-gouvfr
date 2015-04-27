@@ -10,7 +10,7 @@ before_install:
   - sudo /usr/share/elasticsearch/bin/plugin -install elasticsearch/elasticsearch-analysis-icu/2.3.0
   - sudo service elasticsearch start
 install:
-  - pip install -r requirements.txt
+  - pip install -r travis.pip
   - pip install --no-deps -e .
 script:
   - nosetests --with-coverage udata_gouvfr
