@@ -1,3 +1,4 @@
+-r requirements.pip
 -r https://raw.githubusercontent.com/etalab/udata/master/requirements/install.pip
 -r https://raw.githubusercontent.com/etalab/udata/master/requirements/test.pip
 https://github.com/etalab/udata/tarball/master

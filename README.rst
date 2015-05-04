@@ -31,3 +31,19 @@ or with easy_install:
 .. code-block:: console
 
     $ easy_install udata-gouvfr
+
+
+Development
+===========
+
+To use it within your udata local instance, follow these steps:
+
+.. code-block:: console
+
+    $ pip install requirements.txt
+
+Put udata_gouvfr and udata_harvest within your PYTHON_PATH
+and then alter your udata settings.py file with these values::
+
+    PLUGINS = ['gouvfr', 'harvest']
+    THEME = 'gouvfr'
