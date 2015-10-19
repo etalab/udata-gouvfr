@@ -10,6 +10,14 @@
     <li><a href="#source">le code source de la plateforme</a></li>
 </ul>
 
+<h2>Comment participer à l'évolution de la plate-forme "datagouv"</h2>
+    <p>Nos projets sont open-source, disponibles en ligne et ouverts à la contribution : 
+    </p>
+    <ul>
+        <li><a class="external text" href="http://github.com/etalab">code source sur github</a></li>
+        <li><a class="external text" href="https://www.transifex.com/organization/etalab">traductions sur transifex</a></li>
+        <li><a class="external text" href="https://github.com/etalab/etalab-support">bug tracker / boite à idée sur github</a></li></ul>
+
 <h2 id="api">Informations relatives à l’API</h2>
 <p>Le site Data.gouv.fr propose différents moyen d'accéder au catalogue des données :
 </p>
@@ -25,16 +33,24 @@
 <p>L'intégralité des opérations réalisables depuis le site via votre navigateur peuvent être automatisées (publication d'un jeu de données, création d'organisations, etc). Veuillez consulter <a href="{{ url_for('api.root') }}" title="Accéder à la documentation d'API">la documentation dédiée</a> pour y accéder.</p>
 
 <h2 id="harvesting">Moissonnage des dépôts de données ouvertes</h2>
-<p>Data.gouv.fr met à disposition une infrastructure de moissonnage, permettant d’être automatiquement intégrée sur la plateforme. Il est ainsi possible d’écrire son propre moissonneur en s’inspirant du <a href="https://github.com/etalab/udata/tree/master/udata/harvest/backends">code des moissonneurs existants</a>, fournis en Open Source (comme tout le reste du site data.gouv.fr, distribué sous le nom <a href="https://github.com/etalab/udata">uData</a>).</p>
-<p>Aujourd'hui, les moissoneurs suivants sont disponibles :
+<p>Depuis son inauguration fin 2013, la stratégie de data.gouv.fr a consisté à améliorer la recherche et le référencement, et à simplifier la publication et l’ouvrir à tous, permettant non seulement aux services publics de publier des données publiques, mais également aux citoyens, associations, entreprises ou particuliers, de produire, d’enrichir, de compléter ces données ou de partager des données d’intérêt public.</p>
+<p>Sur ce volet “quantité”, les efforts de data.gouv.fr vont donc se limiter en 2015 à la mise à disposition d’une infrastructure de moissonnage, permettant d’être automatiquement intégrée sur data.gouv.fr. Il est ainsi possible d’écrire son propre moissonneur en s’inspirant du <a href="https://github.com/etalab/udata/tree/master/udata/harvest/backends">code des moissonneurs existants</a>, fournis en Open Source (comme tout le reste du site data.gouv.fr, distribué sous le nom <a href="https://github.com/etalab/udata">uData</a>uData). Cette tâche est très aisée comme en témoigne la contribution d’OpenDataSoft. Le moissonnage n’est pas le seul moyen de synchroniser des données avec data.gouv.fr, il est possible (voir recommandé) d’utiliser l’API data.gouv.fr pour pousser ses données, à l’instar de la passerelle Inspire.</p>
+<p>A l’image du développement de la Base Adresse Nationale (BAN), nous devons désormais passer une étape et nous intéresser beaucoup plus à la montée en qualité de la centaine de jeux de données massifs qui permettront les réutilisations les plus impactantes.</p>
+<p>Etalab est capable de moissonner des répertoires de données ouvertes selon plusieurs méthodes et formats de données : 
 <ul>
-    <li>CKAN <i>(générique)</i></li>
-    <li>OpenDataSoft <i>(générique)</i></li>
+    <li>les sites <a href="http://ckan.org/">CKAN</a></li>
+    <li>les sites ayant ajouté les balises microdata <a href="http://schema.org/">Schema.org</a> dans leurs pages HTML (plus précisément : les schémas <a href="http://schema.org/dataCatalog">Datacatalog</a> et <a href="http://schema.org/dataset">Dataset</a>),</li>
     <li>maaf <i>(spécifique Ministère de l'Agriculture, de l'Agroalimentaire et de la Forêt)</i></li>
+    <li>les sites publiant leurs données au format RDF <a href="http://www.w3.org/TR/vocab-dcat/">Data Catalog Vocabulary (DCAT)</a></li>
+    <li>les catalogues spécialisés dans les données géographiques supportant le protocole <a href="http://en.wikipedia.org/wiki/Catalog_Service_for_the_Web">Catalogue Service for the Web (CSW)</a></li>
 </ul>
 </p>
-<p>Le moissonnage n’est pas le seul moyen de synchroniser des données avec data.gouv.fr, il est possible (voir recommandé) d’utiliser <a href="#api">l’API</a> pour pousser ses données.</p>
-
-<h2 id="source">Le code source de la plateforme</h2>
-<p>L’intégralité du code de la plateforme est <a href="https://github.com/etalab/udata/">gratuitement disponible en Open-Source</a> sous <a href="https://www.gnu.org/licenses/agpl-3.0.html">licence AGPL3</a>. Cet outil a été développé de façon modulaire pour permettre à tout un chacun de l’installer et de le personnaliser pour son usage propre en marque blanche. Nous avons par exemple développé les modules <a href="https://github.com/etalab/udata-gouvfr">udata-gouvfr</a> pour le rendu et <a href="https://github.com/etalab/udata-piwik">udata-piwik</a> pour les statistiques.</p><p>Vous pouvez contribuer en suivant la <a href="http://udata.readthedocs.org/en/latest/">documentation dédiée</a> et en proposant des <a href="https://github.com/etalab/udata/pulls">pull-requests</a>.</p>
+<p>Si un dépôt ne supporte aucun de ces 4 formats, plusieurs solutions sont possibles, notamment : 
+<ul>
+    <li>Installer un CKAN devant le dépôt et y déployer un protocole de moissonnage supporté par le dépôt</li>
+    <li>Implémenter un sous ensemble de l'API CKAN, plus précisément les fonctions package_list, package_show et éventuellement organization_list et organization_show.</li>
+</ul>
+</p>
+<p>Note : Les moissonneurs réalisés pour le dépôt CKAN d'Etalab n'utilisent pas l'extension <a href="https://github.com/okfn/ckanext-harvest">ckanext-harvest</a>. Leur code source est libre et disponible sur <a href="https://github.com/etalab/etalab-ckan-harvesters">GitHub</a>. 
+</p>
 {% endblock %}
