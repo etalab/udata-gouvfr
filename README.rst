@@ -31,3 +31,8 @@ or with easy_install:
 .. code-block:: console
 
     $ easy_install udata-gouvfr
+
+
+.. image:: https://badges.gitter.im/etalab/udata-gouvfr.svg
+   :alt: Join the chat at https://gitter.im/etalab/udata-gouvfr
+   :target: https://gitter.im/etalab/udata-gouvfr?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
