@@ -167,11 +167,6 @@ def credits():
     return theme.render('credits.html')
 
 
-@blueprint.route('/terms/')
-def terms():
-    return theme.render('terms.html')
-
-
 @sitemap.register_generator
 def gouvfr_sitemap_urls():
     yield 'gouvfr.faq_redirect', {}, None, 'weekly', 1
