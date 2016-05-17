@@ -5,7 +5,7 @@ from udata.i18n import lazy_gettext as _
 from udata.models import (
     db, Dataset, User, Organization, Reuse,
     TerritoryDataset, ResourceBasedTerritoryDataset,
-    TERRITORY_DATASETS
+    COUNTY_DATASETS, TOWN_DATASETS
 )
 
 Dataset.extras.register('datagouv_ckan_last_sync', db.DateTimeField)
@@ -186,8 +186,7 @@ class PopulationDiplomesTownDataset(TerritoryDataset):
     }
 
 
-class ElectionsRegionales2015Tour2TownDataset(
-        ResourceBasedTerritoryDataset):
+class ElectionsRegionales2015Tour2TownDataset(ResourceBasedTerritoryDataset):
     order = 7
     id = 'elections_regionales_2015_2'
     title = 'Élections régionales 2015, second tour'
@@ -225,7 +224,57 @@ class BanODBLTownDataset(TerritoryDataset):
     '''.strip()
 
 
-TERRITORY_DATASETS.update({
+class AAHDenombrementCAFCountyDataset(ResourceBasedTerritoryDataset):
+    order = 1
+    id = 'aah_denombrement_caf'
+    title = 'Allocation aux Adultes Handicapés, dénombrement'
+    #  Caisse Nationale des Allocations familiales.
+    organization_id = '5595066cc751df4582a453ba'
+    description = '''
+        [Bénéficiaires percevant l'allocation aux adultes handicapés (AAH)
+        ](/datasets/personnes-percevant-l-allocation-aux-adultes-handicapes-aah-par-caf/),
+        dénombrement pour le département concerné.
+    '''.strip()
+    # Equals to: https://www.data.gouv.fr/fr/datasets/personnes-percevant-
+    # l-allocation-aux-adultes-handicapes-aah-par-caf/
+    dataset_id = '560d9160b595086cd501d755'
+    resource_id = '7a870488-f0de-4a40-9d8f-52e065e43c10'
+    territory_attr = 'code'
+    csv_column = 'dep'
+    temporal_coverage = {
+        'start': 1993,
+        'end': 2015
+    }
+
+
+class AAHRepartitionCAFCountyDataset(ResourceBasedTerritoryDataset):
+    order = 2
+    id = 'aah_repartition_caf'
+    title = 'Allocation aux Adultes Handicapés, répartition'
+    #  Caisse Nationale des Allocations familiales.
+    organization_id = '5595066cc751df4582a453ba'
+    description = '''
+        [Bénéficiaires percevant l'allocation aux adultes handicapés (AAH)
+        ](/datasets/personnes-percevant-l-allocation-aux-adultes-handicapes-aah-par-caf/),
+        répartition pour le département concerné.
+    '''.strip()
+    # Equals to: https://www.data.gouv.fr/fr/datasets/personnes-percevant-
+    # l-allocation-aux-adultes-handicapes-aah-par-caf/
+    dataset_id = '560d9160b595086cd501d755'
+    resource_id = 'b00056f5-ead5-4d7d-86b3-e1323fc02f0d'
+    territory_attr = 'code'
+    csv_column = 'Dep'
+    temporal_coverage = {
+        'start': 2012,
+        'end': 2015
+    }
+
+
+COUNTY_DATASETS.update({
+    'aah_denombrement_caf': AAHDenombrementCAFCountyDataset,
+    'aah_repartition_caf': AAHRepartitionCAFCountyDataset
+})
+TOWN_DATASETS.update({
     'zonages': ZonagesTownDataset,
     'comptes': ComptesTownDataset,
     'logement': LogementTownDataset,
