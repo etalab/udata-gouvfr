@@ -276,7 +276,7 @@ class TerritoriesTest(FrontTestCase):
         data = response.data.decode('utf-8')
         self.assertIn(bdr.name, data)
         territory_datasets = self.get_context_variable('territory_datasets')
-        self.assertEqual(len(territory_datasets), 2)
+        self.assertEqual(len(territory_datasets), 11)
         for dataset in territory_datasets:
             self.assertIn(
                 '<div data-udata-territory-id="{dataset.slug}"'.format(
@@ -317,7 +317,7 @@ class OEmbedsTerritoryAPITest(APITestCase):
                 md(territory.description, source_tooltip=True), data['html'])
             self.assertIn('Download from localhost', data['html'])
             self.assertIn('Add to your own website', data['html'])
-            if territory_dataset_class != TOWN_DATASETS['comptes']:
+            if territory_dataset_class != TOWN_DATASETS['comptes_t']:
                 self.assertIn(
                     'License: {title}'.format(title=licence_ouverte.title),
                     data['html'])
@@ -357,15 +357,16 @@ class OEmbedsTerritoryAPITest(APITestCase):
                 md(territory.description, source_tooltip=True), data['html'])
             self.assertIn('Download from localhost', data['html'])
             self.assertIn('Add to your own website', data['html'])
-            self.assertIn(
-                'License: {title}'.format(title=licence_ouverte.title),
-                data['html'])
-            self.assertIn(
-                '© {license_id}'.format(license_id=licence_ouverte.id),
-                data['html'])
-            self.assertIn(
-                '<a data-tooltip="Source" href="http://localhost/datasets',
-                data['html'])
+            if territory_dataset_class != COUNTY_DATASETS['comptes_c']:
+                self.assertIn(
+                    'License: {title}'.format(title=licence_ouverte.title),
+                    data['html'])
+                self.assertIn(
+                    '© {license_id}'.format(license_id=licence_ouverte.id),
+                    data['html'])
+                self.assertIn(
+                    '<a data-tooltip="Source" href="http://localhost/datasets',
+                    data['html'])
 
 
 class SitemapTest(FrontTestCase):
