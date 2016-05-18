@@ -330,8 +330,12 @@ class OEmbedsTerritoryAPITest(APITestCase):
 
     def test_oembed_county_territory_api_get(self):
         '''It should fetch a county territory in the oembed format.'''
+        midi_pyrenees = GeoZoneFactory(
+            id='fr/region/73', level='fr/region', name='Midi-Pyrénées',
+            code='73')
         aveyron = GeoZoneFactory(
-            id='fr/county/12', level='fr/county', name='Aveyron', code='12')
+            id='fr/county/12', level='fr/county', name='Aveyron', code='12',
+            parents=[midi_pyrenees.id])
         licence_ouverte = LicenseFactory(id='fr-lo', title='Licence Ouverte')
         LicenseFactory(id='notspecified', title='Not Specified')
         for territory_dataset_class in COUNTY_DATASETS.values():
@@ -357,7 +361,8 @@ class OEmbedsTerritoryAPITest(APITestCase):
                 md(territory.description, source_tooltip=True), data['html'])
             self.assertIn('Download from localhost', data['html'])
             self.assertIn('Add to your own website', data['html'])
-            if territory_dataset_class != COUNTY_DATASETS['comptes_c']:
+            if territory_dataset_class not in (COUNTY_DATASETS['comptes_c'],
+                                               COUNTY_DATASETS['zonages_c']):
                 self.assertIn(
                     'License: {title}'.format(title=licence_ouverte.title),
                     data['html'])
