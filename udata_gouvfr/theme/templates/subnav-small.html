@@ -7,8 +7,12 @@
                 {% set action = url_for('datasets.list') %}
                 {% set placeholder = _('Search in datasets') %}
             {% elif territory %}
-                {% set action = url_for('front.search') %}
-                {% set placeholder = _('Search in this town') %}
+                {% set action = url_for('datasets.list') %}
+                {% if territory.level == 'fr/town' %}
+                    {% set placeholder = _('Search in this town') %}
+                {% elif territory.level == 'fr/county' %}
+                    {% set placeholder = _('Search in this county') %}
+                {% endif %}
             {% else %}
                 {% set action = url_for('front.search') %}
                 {% set placeholder = _('Search') %}
