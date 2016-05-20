@@ -32,11 +32,11 @@
     {% endblock raw_head %}
 
     <!--[if gte IE 9]><!-->
-    <link rel="stylesheet" href="{{ theme_static('skizz/main.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('gouvfr.static', filename='ctie/skizz/main.css') }}"/>
     <!--<![endif]-->
     <!--[if lt IE 9]>
-    <link rel=stylesheet href="{{ theme_static('skizz/ie.css') }}">
-    <script src="../assets/js/vendor/html5shiv.js"></script>
+<link rel="stylesheet" href="{{ url_for('gouvfr.static', filename='ctie/skizz/ie.css') }}"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
 
   </head>
@@ -64,7 +64,7 @@
 
     <script src="{{ static('common.js') }}"></script>
     <script src="{{ static('site.js') }}"></script>
-    <script src="{{ theme_static('lib/require.js') }}" data-main="{{ theme_static('js/main.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="{{ url_for('gouvfr.static', filename='ctie/main.js') }}"></script>
     {% block extra_js %}{% endblock %}
 
     {% for snippet in footer_snippets %}
