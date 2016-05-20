@@ -1,13 +1,13 @@
 {
     "application": "udata",
     "identifier": "gouvfr",
-    "name": "Data.gouv.fr",
-    "author": "Etalab",
-    "description": "Data.gouv.fr theme",
-    "website": "http://data.gouv.fr",
+    "name": "data.public.lu",
+    "author": "Digital Lëtzebuerg",
+    "description": "data.public.lu theme",
+    "website": "http://www.data.public.lu",
     "license": "AGPL",
     "version": "0.1.0",
     "doctype": "html5",
-    "variants": ["deuil"],
-    "github_faq_url_pattern": "https://github.com/etalab/udata-gouvfr/edit/master/udata_gouvfr/templates/faq/{page_name}.html"
+    "variants": ["deuil", "preview"],
+    "github_faq_url_pattern": "https://github.com/opendatalu/udata-gouvlu/edit/master/udata_gouvlu/templates/faq/{page_name}.html"
 }
