@@ -1,0 +1,59 @@
+{% cache cache_duration, 'reuse-card', reuse.id|string, g.lang_code %}
+<div class="card reuse-card custom-card">
+    <a class="card-logo" href="{{ url_for('reuses.show', reuse=reuse) }}">
+        <img alt="{{ reuse.title }}"
+            src="{{ reuse.image(86)|placeholder('reuse') }}"
+            width="86" height="86">
+    </a>
+
+    <div class="author">
+        {{ reuse|owner_avatar(20) }}
+        <a class="user" href="{{ reuse|owner_url }}" title="{{ reuse|owner_name }}">
+        {{ reuse|owner_name }}
+        </a>
+        <span class="date">{{ reuse.created_at|dateformat('long') }}</span>
+    </div>
+
+    <div class="card-body">
+        <h4>
+            <a href="{{ url_for('reuses.show', reuse=reuse) }}" title="{{ reuse.title }}">
+                {{ reuse.title|truncate(100) }}
+            </a>
+        </h4>
+
+        <a class="card-description" href="{{url_for('reuses.show', reuse=reuse)}}"
+            title="{{ reuse.title }}">
+            {{ reuse.description|mdstrip(140) }}
+        </a>
+    </div>
+
+    <footer>
+        <ul>
+            <li>
+                <a class="btn btn-xs" data-toggle="tooltip" data-placement="top"
+                    title="{{ _('Type') }}">
+                    <span class="fa fa-file fa-fw"></span>
+                    {{ reuse.type_label }}
+                </a>
+            </li>
+            <li>
+                <a class="btn btn-xs" data-toggle="tooltip"
+                    data-placement="top" data-container="body"
+                    title="{{ _('Number of datasets used') }}">
+                    <span class="fa fa-cubes fa-fw"></span>
+                    {{ reuse.datasets|length or 0 }}
+                </a>
+            </li>
+
+            <li>
+                <a class="btn btn-xs" data-toggle="tooltip"
+                    data-placement="top" data-container="body"
+                    title="{{ _('Stars') }}">
+                    <span class="fa fa-star fa-fw"></span>
+                    {{ reuse.metrics.followers or 0 }}
+                </a>
+            </li>
+        </ul>
+    </footer>
+</div>
+{% endcache %}
