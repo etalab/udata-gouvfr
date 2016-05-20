@@ -18,8 +18,8 @@ from udata.tests.frontend import FrontTestCase
 from udata.tests.test_sitemap import SitemapTestCase
 
 from .models import (
-    DATACONNEXIONS_5_CANDIDATE, DATACONNEXIONS_6_CANDIDATE, COUNTY_DATASETS,
-    TOWN_DATASETS
+    DATACONNEXIONS_5_CANDIDATE, DATACONNEXIONS_6_CANDIDATE,
+    TERRITORY_DATASETS
 )
 from .views import DATACONNEXIONS_5_CATEGORIES, DATACONNEXIONS_6_CATEGORIES
 from .metrics import PublicServicesMetric
@@ -254,13 +254,13 @@ class TerritoriesTest(FrontTestCase):
             id='fr/town/13004', level='fr/town', parents=[bdr.id],
             name='Arles', code='13004', population=52439)
         response = self.client.get(
-            url_for('territories.town', territory=arles))
+            url_for('territories.territory', territory=arles))
         self.assert200(response)
         data = response.data.decode('utf-8')
         self.assertIn(arles.name, data)
-        territory_datasets = self.get_context_variable('territory_datasets')
-        self.assertEqual(len(territory_datasets), 10)
-        for dataset in territory_datasets:
+        base_datasets = self.get_context_variable('base_datasets')
+        self.assertEqual(len(base_datasets), 10)
+        for dataset in base_datasets:
             self.assertIn(
                 '<div data-udata-territory-id="{dataset.slug}"'.format(
                     dataset=dataset),
@@ -271,13 +271,30 @@ class TerritoriesTest(FrontTestCase):
         bdr = GeoZoneFactory(
             id='fr/county/13', level='fr/county', name='Bouches-du-Rhône')
         response = self.client.get(
-            url_for('territories.county', territory=bdr))
+            url_for('territories.territory', territory=bdr))
         self.assert200(response)
         data = response.data.decode('utf-8')
         self.assertIn(bdr.name, data)
-        territory_datasets = self.get_context_variable('territory_datasets')
-        self.assertEqual(len(territory_datasets), 11)
-        for dataset in territory_datasets:
+        base_datasets = self.get_context_variable('base_datasets')
+        self.assertEqual(len(base_datasets), 11)
+        for dataset in base_datasets:
+            self.assertIn(
+                '<div data-udata-territory-id="{dataset.slug}"'.format(
+                    dataset=dataset),
+                data)
+
+    def test_with_gouvfr_region_territory_datasets(self):
+        paca = GeoZoneFactory(
+            id='fr/region/93', level='fr/region',
+            name='Provence Alpes Côtes dAzur')
+        response = self.client.get(
+            url_for('territories.territory', territory=paca))
+        self.assert200(response)
+        data = response.data.decode('utf-8')
+        self.assertIn(paca.name, data)
+        base_datasets = self.get_context_variable('base_datasets')
+        self.assertEqual(len(base_datasets), 8)
+        for dataset in base_datasets:
             self.assertIn(
                 '<div data-udata-territory-id="{dataset.slug}"'.format(
                     dataset=dataset),
@@ -294,7 +311,7 @@ class OEmbedsTerritoryAPITest(APITestCase):
             name='Arles', code='13004', population=52439)
         licence_ouverte = LicenseFactory(id='fr-lo', title='Licence Ouverte')
         LicenseFactory(id='notspecified', title='Not Specified')
-        for territory_dataset_class in TOWN_DATASETS.values():
+        for territory_dataset_class in TERRITORY_DATASETS['town'].values():
             organization = OrganizationFactory(
                 id=territory_dataset_class.organization_id)
             territory = territory_dataset_class(arles)
@@ -317,7 +334,8 @@ class OEmbedsTerritoryAPITest(APITestCase):
                 md(territory.description, source_tooltip=True), data['html'])
             self.assertIn('Download from localhost', data['html'])
             self.assertIn('Add to your own website', data['html'])
-            if territory_dataset_class != TOWN_DATASETS['comptes_t']:
+            if territory_dataset_class not in (
+                    TERRITORY_DATASETS['town']['comptes_t'],):
                 self.assertIn(
                     'License: {title}'.format(title=licence_ouverte.title),
                     data['html'])
@@ -338,7 +356,7 @@ class OEmbedsTerritoryAPITest(APITestCase):
             parents=[midi_pyrenees.id])
         licence_ouverte = LicenseFactory(id='fr-lo', title='Licence Ouverte')
         LicenseFactory(id='notspecified', title='Not Specified')
-        for territory_dataset_class in COUNTY_DATASETS.values():
+        for territory_dataset_class in TERRITORY_DATASETS['county'].values():
             organization = OrganizationFactory(
                 id=territory_dataset_class.organization_id)
             territory = territory_dataset_class(aveyron)
@@ -361,8 +379,52 @@ class OEmbedsTerritoryAPITest(APITestCase):
                 md(territory.description, source_tooltip=True), data['html'])
             self.assertIn('Download from localhost', data['html'])
             self.assertIn('Add to your own website', data['html'])
-            if territory_dataset_class not in (COUNTY_DATASETS['comptes_c'],
-                                               COUNTY_DATASETS['zonages_c']):
+            if territory_dataset_class not in (
+                    TERRITORY_DATASETS['county']['comptes_c'],
+                    TERRITORY_DATASETS['county']['zonages_c']):
+                self.assertIn(
+                    'License: {title}'.format(title=licence_ouverte.title),
+                    data['html'])
+                self.assertIn(
+                    '© {license_id}'.format(license_id=licence_ouverte.id),
+                    data['html'])
+                self.assertIn(
+                    '<a data-tooltip="Source" href="http://localhost/datasets',
+                    data['html'])
+
+    def test_oembed_region_territory_api_get(self):
+        '''It should fetch a region territory in the oembed format.'''
+        midi_pyrenees = GeoZoneFactory(
+            id='fr/region/73', level='fr/region', name='Midi-Pyrénées',
+            code='73')
+        licence_ouverte = LicenseFactory(id='fr-lo', title='Licence Ouverte')
+        LicenseFactory(id='notspecified', title='Not Specified')
+        for territory_dataset_class in TERRITORY_DATASETS['region'].values():
+            organization = OrganizationFactory(
+                id=territory_dataset_class.organization_id)
+            territory = territory_dataset_class(midi_pyrenees)
+            reference = 'territory-{id}'.format(id=territory.slug)
+            response = self.get(url_for('api.oembeds', references=reference))
+            self.assert200(response)
+            data = json.loads(response.data)[0]
+            self.assertIn('html', data)
+            self.assertIn('width', data)
+            self.assertIn('maxwidth', data)
+            self.assertIn('height', data)
+            self.assertIn('maxheight', data)
+            self.assertTrue(data['type'], 'rich')
+            self.assertTrue(data['version'], '1.0')
+            self.assertIn(territory.title, data['html'])
+            self.assertIn(cgi.escape(territory.url), data['html'])
+            self.assertIn(
+                'alt="{name}"'.format(name=organization.name), data['html'])
+            self.assertIn(
+                md(territory.description, source_tooltip=True), data['html'])
+            self.assertIn('Download from localhost', data['html'])
+            self.assertIn('Add to your own website', data['html'])
+            if territory_dataset_class not in (
+                    TERRITORY_DATASETS['region']['comptes_r'],
+                    TERRITORY_DATASETS['region']['zonages_r']):
                 self.assertIn(
                     'License: {title}'.format(title=licence_ouverte.title),
                     data['html'])
@@ -405,7 +467,7 @@ class SitemapTerritoriesTest(SitemapTestCase):
 
         self.get_sitemap_tree()
 
-        url = self.get_by_url('territories.town', territory=territory)
+        url = self.get_by_url('territories.territory', territory=territory)
         self.assertIsNotNone(url)
         self.assert_url(url, 0.5, 'weekly')
 
@@ -416,6 +478,18 @@ class SitemapTerritoriesTest(SitemapTestCase):
 
         self.get_sitemap_tree()
 
-        url = self.get_by_url('territories.county', territory=territory)
+        url = self.get_by_url('territories.territory', territory=territory)
+        self.assertIsNotNone(url)
+        self.assert_url(url, 0.5, 'weekly')
+
+    def test_regions_within_sitemap(self):
+        '''It should return the county from the sitemap.'''
+        territory = GeoZoneFactory(
+            id='fr/region/93', level='fr/region',
+            name='Provence Alpes Côtes dAzur')
+
+        self.get_sitemap_tree()
+
+        url = self.get_by_url('territories.territory', territory=territory)
         self.assertIsNotNone(url)
         self.assert_url(url, 0.5, 'weekly')
