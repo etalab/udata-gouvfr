@@ -34,10 +34,7 @@ gouvfr_menu = nav.Bar('gouvfr_menu', [
     ]),
     nav.Item(_('Dashboard'), 'site.dashboard'),
     nav.Item(_('Events'), '#', url='#', items=[
-        nav.Item('Nec Mergitur', 'gouvfr.nec_mergitur'),
-        nav.Item('Climate Change Challenge (C³)',
-                 'gouvfr.climate_change_challenge'),
-        nav.Item('Dataconnexions', 'gouvfr.dataconnexions'),
+        nav.Item('Game of Code', 'gameofcode', url='http://www.gameofcode.eu/'),
     ]),
     # nav.Item('Dataconnexions', 'gouvfr.dataconnexions'),
     nav.Item('Etalab', 'etalab', url='http://www.etalab.gouv.fr/'),
@@ -51,19 +48,22 @@ nav.Bar('gouvfr_footer', [
     nav.Item(_('As a producer'), 'gouvfr.faq', {'section': 'producer'}),
     nav.Item(_('As a reuser'), 'gouvfr.faq', {'section': 'reuser'}),
     nav.Item(_('As a developer'), 'gouvfr.faq', {'section': 'developer'}),
+    ])
+
+nav.Bar('gouvfr_footer_support', [
     nav.Item(_('API'), 'apidoc.swaggerui'),
     nav.Item(_('Credits'), 'gouvfr.credits'),
+    nav.Item(_('Usage Guidelines for Open Data'), 'gouvfr.usage'),
     nav.Item(_('Terms of use'), 'gouvfr.terms'),
 ])
 
 NETWORK_LINKS = [
-    ('Gouvernement.fr', 'http://www.gouvernement.fr'),
-    ('France.fr', 'http://www.france.fr'),
-    ('Legifrance.gouv.fr', 'http://www.legifrance.gouv.fr'),
-    ('Service-public.fr', 'http://www.service-public.fr'),
-    ('Opendata France', 'http://opendatafrance.net'),
-    ('CADA.fr', 'http://www.cada.fr'),
-    ('Etalab.gouv.fr', 'http://www.etalab.gouv.fr'),
+    ('luxembourg.lu', 'http://luxembourg.public.lu'),
+    ('guichet.lu', 'http://guichet.public.lu'),
+    ('gouvernement.lu', 'http://www.gouvernement.lu'),
+    ('Legilux', 'http://eli.legilux.public.lu/'),
+    ('geoportail', 'https://www.geoportail.lu/en/'),
+    ('Autres sites', 'http://www.etat.public.lu/'),
 ]
 
 nav.Bar(
