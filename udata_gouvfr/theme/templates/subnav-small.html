@@ -12,6 +12,8 @@
                     {% set placeholder = _('Search in this town') %}
                 {% elif territory.level == 'fr/county' %}
                     {% set placeholder = _('Search in this county') %}
+                {% elif territory.level == 'fr/region' %}
+                    {% set placeholder = _('Search in this region') %}
                 {% endif %}
             {% else %}
                 {% set action = url_for('front.search') %}
