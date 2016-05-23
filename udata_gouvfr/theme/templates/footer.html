@@ -54,7 +54,7 @@
 	                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
 	                    <use xlink:href="#icon-email" x="0" y="0" />
 	                </svg>
-	                <span>{{ config.CONTACT_EMAIL|obfuscate|safe }}</span>
+	                <span>{{ config.CONTACT_EMAIL|obfuscate|replace("%40", "&commat;")|safe }}</span>
                 </a>
             </li>
             <li class="nav-item">
