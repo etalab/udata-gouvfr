@@ -1,71 +1,51 @@
-<section class="header">
-    <!--[if lte IE 8]>
+<header role="banner" class="page-header">
+    <!--[if lte IE 9]>
     <div class="iewarning">
-        {{ _('Internet Explorer 8 and below are not anymore supported. Please upgrade or change your browser to access the website.') }} <a href="http://browsehappy.com/">{{ _('More information →')}}</a>
+        {{ _('Internet Explorer 9 and below are not supported anymore. Please upgrade or change your browser to access the website.') }} <a href="http://browsehappy.com/">{{ _('More information →')}}</a>
     </div>
     <![endif]-->
-    <div class="container">
-        <nav class="navbar navbar-default navbar-static-top">
-            <header class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target=".navbar-collapse, .subnav-collapse, .sidebg-collapse">
-                    <span class="sr-only">{{ _('Toggle navigation') }}</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url_for('site.home') }}">{{ g.site.title }}</a>
-                <p class="navbar-text pull-right">{{ _('Open platform for french public data') }}</p>
-            </header>
-        </nav>
-    </div>
-</section>
-
-<section class="topmenu collapse navbar-collapse">
-    <div class="container">
-        <nav class="navbar navbar-default navbar-static-top">
-            <ul class="nav navbar-nav links">
-                {% for item in current_theme.menu %}
-                <li {% if item.items %}class="dropdown dropdown-hover"{% endif %}>
-                    <a href="{{ item.url }}">{{ item.label }}</a>
-                    {% if item.items %}
-                    <ul class="dropdown-menu" role="menu">
-                        {% for subitem in item.items %}
-                        <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
+    <a class="page-logo" href="{{ url_for('site.home') }}" title="{{ _('Front page') }}">
+        <img src="{{ theme_static('img/logo-' ~ current_theme.variant|default('default') ~ '.png') }}" alt="Logo"/>
+    </a>
+    <a class="anchor" href="#page-nav">
+      <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#icon-navigation-drawer-1" x="0" y="0" />
+      </svg>
+      <span>{{ _('Browse by theme' )}}</span>
+    </a>
+    <div id="page-nav" class="page-nav">
+      <nav class="page-headernav">
+          <ul class="nav nav--tertiary">
+              {% for item in current_theme.menu %}
+              <li class="nav-item">
+                  <a href="{{ item.url }}">{{ item.label }}</a>
+                  {% if item.items %}
+                  <ul>
+                      {% for subitem in item.items %}
+                      <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
+                      {% endfor %}
+                  </ul>
+                  {% endif %}
+              </li>
+              {% endfor %}
+          </ul>
+          <ul id="topnav" class="nav nav--primary">
+                {% for topic in g.featured_topics %}
+        <li class="nav-item">
+        <a href="{{ url_for('topics.display', topic=topic) }}">{{ topic.name }}</a>
                 </li>
                 {% endfor %}
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                {% if g.lang_code and request.url %}
-                <li class="dropdown language">
-                    <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ theme_static('img/flags/{0}.png'.format(g.lang_code)) }}"
-                            alt="Current locale flag"
-                            width="16" height="16" />
-                    </button>
-                    <ul class="dropdown-menu">
-                        {% for code, name in config['LANGUAGES'].items() %}
-                        <li>
-                            <a href="{{ request.url.replace('/{0}/'.format(g.lang_code),'/{0}/'.format(code)) }}">
-                                <img src="{{ theme_static('img/flags/{0}.png'.format(code)) }}"
-                                    alt="{{name}} flag"
-                                    width="16" height="16" />
-                                {{name}}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+          </ul>
+          <ul class="nav nav--secondary">
+                <li class="nav-item">
+                  <a href="#" class="nav--contribute" data-toggle="modal" data-target="#publish-action-modal">{{ _('Contribute!' )}}</a>
                 </li>
-                {% endif %}
+
                 {% if current_user.is_authenticated %}
                 <li class="dropdown user login">
                     <button class="btn-link dropdown-toggle" data-toggle="dropdown">
                         <span class="username">{{ current_user.fullname }} </span>
-                        <img src="{{ current_user|avatar_url(30) }}" width="30" height="30" alt="{{ current_user.fullname }}" />
+                        <img src="{{ current_user|avatar_url(30) }}" width="30" height="30" />
                     </button>
                     <ul class="dropdown-menu">
                         <li>
@@ -80,7 +60,7 @@
                         <li>
                             <a href="{{ url_for('organizations.show', org=org) }}">
                                 <img src="{{ org.logo(20)|placeholder('organization') }}"
-                                    width="20" height="20" alt="{{ org.acronym or org.name }}"/>
+                                    width="20" height="20"/>
                                 {{ org.acronym or org.name }}
                             </a>
                         </li>
@@ -103,15 +83,51 @@
                     </ul>
                 </li>
                 {% else %}
-                <li>
-                    <a title="{{ _('Sign In / Register') }}"
-                        href="{{ url_for('security.login', next=request.url) }}">
-                        <span class="glyphicon glyphicon-log-in"></span>
-                        {{ _('Sign In / Register') }}
-                    </a>
+                <li class="nav-item">
+                  <a href="{{ url_for('security.login', next=request.url) }}" class="nav--connect">{{ _('Sign In / Register') }}</a>
                 </li>
                 {% endif %}
+          </ul>
+
+        <form id="topsearch" class="search" role="search" action="{{ url_for('front.search') }}">
+            <label for="main-search">{{ _('Search') }}</label>
+            <input type="text" id="main-search" name="q" value="{{request.args.q}}" type="search" placeholder="{{ _('Search') }}" autocomplete="off" />
+
+            <button class="btn" type="submit">
+              <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                  <use xlink:href="#icon-search" x="0" y="0" />
+              </svg>
+            </button>
+        </form>
+      </nav>
+
+        {% if g.lang_code and request.url %}
+        <div class="page-langs">
+          <div class="dropdown dropdown--right">
+            <button class="btn btn--nude" aria-label="Changer de langue" title="Changer de langue">
+              <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                  <use xlink:href="#icon-globe-2" x="0" y="0" />
+              </svg>
+              <span>{{ _('Language') }}</span>
+              <svg class="icon icon--small" viewBox="0 0 24 24" width="24" height="24">
+                  <use xlink:href="#icon-arrow-down-12" x="0" y="0" />
+              </svg>
+            </button>
+            <ul class="menu" role="menu">
+                {% for code, name in config['LANGUAGES'].items() %}
+                <li role="presentation">
+                  <a class="menu-item lang lang--{{ code }} is-active"
+                    aria-selected="true"
+                    role="menuitem"
+                    rel="alternate"
+                    lang="{{ code }}"
+                    hreflang="{{ code }}"
+                    href="{{ request.url.replace('/{0}/'.format(g.lang_code),'/{0}/'.format(code)) }}">{{name}}</a>
+                </li>
+                {% endfor %}
             </ul>
-        </nav>
+          </div>
+        </div>
+        {% endif %}
     </div>
-</section>
+</header>

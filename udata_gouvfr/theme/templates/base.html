@@ -1,10 +1,31 @@
 {% extends "base.html" %}
 
-{% block subnav %}
-    {% include theme('subnav-small.html') with context %}
-{% endblock %}
+{% block body %}
+  {% include theme("header.html") with context %}
+  <main id="main" class="page-main" role="main">
+   <article role="article">
+    {% block subnav %}
+      {% include theme('subnav-small.html') with context %}
+    {% endblock %}
 
-{% block modals %}
-    {{ super() }}
-    {% include theme('snippets/publish-action-modal.html') %}
+    <section id="notifications-container"></section>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    {% block modals %}
+      {{ super() }}
+      {% include theme('snippets/publish-action-modal.html') %}
+    {% endblock %}
+   </article>
+  </main>
+  {% include theme('footer.html') %}
 {% endblock %}

@@ -1,64 +1,71 @@
 {% cache cache_duration, 'footer', g.lang_code|default(config.DEFAULT_LANGUAGE)|string %}
-<section class="footer">
-    <div class="container">
-        <footer class="row">
-
-            <section class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
-                <h5>{{ _('The Open Data') }}</h5>
+<footer role="contentinfo" class="page-footer">
+    <nav role="navigation" class="page-footernav">
+        <ul class="nav nav--primary" aria-labelledby="nav-4798">
+            <li id="nav-4798" role="heading" aria-level="3">{{ _('Open Data Guide') }}</li>
+            {% for item in nav.gouvfr_footer %}
+            <li class="nav-item">
+                <a href="{{ '' if item.items else item.url }}">{{ item.label }}</a>
+                {% if item.items %}
                 <ul>
-                    {% for item in nav.gouvfr_footer %}
-                    <li>
-                        <a href="{{ '' if item.items else item.url }}">{{ item.label }}</a>
-                        {% if item.items %}
-                        <ul>
-                            {% for subitem in item.items %}
-                            <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
-                            {% endfor %}
-                        </ul>
-                        {% endif %}
-                    </li>
-                    {% endfor %}
+                   {% for subitem in item.items %}
+                   <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
+                   {% endfor %}
                 </ul>
-            </section>
-            <section class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
-                <h5>{{ _('Topics') }}</h5>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <ul class="nav nav--support">
+            {% for item in nav.gouvfr_footer_support %}
+            <li class="nav-item">
+                <a href="{{ '' if item.items else item.url }}">{{ item.label }}</a>
+                {% if item.items %}
                 <ul>
-                    {% for topic in g.featured_topics %}
-                    <li>
-                        <a href="{{ url_for('topics.display', topic=topic) }}" title="{{ topic.name }}">
-                        {{ topic.name }}
-                        </a>
-                    </li>
-                    {% endfor %}
+                   {% for subitem in item.items %}
+                   <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
+                   {% endfor %}
                 </ul>
-            </section>
-
-            <section class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
-                <h5>{{ _('Network') }}</h5>
-                <ul>
-                    {% for item in nav.gouvfr_network %}
-                    <li><a href="{{ item.url }}">{{ item.label }}</a></li>
-                    {% endfor %}
-                </ul>
-            </section>
-
-            <section class="col-xs-6 col-sm-3 col-md-4 col-lg-4 social">
-                <h5>{{ _('Contact') }}</h5>
-                <a href="https://twitter.com/datagouvfr" title="Twitter">
-                    <span class="fa fa-twitter-square"></span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <ul class="nav nav--social" aria-labelledby="nav-4992">
+            <li id="nav-4992" role="heading" aria-level="3">{{ _('Contact') }}</li>
+            <li class="nav-item">
+                <a href="https://twitter.com/opendatalu" title="Open Data Lëtzebuerg (@OpenDataLU) | Twitter - {{ _('New wind') }}"
+                  >
+                    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                        <use xlink:href="#icon-logo-twitter-bird" x="0" y="0" />
+                    </svg>
+                    <span>Twitter</span>
                 </a>
-                <a href="https://fb.me/etalab" title="Facebook">
-                    <span class="fa fa-facebook-square"></span>
+            </li>
+            <li class="nav-item">
+                <a href="https://github.com/opendatalu/">
+                    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                        <use xlink:href="#icon-logo-circle-github-2" x="0" y="0" />
+                    </svg>
+                    <span>Github</span>
                 </a>
-                <a href="https://plus.google.com/117902389749487955734" title="Google+">
-                    <span class="fa fa-google-plus-square"></span>
-                </a>
-                <a href="https://github.com/etalab" title="github">
-                    <span class="fa fa-github-square"></span>
-                </a>
+            </li>
+            <li class="nav-item">
                 <a href="m&#x61;ilto:{{ config.CONTACT_EMAIL|obfuscate|safe }}">
-                    <span class="fa fa-envelope-square"></span>
+	                <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+	                    <use xlink:href="#icon-email" x="0" y="0" />
+	                </svg>
+	                <span>{{ config.CONTACT_EMAIL|obfuscate|replace("%40", "&commat;")|safe }}</span>
                 </a>
+            </li>
+            <li class="nav-item">
+                <a href="/posts/">
+                    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                        <use xlink:href="#icon-newspaper" x="0" y="0" />
+                    </svg>
+                    <span>{{ _('News') }}</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 {% set rss_popup = ('''
                     <a title="{0}" href="{1}"><span class="fa fa-rss"></span>{0}</a><br/>
                     <a title="{2}" href="{3}"><span class="fa fa-rss"></span>{2}</a>
@@ -66,25 +73,38 @@
                     _('Datasets'), url_for('datasets.recent_feed'),
                     _('Reuses'), url_for('reuses.recent_feed'),
                 ) %}
-                <a href="#" tabindex="-1" title="{{ _('Feeds') }}" class="feed-icon"
+                 <a href="#" tabindex="-1" title="{{ _('Feeds') }}" class="feed-icon"
                     data-toggle="popover" data-trigger="focus" data-placement="top"
                     data-html="true" data-content="{{rss_popup|e}}">
-                    <span class="fa fa-rss-square"></span>
+                    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+                        <use xlink:href="#icon-logo-rss" x="0" y="0" />
+                    </svg>
+                    <span>{{ _('Feeds') }}</span>
                 </a>
-            </section>
-
-            <section class="col-xs-9 col-xs-offset-3 col-sm-offset-0 col-sm-2 col-md-2 col-lg-2">
-                <a href="http://www.etalab.gouv.fr">
-                    <img class="logo" alt="logo"
-                        src="{{ theme_static('img/etalab-logo.png') }}"
-                        width="152" height="50" />
-                    <p>2015 ETALAB</p>
-                </a>
-            </section>
-
-            <p class="bottom-right"><a href="#">{{ _('Back to top') }}</a></p>
-
-        </footer>
-    </div>
-</section>
+            </li>
+        </ul>
+    </nav>
+    <p class="page-copyright">
+      <a class="renow" href="http://renow.lu" title="Renow, votre guide en matière de qualité web gouvernemental luxembourgeois">
+        <img src="//cdn.public.lu/pictures/logos/renow.png"
+          srcset="//cdn.public.lu/pictures/logos/renow-hdpi.png 1.5x,
+            //cdn.public.lu/pictures/logos/renow-xhdpi.png 2x,
+            //cdn.public.lu/pictures/logos/renow-xxhdpi.png 3x"
+          alt="Renow"/>
+      </a>
+	  <a href="http://www.digital-luxembourg.public.lu" class="digital">
+	    {{ _('An initiative by') }}
+	    <img src="//cdn.public.lu/pictures/logos/digital-letzebuerg.png"
+	      srcset="//cdn.public.lu/pictures/logos/digital-letzebuerg-hdpi.png 1.5x,
+	        //cdn.public.lu/pictures/logos/digital-letzebuerg-xhdpi.png 2x,
+	        //cdn.public.lu/pictures/logos/digital-letzebuerg-xxhdpi.png 3x"
+	      alt="Digital Lëtzebuerg" />
+	  </a>
+    </p>
+</footer>
+ <a href="#top" class="back" aria-label="{{ _('Back to top') }}" title="{{ _('Back to top') }}">
+    <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#icon-arrow-up-12" x="0" y="0" />
+    </svg>
+</a>
 {% endcache %}

@@ -172,6 +172,21 @@ def terms():
     return theme.render('terms.html')
 
 
+@blueprint.route('/usage/')
+def usage():
+    return theme.render('usage.html')
+
+
+@blueprint.route('/browserconfig.xml')
+def browserconfig():
+    return theme.render('browserconfig.xml')
+
+
+@blueprint.route('/manifest.json')
+def manifest():
+    return theme.render('manifest.json')
+
+
 @sitemap.register_generator
 def gouvfr_sitemap_urls():
     yield 'gouvfr.faq_redirect', {}, None, 'weekly', 1

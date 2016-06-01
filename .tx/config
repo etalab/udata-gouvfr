@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[udata-gouvfr.python]
+[udata-gouvlu.python]
 file_filter = udata_gouvfr/translations/<lang>/LC_MESSAGES/udata-gouvfr.po
 source_file = udata_gouvfr/translations/udata-gouvfr.pot
 source_lang = en

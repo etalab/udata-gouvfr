@@ -1,41 +1,6 @@
-<nav class="navbar navbar-static-top navbar-subnav subnav-large subnav-topic {% if topic.color %}topic-{{topic.color}}{% endif %}">
-    <div class="cover-topic"></div>
+<nav class="navbar">
     <div class="container">
-
-        <div class="side-bgs">
-            <div class="bg"></div>
-            <div class="bg collapse sidebg-collapse"></div>
-        </div>
-
-        <div class="search_sidebar col-sm-5 col-md-4 col-xs-12" role="search">
-
-            <nav class="sidebar panel">
-                <form action="{{ url_for('front.search') }}">
-                    <div class="input-group input-group-lg">
-                        <div class="input-group-btn">
-                            <button class="btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                        </div>
-                        <input id="main-search" name="q" type="search" class="form-control"
-                            autocomplete="off" placeholder="{{ _('Search') }}"
-                            value="{{request.args.q}}">
-                    </div>
-                </form>
-            </nav>
-
-            <nav class="sidebar panel collapse subnav-collapse">
-                <!-- Groups -->
-                <div class="list-group">
-                    {% for topic in g.featured_topics %}
-                    <a class="list-group-item" href="{{ url_for('topics.display', topic=topic) }}">
-                        {{ topic.name }}
-                    </a>
-                    {% endfor %}
-                </div>
-            </nav>
-
-        </div>
-
-        <div class="topic-excerpt col-sm-7 col-md-8 col-xs-12">
+        <div class="topic-excerpt">
             <h3>{{ topic.name }}</h3>
             {{ topic.description|markdown }}
         </div>
@@ -46,12 +11,12 @@
                     data-toggle="modal" data-target="#topic-modal">
                     {{ _('Read more') }}
                 </a> #}
-                <a class="btn btn-primary btn-big btn-transparent icon-left"
+                {# <a class="btn btn-primary btn-big btn-transparent icon-left"
                         title="{{ _('Contribute!') }}"
                         data-toggle="modal" data-target="#publish-action-modal">
                     <span class="glyphicon glyphicon-plus"></span>
                     {{ _('Contribute!' )}}
-                </a>
+                </a> #}
             {# </div> #}
         </div>
         {# <div class="call-to-action">
