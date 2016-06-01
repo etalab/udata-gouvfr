@@ -36,9 +36,6 @@ gouvfr_menu = nav.Bar('gouvfr_menu', [
     nav.Item(_('Events'), '#', url='#', items=[
         nav.Item('Game of Code', 'gameofcode', url='http://www.gameofcode.eu/'),
     ]),
-    # nav.Item('Dataconnexions', 'gouvfr.dataconnexions'),
-    nav.Item('Etalab', 'etalab', url='http://www.etalab.gouv.fr/'),
-    nav.Item('CADA', 'cada', url='http://cada.data.gouv.fr/'),
 ])
 
 theme.menu(gouvfr_menu)

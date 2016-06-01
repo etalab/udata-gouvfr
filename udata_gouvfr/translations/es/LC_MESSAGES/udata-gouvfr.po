@@ -1,52 +1,50 @@
-# Translations template for udata-gouvfr.
+# Spanish translations for udata-gouvfr.
 # Copyright (C) 2016 ORGANIZATION
-# This file is distributed under the same license as the udata-gouvfr project.
-# 
-# Translators:
-# AuraCifuentes <aura-maria.cifuentes-gallo@modernisation.gouv.fr>, 2014
-# Axel Haustant, 2014
-# AuraC <cifuentes.aura@gmail.com>, 2014
-# Paula Forteza <paula.forteza@data.gouv.fr>, 2015
+# This file is distributed under the same license as the udata-gouvfr
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: udata-gouv.fr\n"
+"Project-Id-Version:  udata-gouv.fr\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-03-14 17:25+0100\n"
+"POT-Creation-Date: 2016-06-01 14:54+0200\n"
 "PO-Revision-Date: 2016-03-14 16:25+0000\n"
 "Last-Translator: Larlet David <david@larlet.fr>\n"
-"Language-Team: Spanish (http://www.transifex.com/etalab/udata-gouvfr/language/es/)\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
 "Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Team: Spanish (http://www.transifex.com/etalab/udata-"
+"gouvfr/language/es/)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.2.0\n"
 
 #: udata_gouvfr/metrics.py:14
 msgid "Public services"
 msgstr "Sevicios públicos"
 
-#: udata_gouvfr/models.py:23
+#: udata_gouvfr/models.py:22
 msgid "Dataconnexions 5 candidate"
 msgstr "Candidato de Dataconnexions 5"
 
-#: udata_gouvfr/models.py:24
+#: udata_gouvfr/models.py:23
 msgid "Dataconnexions 5 laureate"
 msgstr "Nominado de Dataconnexions 5"
 
-#: udata_gouvfr/models.py:25
+#: udata_gouvfr/models.py:24
 msgid "Dataconnexions 6 candidate"
 msgstr "Candidato de Dataconnexions 6"
 
-#: udata_gouvfr/models.py:26
+#: udata_gouvfr/models.py:25
 msgid "Dataconnexions 6 laureate"
 msgstr "Nominado de Dataconnexions 6"
 
-#: udata_gouvfr/models.py:32
+#: udata_gouvfr/models.py:31
 msgid "C³"
 msgstr "C³ "
 
-#: udata_gouvfr/models.py:33
+#: udata_gouvfr/models.py:32
 msgid "Nec Mergitur"
 msgstr ""
 
@@ -56,31 +54,23 @@ msgstr ""
 msgid "See the %(nb)s datasets"
 msgstr "Ver los %(nb)s conjuntos de datos "
 
-#: udata_gouvfr/templates/terms.html:4 udata_gouvfr/templates/terms.html:5
-msgid "Terms"
-msgstr "Términos"
-
-#: udata_gouvfr/templates/terms.html:7
-msgid "terms"
-msgstr "términos"
-
 #: udata_gouvfr/theme/theme.py:24
 msgid "Discover OpenData"
 msgstr "Descubrir los Datos Abiertos"
 
-#: udata_gouvfr/theme/theme.py:25 udata_gouvfr/theme/theme.py:50
+#: udata_gouvfr/theme/theme.py:25 udata_gouvfr/theme/theme.py:44
 msgid "As a citizen"
 msgstr "Como ciudadano"
 
-#: udata_gouvfr/theme/theme.py:26 udata_gouvfr/theme/theme.py:51
+#: udata_gouvfr/theme/theme.py:26 udata_gouvfr/theme/theme.py:45
 msgid "As a producer"
 msgstr "Como productor"
 
-#: udata_gouvfr/theme/theme.py:27 udata_gouvfr/theme/theme.py:52
+#: udata_gouvfr/theme/theme.py:27 udata_gouvfr/theme/theme.py:46
 msgid "As a reuser"
 msgstr "Como reutilizador"
 
-#: udata_gouvfr/theme/theme.py:28 udata_gouvfr/theme/theme.py:53
+#: udata_gouvfr/theme/theme.py:28 udata_gouvfr/theme/theme.py:47
 msgid "As a developer"
 msgstr "Como programador"
 
@@ -88,15 +78,16 @@ msgstr "Como programador"
 msgid "Data"
 msgstr "Datos"
 
-#: udata_gouvfr/theme/theme.py:31 udata_gouvfr/theme/templates/footer.html:66
+#: udata_gouvfr/theme/theme.py:31 udata_gouvfr/theme/templates/footer.html:73
 msgid "Datasets"
 msgstr "Conjunto de datos"
 
-#: udata_gouvfr/theme/theme.py:32 udata_gouvfr/theme/templates/footer.html:67
+#: udata_gouvfr/theme/theme.py:32 udata_gouvfr/theme/templates/footer.html:74
+#: udata_gouvfr/theme/templates/dataset/card.html:49
 msgid "Reuses"
 msgstr "Reutilizaciones"
 
-#: udata_gouvfr/theme/theme.py:33 udata_gouvfr/theme/templates/header.html:78
+#: udata_gouvfr/theme/theme.py:33 udata_gouvfr/theme/templates/header.html:58
 msgid "Organizations"
 msgstr "Organizaciones"
 
@@ -108,162 +99,230 @@ msgstr "Tablero de mando"
 msgid "Events"
 msgstr "Eventos"
 
-#: udata_gouvfr/theme/theme.py:54
+#: udata_gouvfr/theme/theme.py:51
 msgid "API"
 msgstr "API"
 
-#: udata_gouvfr/theme/theme.py:55
+#: udata_gouvfr/theme/theme.py:52
 msgid "Credits"
 msgstr "Créditos"
 
-#: udata_gouvfr/theme/theme.py:56
+#: udata_gouvfr/theme/theme.py:53
+msgid "Usage Guidelines for Open Data"
+msgstr ""
+
+#: udata_gouvfr/theme/theme.py:54
 msgid "Terms of use"
 msgstr "Términos de uso"
 
-#: udata_gouvfr/theme/templates/footer.html:7
-msgid "The Open Data"
-msgstr "Los datos abiertos"
+#: udata_gouvfr/theme/templates/footer.html:5
+msgid "Open Data Guide"
+msgstr ""
 
-#: udata_gouvfr/theme/templates/footer.html:24
-#: udata_gouvfr/theme/templates/subnav-small.html:33
-msgid "Topics"
-msgstr "Temas"
-
-#: udata_gouvfr/theme/templates/footer.html:37
-msgid "Network"
-msgstr "Vínculo"
-
-#: udata_gouvfr/theme/templates/footer.html:46
+#: udata_gouvfr/theme/templates/footer.html:34
 msgid "Contact"
 msgstr "Contacto"
 
-#: udata_gouvfr/theme/templates/footer.html:69
+#: udata_gouvfr/theme/templates/footer.html:36
+#, fuzzy
+msgid "New wind"
+msgstr "Novedades en los datos"
+
+#: udata_gouvfr/theme/templates/footer.html:65
+#, fuzzy
+msgid "News"
+msgstr "Vistas"
+
+#: udata_gouvfr/theme/templates/footer.html:76
+#: udata_gouvfr/theme/templates/footer.html:82
 msgid "Feeds"
 msgstr "Alimentaciones"
 
-#: udata_gouvfr/theme/templates/footer.html:85
+#: udata_gouvfr/theme/templates/footer.html:96
+msgid "An initiative by"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/footer.html:105
 msgid "Back to top"
 msgstr "Volver arriba"
 
 #: udata_gouvfr/theme/templates/header.html:4
 msgid ""
-"Internet Explorer 8 and below are not anymore supported. Please upgrade or "
-"change your browser to access the website."
+"Internet Explorer 9 and below are not supported anymore. Please upgrade "
+"or change your browser to access the website."
 msgstr ""
 
 #: udata_gouvfr/theme/templates/header.html:4
 msgid "More information →"
 msgstr ""
 
-#: udata_gouvfr/theme/templates/header.html:12
-msgid "Toggle navigation"
-msgstr "Navegador"
-
-#: udata_gouvfr/theme/templates/header.html:18
-msgid "Open platform for french public data"
-msgstr "Plataforma abierta para los datos públicos franceses "
-
-#: udata_gouvfr/theme/templates/header.html:74
-msgid "My profile"
-msgstr "Mi perfil"
-
-#: udata_gouvfr/theme/templates/header.html:93
-msgid "Administration"
-msgstr "Administración"
-
-#: udata_gouvfr/theme/templates/header.html:100
-msgid "Logout"
-msgstr "Cerrar sesión"
-
-#: udata_gouvfr/theme/templates/header.html:107
-#: udata_gouvfr/theme/templates/header.html:110
-msgid "Sign In / Register"
-msgstr "Conexión / Registro"
-
-#: udata_gouvfr/theme/templates/home.html:20
-msgid "Best reuse cases"
-msgstr "Los mejores casos de reutilización "
-
-#: udata_gouvfr/theme/templates/home.html:60
-#: udata_gouvfr/theme/templates/home.html:61
-msgid "Latest reuses"
-msgstr "Ultimas reutilizaciones"
-
-#: udata_gouvfr/theme/templates/home.html:100
-msgid "News in data"
-msgstr "Novedades en los datos"
-
-#: udata_gouvfr/theme/templates/home.html:118
-msgid "Featured datasets"
-msgstr "Conjuntos de datos destacados"
-
-#: udata_gouvfr/theme/templates/home.html:119
-msgid "Latest datasets"
-msgstr "Ultimos conjuntos de datos "
-
-#: udata_gouvfr/theme/templates/home.html:155
-msgid "See more"
-msgstr "Ver más"
-
-#: udata_gouvfr/theme/templates/home.html:174
-msgid "The blog"
-msgstr "El blog"
-
-#: udata_gouvfr/theme/templates/home.html:193
-msgid "more"
-msgstr "más"
-
-#: udata_gouvfr/theme/templates/home.html:207
-msgid "Latest forum discussions"
+#: udata_gouvfr/theme/templates/header.html:7
+msgid "Front page"
 msgstr ""
 
-#: udata_gouvfr/theme/templates/home.html:216
-msgid "Title"
-msgstr "Título"
-
-#: udata_gouvfr/theme/templates/home.html:217
-msgid "Users"
-msgstr "Usuarios"
-
-#: udata_gouvfr/theme/templates/home.html:218
-msgid "Created at"
-msgstr "Creado el"
-
-#: udata_gouvfr/theme/templates/home.html:219
-msgid "Replies"
+#: udata_gouvfr/theme/templates/header.html:14
+msgid "Browse by theme"
 msgstr ""
 
-#: udata_gouvfr/theme/templates/home.html:220
-msgid "Views"
-msgstr "Vistas"
-
-#: udata_gouvfr/theme/templates/home.html:221
-msgid "Likes"
-msgstr ""
-
-#: udata_gouvfr/theme/templates/subnav-large.html:20
-#: udata_gouvfr/theme/templates/subnav-small.html:23
-#: udata_gouvfr/theme/templates/topic/subnav.html:19
-msgid "Search"
-msgstr "Buscar"
-
-#: udata_gouvfr/theme/templates/subnav-large.html:40
-msgid "Share, improve and reuse public data"
-msgstr "Comparta, mejore y reutilice datos públicos"
-
-#: udata_gouvfr/theme/templates/subnav-large.html:43
-#: udata_gouvfr/theme/templates/subnav-large.html:46
-#: udata_gouvfr/theme/templates/subnav-small.html:51
-#: udata_gouvfr/theme/templates/subnav-small.html:54
-#: udata_gouvfr/theme/templates/topic/subnav.html:50
-#: udata_gouvfr/theme/templates/topic/subnav.html:53
+#: udata_gouvfr/theme/templates/header.html:41
 msgid "Contribute!"
 msgstr "Contribuya!"
 
+#: udata_gouvfr/theme/templates/header.html:54
+msgid "My profile"
+msgstr "Mi perfil"
+
+#: udata_gouvfr/theme/templates/header.html:73
+msgid "Administration"
+msgstr "Administración"
+
+#: udata_gouvfr/theme/templates/header.html:80
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: udata_gouvfr/theme/templates/header.html:87
+msgid "Sign In / Register"
+msgstr "Conexión / Registro"
+
+#: udata_gouvfr/theme/templates/header.html:93
+#: udata_gouvfr/theme/templates/header.html:94
+msgid "Search"
+msgstr "Buscar"
+
+#: udata_gouvfr/theme/templates/header.html:111
+msgid "Language"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/home.html:18
+msgid "Share, improve and reuse public data"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/home.html:25
+msgid "Best reuse cases"
+msgstr "Los mejores casos de reutilización "
+
+#: udata_gouvfr/theme/templates/home.html:65
+#: udata_gouvfr/theme/templates/home.html:66
+msgid "Latest reuses"
+msgstr "Ultimas reutilizaciones"
+
+#: udata_gouvfr/theme/templates/home.html:105
+msgid "News in data"
+msgstr "Novedades en los datos"
+
+#: udata_gouvfr/theme/templates/home.html:123
+msgid "Featured datasets"
+msgstr "Conjuntos de datos destacados"
+
+#: udata_gouvfr/theme/templates/home.html:124
+msgid "Latest datasets"
+msgstr "Ultimos conjuntos de datos "
+
+#: udata_gouvfr/theme/templates/home.html:160
+msgid "See more"
+msgstr "Ver más"
+
+#: udata_gouvfr/theme/templates/home.html:179
+msgid "The blog"
+msgstr "El blog"
+
+#: udata_gouvfr/theme/templates/home.html:198
+msgid "more"
+msgstr "más"
+
+#: udata_gouvfr/theme/templates/home.html:212
+msgid "Latest forum discussions"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/home.html:221
+msgid "Title"
+msgstr "Título"
+
+#: udata_gouvfr/theme/templates/home.html:222
+msgid "Users"
+msgstr "Usuarios"
+
+#: udata_gouvfr/theme/templates/home.html:223
+msgid "Created at"
+msgstr "Creado el"
+
+#: udata_gouvfr/theme/templates/home.html:224
+msgid "Replies"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/home.html:225
+msgid "Views"
+msgstr "Vistas"
+
+#: udata_gouvfr/theme/templates/home.html:226
+msgid "Likes"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/raw.html:24
+#, fuzzy
+msgid "Recent datasets"
+msgstr "Ultimos conjuntos de datos "
+
+#: udata_gouvfr/theme/templates/raw.html:28
+#, fuzzy
+msgid "Recent reuses"
+msgstr "Ultimas reutilizaciones"
+
+#: udata_gouvfr/theme/templates/raw.html:46
+#, fuzzy
+msgid "Jump to navigation"
+msgstr "Navegador"
+
+#: udata_gouvfr/theme/templates/raw.html:47
+msgid "Jump to content"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/terms.html:4
+#: udata_gouvfr/theme/templates/terms.html:5
+msgid "Terms"
+msgstr "Términos"
+
+#: udata_gouvfr/theme/templates/terms.html:7
+msgid "terms"
+msgstr "términos"
+
+#: udata_gouvfr/theme/templates/dataset/card.html:13
+#: udata_gouvfr/theme/templates/organization/sidebar-producer.html:4
+msgid "Certified public service"
+msgstr "Servicio público certificado"
+
+#: udata_gouvfr/theme/templates/dataset/card.html:14
+#, fuzzy
+msgid "The identity of this public service is certified"
+msgstr "Servicio público certificado"
+
+#: udata_gouvfr/theme/templates/dataset/card.html:39
+msgid "Territorial coverage"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/dataset/card.html:57
+#: udata_gouvfr/theme/templates/reuse/card.html:51
+#, fuzzy
+msgid "Stars"
+msgstr "términos"
+
+#: udata_gouvfr/theme/templates/dataset/card.html:69
+msgid "Temporal coverage"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/dataset/card.html:81
+msgid "Territorial coverage granularity"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/dataset/card.html:93
+msgid "Frequency"
+msgstr ""
+
 #: udata_gouvfr/theme/templates/dataset/display.html:3
 #: udata_gouvfr/theme/templates/reuse/display.html:3
-msgid "Explore with Datagouv"
-msgstr "Explore con Datagouv"
+#, python-format
+msgid "Explore with %(certifier)s"
+msgstr ""
 
 #: udata_gouvfr/theme/templates/macros/integrate.html:2
 msgid "Integrate"
@@ -292,13 +351,19 @@ msgstr "Hasts pronto en la plataforma "
 msgid "The %(site)s team"
 msgstr "El equipo de %(site)s"
 
-#: udata_gouvfr/theme/templates/organization/sidebar-producer.html:4
-msgid "Certified public service"
+#: udata_gouvfr/theme/templates/organization/sidebar-producer.html:5
+#, fuzzy
+#| msgid "The identity of this public service is certified"
+msgid "The identity of this public service public is certified"
 msgstr "Servicio público certificado"
 
-#: udata_gouvfr/theme/templates/organization/sidebar-producer.html:5
-msgid "The identity of this public service public is certified by Etalab"
-msgstr "Servicio público certificado"
+#: udata_gouvfr/theme/templates/reuse/card.html:34
+msgid "Type"
+msgstr ""
+
+#: udata_gouvfr/theme/templates/reuse/card.html:42
+msgid "Number of datasets used"
+msgstr ""
 
 #: udata_gouvfr/theme/templates/snippets/publish-action-modal.html:18
 msgid "Publish a dataset"
@@ -314,7 +379,9 @@ msgstr "Publicar una reutilización "
 
 #: udata_gouvfr/theme/templates/snippets/publish-action-modal.html:33
 msgid "Contribute and add a new reuse to this site catalog."
-msgstr "Contribuir y agregar una nueva reutilización para publicar en este catalogo. "
+msgstr ""
+"Contribuir y agregar una nueva reutilización para publicar en este "
+"catalogo. "
 
 #: udata_gouvfr/theme/templates/snippets/publish-action-modal.html:42
 msgid "Create or find your organization"
@@ -323,3 +390,33 @@ msgstr "Crear o encontrar su organización"
 #: udata_gouvfr/theme/templates/snippets/publish-action-modal.html:45
 msgid "You can create a new organization or find yours."
 msgstr "Usted puede crear una nueva organización io encontrar la suya."
+
+#~ msgid "The Open Data"
+#~ msgstr "Los datos abiertos"
+
+#~ msgid "Topics"
+#~ msgstr "Temas"
+
+#~ msgid "Network"
+#~ msgstr "Vínculo"
+
+#~ msgid ""
+#~ msgstr ""
+
+#~ msgid "Open platform for french public data"
+#~ msgstr "Plataforma abierta para los datos públicos franceses "
+
+#~ msgid "Share, improve and reuse public data"
+#~ msgstr "Comparta, mejore y reutilice datos públicos"
+
+#~ msgid "Explore with Datagouv"
+#~ msgstr "Explore con Datagouv"
+
+#~ msgid "Partagez, améliorez et réutilisez les données publiques"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "The identity of this public service "
+#~ "public is certified by %(certifier)s"
+#~ msgstr "Servicio público certificado"
+
