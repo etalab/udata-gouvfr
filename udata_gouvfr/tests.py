@@ -5,10 +5,12 @@ import json
 
 from flask import url_for
 
-from udata.core.dataset.factories import DatasetFactory, LicenseFactory
+from udata.core.dataset.factories import (
+    DatasetFactory, LicenseFactory, VisibleDatasetFactory
+)
 from udata.core.reuse.factories import ReuseFactory, VisibleReuseFactory
 from udata.core.organization.factories import OrganizationFactory
-from udata.core.spatial.factories import GeoZoneFactory
+from udata.core.spatial.factories import GeoZoneFactory, SpatialCoverageFactory
 from udata.frontend.markdown import md
 from udata.models import Badge, PUBLIC_SERVICE
 from udata.settings import Testing
@@ -16,6 +18,9 @@ from udata.tests import TestCase, DBTestMixin
 from udata.tests.api import APITestCase
 from udata.tests.frontend import FrontTestCase
 from udata.tests.test_sitemap import SitemapTestCase
+from udata.tests.features.territories.test_territories_process import (
+    create_geozones_fixtures
+)
 
 from .models import (
     DATACONNEXIONS_5_CANDIDATE, DATACONNEXIONS_6_CANDIDATE,
@@ -434,6 +439,81 @@ class OEmbedsTerritoryAPITest(APITestCase):
                 self.assertIn(
                     '<a data-tooltip="Source" href="http://localhost/datasets',
                     data['html'])
+
+
+class SpatialTerritoriesApiTest(APITestCase):
+    settings = TerritoriesSettings
+
+    def test_zone_datasets_with_dynamic_region(self):
+        paca, bdr, arles = create_geozones_fixtures()
+        with self.autoindex():
+            organization = OrganizationFactory()
+            for _ in range(3):
+                VisibleDatasetFactory(
+                    organization=organization,
+                    spatial=SpatialCoverageFactory(zones=[paca.id]))
+
+        response = self.get(
+            url_for('api.zone_datasets', id=paca.id), qs={'with_dynamic': 1})
+        self.assert200(response)
+        self.assertEqual(len(response.json), 11)
+
+    def test_zone_datasets_with_dynamic_region_and_size(self):
+        paca, bdr, arles = create_geozones_fixtures()
+        with self.autoindex():
+            organization = OrganizationFactory()
+            for _ in range(3):
+                VisibleDatasetFactory(
+                    organization=organization,
+                    spatial=SpatialCoverageFactory(zones=[paca.id]))
+
+        response = self.get(
+            url_for('api.zone_datasets', id=paca.id),
+            qs={'with_dynamic': 1, 'size': 2})
+        self.assert200(response)
+        self.assertEqual(len(response.json), 10)
+
+    def test_zone_datasets_without_dynamic_region(self):
+        paca, bdr, arles = create_geozones_fixtures()
+        with self.autoindex():
+            organization = OrganizationFactory()
+            for _ in range(3):
+                VisibleDatasetFactory(
+                    organization=organization,
+                    spatial=SpatialCoverageFactory(zones=[paca.id]))
+
+        response = self.get(
+            url_for('api.zone_datasets', id=paca.id))
+        self.assert200(response)
+        self.assertEqual(len(response.json), 3)
+
+    def test_zone_datasets_with_dynamic_county(self):
+        paca, bdr, arles = create_geozones_fixtures()
+        with self.autoindex():
+            organization = OrganizationFactory()
+            for _ in range(3):
+                VisibleDatasetFactory(
+                    organization=organization,
+                    spatial=SpatialCoverageFactory(zones=[bdr.id]))
+
+        response = self.get(
+            url_for('api.zone_datasets', id=bdr.id), qs={'with_dynamic': 1})
+        self.assert200(response)
+        self.assertEqual(len(response.json), 14)
+
+    def test_zone_datasets_with_dynamic_town(self):
+        paca, bdr, arles = create_geozones_fixtures()
+        with self.autoindex():
+            organization = OrganizationFactory()
+            for _ in range(3):
+                VisibleDatasetFactory(
+                    organization=organization,
+                    spatial=SpatialCoverageFactory(zones=[arles.id]))
+
+        response = self.get(
+            url_for('api.zone_datasets', id=arles.id), qs={'with_dynamic': 1})
+        self.assert200(response)
+        self.assertEqual(len(response.json), 13)
 
 
 class SitemapTest(FrontTestCase):
