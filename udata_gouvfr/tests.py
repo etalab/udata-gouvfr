@@ -247,7 +247,7 @@ class C3Test(FrontTestCase):
 
 class TerritoriesSettings(GouvFrSettings):
     ACTIVATE_TERRITORIES = True
-    HANDLED_ZONES = ('fr/town', 'fr/county', 'fr/region')
+    HANDLED_LEVELS = ('fr/town', 'fr/county', 'fr/region')
 
 
 class TerritoriesTest(FrontTestCase):
@@ -515,6 +515,21 @@ class SpatialTerritoriesApiTest(APITestCase):
             url_for('api.zone_datasets', id=arles.id), qs={'dynamic': 1})
         self.assert200(response)
         self.assertEqual(len(response.json), 13)
+
+    def test_zone_children(self):
+        paca, bdr, arles = create_geozones_fixtures()
+
+        response = self.get(url_for('api.zone_children', id=paca.id))
+        self.assert200(response)
+        self.assertEqual(response.json['features'][0]['id'], bdr.id)
+
+        response = self.get(url_for('api.zone_children', id=bdr.id))
+        self.assert200(response)
+        self.assertEqual(response.json['features'][0]['id'], arles.id)
+
+        response = self.get(url_for('api.zone_children', id=arles.id))
+        self.assert200(response)
+        self.assertEqual(response.json['features'], [])
 
 
 class SitemapTest(FrontTestCase):
