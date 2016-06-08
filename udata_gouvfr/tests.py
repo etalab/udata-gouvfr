@@ -247,6 +247,7 @@ class C3Test(FrontTestCase):
 
 class TerritoriesSettings(GouvFrSettings):
     ACTIVATE_TERRITORIES = True
+    HANDLED_ZONES = ('fr/town', 'fr/county', 'fr/region')
 
 
 class TerritoriesTest(FrontTestCase):
