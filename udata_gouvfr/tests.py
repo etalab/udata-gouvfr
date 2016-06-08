@@ -454,7 +454,7 @@ class SpatialTerritoriesApiTest(APITestCase):
                     spatial=SpatialCoverageFactory(zones=[paca.id]))
 
         response = self.get(
-            url_for('api.zone_datasets', id=paca.id), qs={'with_dynamic': 1})
+            url_for('api.zone_datasets', id=paca.id), qs={'dynamic': 1})
         self.assert200(response)
         self.assertEqual(len(response.json), 11)
 
@@ -469,7 +469,7 @@ class SpatialTerritoriesApiTest(APITestCase):
 
         response = self.get(
             url_for('api.zone_datasets', id=paca.id),
-            qs={'with_dynamic': 1, 'size': 2})
+            qs={'dynamic': 1, 'size': 2})
         self.assert200(response)
         self.assertEqual(len(response.json), 10)
 
@@ -497,7 +497,7 @@ class SpatialTerritoriesApiTest(APITestCase):
                     spatial=SpatialCoverageFactory(zones=[bdr.id]))
 
         response = self.get(
-            url_for('api.zone_datasets', id=bdr.id), qs={'with_dynamic': 1})
+            url_for('api.zone_datasets', id=bdr.id), qs={'dynamic': 1})
         self.assert200(response)
         self.assertEqual(len(response.json), 14)
 
@@ -511,7 +511,7 @@ class SpatialTerritoriesApiTest(APITestCase):
                     spatial=SpatialCoverageFactory(zones=[arles.id]))
 
         response = self.get(
-            url_for('api.zone_datasets', id=arles.id), qs={'with_dynamic': 1})
+            url_for('api.zone_datasets', id=arles.id), qs={'dynamic': 1})
         self.assert200(response)
         self.assertEqual(len(response.json), 13)
 
