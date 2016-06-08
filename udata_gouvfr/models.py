@@ -274,7 +274,7 @@ class ZonagesCountyDataset(ZonagesDataset):
     @property
     def url(self):
         return self.url_template.format(code=self.territory.code,
-                                        code_region=self.territory.region.code)
+                                        code_region=self.territory.parent.code)
 
 
 class ZonagesRegionDataset(ZonagesDataset):
