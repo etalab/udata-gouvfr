@@ -8,11 +8,11 @@
                 {% set placeholder = _('Search in datasets') %}
             {% elif territory %}
                 {% set action = url_for('datasets.list') %}
-                {% if territory.level == 'fr/town' %}
+                {% if territory.level_name == 'town' %}
                     {% set placeholder = _('Search in this town') %}
-                {% elif territory.level == 'fr/county' %}
+                {% elif territory.level_name == 'county' %}
                     {% set placeholder = _('Search in this county') %}
-                {% elif territory.level == 'fr/region' %}
+                {% elif territory.level_name == 'region' %}
                     {% set placeholder = _('Search in this region') %}
                 {% endif %}
             {% else %}
