@@ -557,7 +557,7 @@ class SitemapTerritoriesTest(SitemapTestCase):
     settings = TerritoriesSettings
 
     def test_towns_within_sitemap(self):
-        '''It should return the town from the sitemap.'''
+        '''It should return the towns from the sitemap.'''
         territory = GeoZoneFactory(
             id='fr/town/13004', name='Arles', code='13004', level='fr/town')
 
@@ -568,7 +568,7 @@ class SitemapTerritoriesTest(SitemapTestCase):
         self.assert_url(url, 0.5, 'weekly')
 
     def test_counties_within_sitemap(self):
-        '''It should return the county from the sitemap.'''
+        '''It should return the counties from the sitemap.'''
         territory = GeoZoneFactory(
             id='fr/county/12', level='fr/county', name='Aveyron', code='12')
 
@@ -579,7 +579,7 @@ class SitemapTerritoriesTest(SitemapTestCase):
         self.assert_url(url, 0.5, 'weekly')
 
     def test_regions_within_sitemap(self):
-        '''It should return the county from the sitemap.'''
+        '''It should return the regions from the sitemap.'''
         territory = GeoZoneFactory(
             id='fr/region/93', level='fr/region',
             name='Provence Alpes Côtes dAzur')
@@ -589,3 +589,13 @@ class SitemapTerritoriesTest(SitemapTestCase):
         url = self.get_by_url('territories.territory', territory=territory)
         self.assertIsNotNone(url)
         self.assert_url(url, 0.5, 'weekly')
+
+    def test_countries_without_sitemap(self):
+        '''It should NOT return the countries from the sitemap.'''
+        territory = GeoZoneFactory(
+            id='country/fr', level='country', name='France')
+
+        self.get_sitemap_tree()
+
+        url = self.get_by_url('territories.territory', territory=territory)
+        self.assertIsNone(url)
