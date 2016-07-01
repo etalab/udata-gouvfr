@@ -1,9 +1,15 @@
 {% extends theme('faq/base.html') %}
 
+{% set meta = {
+    'title': _('Découvrir l’OpenData en tant qu’intégrateur - FAQ'),
+    'description': _('Questions fréquemment posées sur la plateforme data.gouv.fr'),
+    'keywords': ['Intégrateur', 'OpenData', 'FAQ', 'Questions fréquemment posées'],
+} %}
+
 {% block faq_content %}
 <h1>Découvrir l’OpenData en tant qu’intégrateur</h1>
 
-<p>La plateforme <a href="https://www.data.gouv.fr/fr/">data.gouv.fr</a> vous offre plusieurs moyens plus ou moins avancés d’intégrer les données disponibles en open data sur vos propres sites :</p>
+<p>La plateforme « data.gouv.fr » vous offre plusieurs moyens plus ou moins avancés d’intégrer les données disponibles en open data sur vos propres sites :</p>
 
 <ol>
 <li>de manière unitaire si vous souhaitez n’afficher qu’un ou quelques jeu(x) de données particulier(s) ;</li>
@@ -41,7 +47,7 @@
 
 <p>Le mécanisme pour afficher tous les jeux de données relatifs à une organisation ou un territoire est le même que celui pour l’intégration d’un seul jeu de donnée décrit précédemment.</p>
 
-<p>Cet usage est recommandé si vous êtes responsable de cette organisation ou de ce territoire et souhaitez faire la promotion des jeux de données associés. Par exemple dans la cadre de la loi Notre, il est demandé aux communes de plus de 3500 habitants de rendre accessible en open data certaines données. L’usage de la plateforme <a href="https://www.data.gouv.fr/fr/">data.gouv.fr</a> pour déposer ces données puis les intégrer sur son propre site est rendue possible par cette solution.</p>
+<p>Cet usage est recommandé si vous êtes responsable de cette organisation ou de ce territoire et souhaitez faire la promotion des jeux de données associés. Par exemple dans la cadre de la loi Notre, il est demandé aux communes de plus de 3500 habitants de rendre accessible en open data certaines données. L’usage de la plateforme « data.gouv.fr » pour déposer ces données puis les intégrer sur son propre site est rendue possible par cette solution.</p>
 
 <h3>2.1 Intégration d’une organisation</h3>
 
@@ -75,7 +81,7 @@
 
 <p>Les outils que nous développons sont disponibles en open-source. Ils sont le fruit d’un effort international pour créer des synergies autour de la donnée ouverte et mutualiser nos efforts de développement. La gouvernance est inclusive et la licence est permissive. Nous participons à l’animation autour du développement de la plateforme car nous souhaitons produire un bien commun réutilisable par tous.</p>
 
-<p>L’intégration d’un portail open data complet demande des compétences en administration système, en développement Python et JavaScript ainsi qu’un temps non négligeable de prise en main de la plateforme. C’est un choix qui doit être mûrement réfléchi et nous vous recommandons de passer directement par <a href="https://www.data.gouv.fr/fr/">data.gouv.fr</a> si vous avez des données issues de territoires francophones.</p>
+<p>L’intégration d’un portail open data complet demande des compétences en administration système, en développement Python et JavaScript ainsi qu’un temps non négligeable de prise en main de la plateforme. C’est un choix qui doit être mûrement réfléchi et nous vous recommandons de passer directement par « data.gouv.fr » si vous avez des données issues de territoires francophones.</p>
 
 <p>Si vous souhaitez néanmoins vous lancer dans cette aventure, vous pouvez commencer par analyser le <a href="https://github.com/opendatateam/udata">code source</a> ainsi que la <a href="http://udata.readthedocs.io/en/latest/">documentation dédiée</a>. Vous pouvez également venir en <a href="https://gitter.im/opendatateam/udata">discuter avec la communauté</a> (en anglais).</p>
 
