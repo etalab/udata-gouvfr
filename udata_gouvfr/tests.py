@@ -193,9 +193,9 @@ class SpecificUrlsTest(FrontTestCase):
 
     def test_third_party_faq(self):
         response = self.client.get(
-            url_for('gouvfr.faq', section='third-party'))
+            url_for('gouvfr.faq', section='system-integrator'))
         self.assert200(response)
-        self.assert_template_used('faq/third-party.html')
+        self.assert_template_used('faq/system-integrator.html')
 
     def test_terms(self):
         response = self.client.get(url_for('gouvfr.terms'))
@@ -337,7 +337,7 @@ class SitemapTest(FrontTestCase):
             url_for('gouvfr.faq_redirect', _external=True),
         ]
         for section in ('citizen', 'producer', 'reuser', 'developer',
-                        'third-party'):
+                        'system-integrator'):
             urls.append(url_for('gouvfr.faq_redirect',
                                 section=section, _external=True))
 
