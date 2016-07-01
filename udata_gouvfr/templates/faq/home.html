@@ -5,7 +5,7 @@
     <div class="row text-center">
         <h1>Découvrir l’OpenData</h1>
 
-        <div class="col-md-3">
+        <div class="col-md-2 col-md-offset-1">
             <a class="thumbnail" href="{{ url_for('gouvfr.faq', section='citizen') }}">
               <div class="caption">
                 <h3>Citoyen</h3>
@@ -14,7 +14,7 @@
             </a>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <a class="thumbnail" href="{{ url_for('gouvfr.faq', section='producer') }}">
               <div class="caption">
                 <h3>Producteur</h3>
@@ -23,7 +23,7 @@
             </a>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <a class="thumbnail" href="{{ url_for('gouvfr.faq', section='reuser') }}">
               <div class="caption">
                 <h3>Réutilisateur</h3>
@@ -32,11 +32,20 @@
             </a>
         </div>
 
-        <div class="col-md-3">
+        <div class="col-md-2">
             <a class="thumbnail" href="{{ url_for('gouvfr.faq', section='developer') }}">
               <div class="caption">
                 <h3>Développeur</h3>
-                <p>Quelles sont les intégrations possibles avec la plateforme ?</p>
+                <p>Comment intéragir avec la plateforme ? Avec quelles API ?</p>
+              </div>
+            </a>
+        </div>
+
+        <div class="col-md-2">
+            <a class="thumbnail" href="{{ url_for('gouvfr.faq', section='third-party') }}">
+              <div class="caption">
+                <h3>Intégrateur</h3>
+                <p>Quelles sont les intégrations tierces rendues possibles ?</p>
               </div>
             </a>
         </div>
