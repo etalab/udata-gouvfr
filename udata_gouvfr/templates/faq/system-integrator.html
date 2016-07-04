@@ -39,11 +39,18 @@
 
 <p>En remplaçant l’<code>IDENTIFIANT DU JEU DE DONNÉES</code> par l’identifiant disponible sur sa page dédiée vous devriez voir apparaître sur votre site un cartouche contenant les informations relatives à ce jeux de données de la manière suivante :</p>
 
-<p>[image]</p>
+<figure>
+  <img src="{{ url_for('gouvfr.static', filename='faq/integration/exemple-integration-blog-etalab.png') }}" alt="Exemple d’intégration sur le blog d’Etalab">
+  <figcaption>Exemple d’intégration sur le blog d’Etalab, ici avec les données de consommation d’électricité des ministères.</figcaption>
+</figure>
 
-<p>Il est possible d’intégrer plusieurs jeux de données à la fois en dupliquant la ligne correspondant à l’élément <code>&lt;div&gt;</code> avec un nouvel identifiant.</p>
+<p>Il est possible d’intégrer plusieurs jeux de données à la fois en dupliquant la ligne correspondant à l’élément <code>&lt;div&gt;</code> avec un nouvel identifiant. Vous pouvez personnaliser l’apparence du rendu du cartouche grâce à la classe CSS <code>dataset-card</code>.</p>
 
 <h2>2. Intégration pour une organisation ou un territoire</h2>
+
+<p class="bg-danger">
+    Attention : ce type d’intégration est actuellement en cours de développement et l’API est susceptible de changer. Veuillez nous contacter si vous souhaitez participer aux tests préliminaires.
+</p>
 
 <p>Le mécanisme pour afficher tous les jeux de données relatifs à une organisation ou un territoire est le même que celui pour l’intégration d’un seul jeu de donnée décrit précédemment.</p>
 
@@ -57,8 +64,6 @@
 
 <p>En remplaçant l’<code>IDENTIFIANT DE L’ORGANISATION</code> par l’identifiant disponible sur sa page dédiée vous devriez voir apparaître sur votre site un cartouche contenant les informations relatives aux jeux de données de cette organisation de la manière suivante :</p>
 
-<p>[image]</p>
-
 <p>Optionnellement, il est possible d’afficher une barre de recherche pour laisser la possibilité au visiteur de filtrer la liste des jeux de données affichés. Cela est activé en passant l’option <code>{withSearch: true}</code> à la méthode <code>loadOrganization()</code> ci-dessus.</p>
 
 <h3>2.1 Intégration d’un territoire</h3>
@@ -68,8 +73,6 @@
 </code></pre>
 
 <p>En construisant l’<code>IDENTIFIANT DU TERRITOIRE</code> qui doit être de la forme <code>fr-town-13004</code> où <code>13004</code> est le code INSEE de la commune (attention il diffère du code postal). Vous pouvez aussi récupérer les jeux de données relatifs à un département <code>fr-county-13</code> ou une région <code>fr-region-93</code>. Vous devriez alors voir apparaître sur votre site un cartouche contenant les informations relatives aux jeux de données de ce territoire de la manière suivante :</p>
-
-<p>[image]</p>
 
 <p>Optionnellement, il est possible d’afficher une barre de recherche pour laisser la possibilité au visiteur de filtrer la liste des jeux de données affichés. Cela est activé en passant l’option <code>{withSearch: true}</code> à la méthode <code>loadTerritory()</code> ci-dessus.</p>
 
