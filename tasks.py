@@ -82,7 +82,7 @@ def assets(ctx):
     lrun('npm run build', pty=True)
 
 
-@task(assets, i18nc)
+@task(clean, assets, i18nc)
 def dist(ctx):
     '''Package for distribution'''
     print(cyan('Building a distribuable package'))
