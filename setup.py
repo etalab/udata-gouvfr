@@ -11,7 +11,7 @@ RE_MD_CODE_BLOCK = re.compile(r'```(?P<language>\w+)?\n(?P<lines>.*?)```', re.S)
 RE_SELF_LINK = re.compile(r'\[(.*?)\]\[\]')
 RE_LINK_TO_URL = re.compile(r'\[(?P<text>.*?)\]\((?P<url>.*?)\)')
 RE_LINK_TO_REF = re.compile(r'\[(?P<text>.*?)\]\[(?P<ref>.*?)\]')
-RE_LINK_REF = re.compile(r'^\[(?P<key>.*?)\]:\s*(?P<url>.*)$', re.M)
+RE_LINK_REF = re.compile(r'^\[(?P<key>[^!].*?)\]:\s*(?P<url>.*)$', re.M)
 RE_BADGE = re.compile(r'^\[\!\[(?P<text>.*?)\]\[(?P<badge>.*?)\]\]\[(?P<target>.*?)\]$', re.M)
 
 BADGES_TO_KEEP = ['gitter-badge']
