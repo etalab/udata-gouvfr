@@ -17,10 +17,6 @@ Installation
 
 Install [uData][].
 
-Test d'[URL](https://somewhere)
-
-Test d'[URL to ref][uData]
-
 Remain in the same virtual environment (for Python) and use the same version of npm (for JS).
 
 Install **udata-gouvfr**:
