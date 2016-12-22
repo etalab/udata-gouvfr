@@ -96,13 +96,13 @@ def get_blog_post(lang):
             log.error('Timeout while fetching %s', feed_url, exc_info=True)
             continue
         except requests.RequestException:
-            log.error('Error while fetching %s', exc_info=True)
+            log.error('Error while fetching %s', feed_url, exc_info=True)
             continue
         feed = feedparser.parse(response.content)
-        if len(feed['entries']) > 0:
+        if len(feed.entries) > 0:
             break
 
-    if feed and len(feed['entries']) <= 0:
+    if not feed or len(feed.entries) <= 0:
         return
 
     post = feed.entries[0]
