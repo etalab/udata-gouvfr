@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: udata-gouv.fr\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2016-12-07 09:56+0100\n"
-"PO-Revision-Date: 2016-12-07 08:57+0000\n"
+"PO-Revision-Date: 2016-12-23 11:15+0000\n"
 "Last-Translator: Axel Haustant\n"
 "Language-Team: French (http://www.transifex.com/etalab/udata-gouvfr/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -182,7 +182,7 @@ msgstr "Flux"
 
 #: udata_gouvfr/theme/templates/footer.html:77
 msgid "Go to Etalab’s blog"
-msgstr "Aller sur la blog d'Etalab"
+msgstr "Aller sur le blog d'Etalab"
 
 #: udata_gouvfr/theme/templates/footer.html:80
 msgid "Open-source engine"
