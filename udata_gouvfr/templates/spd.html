@@ -1,0 +1,53 @@
+{% extends theme("base.html") %}
+
+{% set meta = {
+    'title': _('Public Data Service'),
+    'description': "TODO",
+    'keywords': [
+        'SPD"',
+        _('Public Data Service'),
+    ],
+} %}
+
+{% set body_class="spd" %}
+
+{% block content %}
+{% cache cache_duration, 'spd', g.lang_code %}
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <article class="col-xs-12">
+                <h1>{{ _('Public Service Data') }}</h1>
+
+                <p class="text-justify lead">TODO: Intro</p>
+
+                <p class="text-justify">TODO</p>
+
+                <h2>{{ _('Datasets') }}</h2>
+
+                <p>TODO: mettre les JDD ici ou plus bas</p>
+
+            </article>
+        </div>
+    </div>
+</section>
+
+{% if datasets %}
+<section class="content participants">
+    <div class="container">
+
+        <div class="row">
+            <h3 class="col-xs-12">{{ _('Datasets') }}</h3>
+            <ul class="card-list">
+                {% for dataset in datasets %}
+                <li class="col-md-4 col-sm-6">
+                    {% include theme('dataset/card.html') %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endcache %}
+{% endblock %}
