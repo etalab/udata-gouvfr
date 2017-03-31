@@ -1,11 +1,11 @@
 {% extends theme("base.html") %}
 
 {% set meta = {
-    'title': _('Public Data Service'),
-    'description': "TODO",
+    'title': _('Reference Data'),
+    'description': "Service Public de la Donnée de Référence",
     'keywords': [
         'SPD"',
-        _('Public Data Service'),
+        _('Reference Data'),
     ],
 } %}
 
@@ -17,37 +17,52 @@
     <div class="container">
         <div class="row">
             <article class="col-xs-12">
-                <h1>{{ _('Public Service Data') }}</h1>
+                <h1>Service public de la donnée : des données sur lesquelles vous pouvez compter</h1>
 
-                <p class="text-justify lead">TODO: Intro</p>
+                <p class="text-justify lead">Le service public de la donnée créé par la loi pour une République numérique vise à mettre à disposition, en vue de faciliter leur réutilisation, les jeux de données de référence qui présentent le plus fort impact économique et social. Il s’adresse principalement aux entreprises et aux administrations pour qui la disponibilité d’une donnée de qualité est critique. Les producteurs et les diffuseurs prennent des engagements auprès de ces utilisateurs. La mission Etalab est chargée de la mise en oeuvre et de la gouvernance de ce nouveau service public. Elle référence l’ensemble des données concernées sur cette page.</p>
 
-                <p class="text-justify">TODO</p>
+                <h2>Les données de référence</h2>
+                
+                <p>A ce jour, neuf bases de données, qui couvrent un large champ thématique ont été identifiées comme des données de référence.</p>
 
-                <h2>{{ _('Datasets') }}</h2>
+                <ul class="card-list">
+                    {% for dataset in datasets %}
+                    <li>
+                    {% include theme('dataset/card.html') %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+                <h2>L’organisation du service public de la donnée</h2>
 
-                <p>TODO: mettre les JDD ici ou plus bas</p>
+                <p>Elle est déterminée par le décret d’application 2017-331 du 14 mars 2017 relatif au service public de mise à disposition des données de référence. 
+
+                <p>Les producteurs produisent la donnée de référence et documentent les métadonnées,<br>ils traitent les remontées des utilisateurs ou le cas échéant, orientent les utilisateurs vers le service compétent pour traiter ces demandes,<br>ils prennent des engagements sur la mise à jour des données,<br>ils désignent les diffuseurs pour chacun des jeux de données de référence.</p>
+
+                <p>Les diffuseurs mettent à disposition les données avec un haut niveau de qualité,<br>ils s’engagent sur des niveaux de performance et de disponibilité.</p>
+
+                <p>Les utilisateurs utilisent les données de référence pour produire de nouveaux services et créer de la valeur économique et sociale,<br>ils participent à la montée en qualité des données de référence (signalement des erreurs, propositions d’amélioration).</p>
+
+                <p>La mission Etalab, en charge du portail data.gouv.fr recense l’ensemble des jeux de données de référence,<br>elle gère le service public de la donnée en lien avec les producteurs,<br>elle anime le dispositif et en assure la promotion auprès des utilisateurs,<br>elle développe des outils mutualisables, notamment sur la montée en qualité des données.</p>
+
+                <p>Par ailleurs, en cas de défaillance des diffuseurs, ou de non-respect des engagements notamment en matière de performance et de disponibilité, la mission Etalab est habilitée à se substituer au diffuseur désigné par le producteur.</p>
+
+                <h2>Les prochaines étapes</h2>
+                
+                <p>Le service public de la donnée se construit progressivement, dans un mode itératif avec les producteurs et les utilisateurs. Chaque producteur doit publier ses engagements sur les conditions de la mise à disposition (documentation des données, fréquence de mise à jour, performance et disponibilité de la mise à disposition).<br>La mission Etalab publiera sur ce site les indicateurs de disponibilité des données, et assurera plus généralement le suivi du respect de ces engagements.</p>
+
+                <h2>Références</h2>
+ 
+                <ul>
+                    <li>L’article <a href="https://www.legifrance.gouv.fr/affichCodeArticle.do?cidTexte=LEGITEXT000031366350&idArticle=LEGIARTI000033205649&dateTexte=29990101&categorieLien=cid">L321-4</a> du Code des relations entre le public et les administrations</li>
+                    <li>Le décret d’application <a href="https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000034194946&categorieLien=id">2017-331</a> du 14 mars 2017 relatif au service public de mise à disposition des données de référence</li>
+                    <li>La synthèse de la <a href="http://www.etalab.gouv.fr/consultation-spd">consultation publique</a> organisée par Etalab en octobre 2016</li>
+                </ul>
 
             </article>
         </div>
     </div>
 </section>
 
-{% if datasets %}
-<section class="content participants">
-    <div class="container">
-
-        <div class="row">
-            <h3 class="col-xs-12">{{ _('Datasets') }}</h3>
-            <ul class="card-list">
-                {% for dataset in datasets %}
-                <li class="col-md-4 col-sm-6">
-                    {% include theme('dataset/card.html') %}
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
-</section>
-{% endif %}
 {% endcache %}
 {% endblock %}
