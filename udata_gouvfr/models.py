@@ -388,6 +388,19 @@ class AAHRepartitionCAFCountyDataset(ResourceBasedTerritoryDataset):
     csv_column = 'Dep'
     temporal_coverage = {'start': 2012, 'end': 2015}
 
+    
+class SireneTownDataset(TerritoryDataset):
+    order = 13
+    id = 'sirene_t'
+    title = 'SIRENE'
+    # Institut National de la Statistique et des Etudes Economiques (INSEE).
+    organization_id = '534fff81a3a7292c64a77e5c'
+    url_template = ('http://212.47.238.202/geo_sirene/last/communes/{code}.csv')
+    description = '''
+        Extraite de la base [SIRENE](/datasets/5862206588ee38254d3f4e5e/)
+        sur le périmètre de la commune.
+    '''.strip()
+
 
 TOWN_DATASETS = {
     'population_t': PopulationTownDataset,
@@ -400,6 +413,7 @@ TOWN_DATASETS = {
     'zonages_t': ZonagesTownDataset,
     'comptes_t': ComptesTownDataset,
     'ban_odbl_t': BanODBLTownDataset,
+    'sirene_t': SireneTownDataset,
 }
 COUNTY_DATASETS = {
     'population_c': PopulationCountyDataset,
