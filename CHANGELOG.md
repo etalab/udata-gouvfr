@@ -4,6 +4,7 @@
 
 - Fixes some spacing issues on dataset and reuses page buttons
   [#209](https://github.com/etalab/udata-gouvfr/pull/209)
+- Fix translations collision on contact [#211](https://github.com/etalab/udata-gouvfr/pull/211) [#212](https://github.com/etalab/udata-gouvfr/pull/212)
 - Updated some translations
 
 ## 1.1.1 (2017-07-31)
