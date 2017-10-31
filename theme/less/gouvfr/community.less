@@ -124,18 +124,16 @@
         .reuse {
             border-radius: 0px;
             border: none;
-            height: 210px;
             margin-bottom: 20px;
             overflow: hidden;
             background-color: #fafafa;
             padding: 0px;
             position: relative;
 
-            @preview-height: 110px;
+            @preview-height: 80px;
 
             a.preview {
                 display: block;
-                height: @preview-height;
                 text-align: center;
                 overflow: hidden;
 
@@ -209,8 +207,7 @@
                     text-align: center;
                     font-size: 36px;
                     font-weight: bold;
-                    line-height: 100px;
-                    height: @preview-height - @border-size;
+                    line-height: @preview-height;
                 }
 
                 &:hover {
