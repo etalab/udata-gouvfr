@@ -40,6 +40,25 @@
         margin-top: 30px;
     }
 
+    .list-group-item.add {
+        @base-color: #7d8489;
+        background-color: transparent;
+        border: 2px dashed @base-color;
+
+        h4 {
+            color: @base-color;
+        }
+
+        .format-label {
+            color: @base-color;
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        &:hover {
+            background-color: rgba(255,255,255,0.04);
+        }
+    }
+
     .resources-list {
         padding-left: 8px;
 
@@ -87,25 +106,6 @@
                 background-color: @color-body;
             }
         }
-
-        .add {
-            @base-color: #7d8489;
-            border: 2px dashed @base-color;
-            background-color: transparent;
-
-            h4 {
-                color: @base-color;
-            }
-
-            .format-label {
-                color: @base-color;
-                background-color: rgba(255,255,255,0.05);
-            }
-
-            &:hover {
-                background-color: rgba(255,255,255,0.04);
-            }
-        }
     }
 
     h3:not(.popover-title) {
@@ -114,126 +114,6 @@
         font-family: @title-font;
         text-transform: uppercase;
         font-size: 13px;
-    }
-
-    .reuses-list {
-        .reuse {
-            border-radius: 0px;
-            border: none;
-            margin-bottom: 20px;
-            overflow: hidden;
-            background-color: #fafafa;
-            padding: 0px;
-            position: relative;
-
-            @preview-height: 80px;
-
-            a.preview {
-                display: block;
-                text-align: center;
-                overflow: hidden;
-
-                img {
-                    min-height: @preview-height;
-                    min-width: 100%;
-
-                }
-            }
-
-            .caption {
-                padding: 13px;
-                color: #6B6B6B;
-                font-size: 13px;
-                line-height: 16px;
-
-                .author {
-                    display: block;
-                    height: 28px;
-                    position: absolute;
-                    bottom: 8px;
-
-                    .avatar {
-                        .text-center();
-                        float: left;
-                        width: 25px;
-                        height: 25px;
-                        border: 1px solid #7e7e7e;
-                        margin-right: 10px;
-                        z-index: 150; // Fix hover reactivity
-
-                        img {
-                            max-width: 100%;
-                            max-height: 100%;
-                        }
-                    }
-
-                    .user {
-                        font-size: 13px;
-                        color: #3a3b3d;
-                        font-weight: bold;
-                        top: -3px;
-                        position: relative;
-                    }
-                    .date {
-                        display: block;
-                        font-size: 10px;
-                        top: -5px;
-                        position: relative;
-                        white-space: nowrap;
-                    }
-                }
-            }
-
-            &.add {
-                @border-size: 2px;
-                background: none;
-                border: @border-size dashed #7d8489;
-
-                h4 {
-                    text-align: center;
-                    font-size: 15px;
-                    color: #7d8489;
-                    line-height: 2.6em;
-                    padding-top: 10px;
-                }
-
-                .preview {
-                    color: #7d8489;
-                    background-color: rgba(255,255,255,0.05);
-                    text-align: center;
-                    font-size: 36px;
-                    font-weight: bold;
-                    line-height: @preview-height;
-                }
-
-                &:hover {
-                    background-color: rgba(255,255,255,0.04);
-                    text-decoration: none;
-                }
-            }
-
-            h4 {
-                margin-top: 4px;
-                margin-bottom: 7px;
-                line-height: 10px;
-                max-height: 34px;
-
-                a {
-                    font-family: @title-font;
-                    font-size: 14px;
-                    line-height: 1.2em !important;
-                    color: #131416;
-                    font-weight: bold;
-                    display: block;
-                }
-            }
-
-            .btn-group {
-                position: absolute;
-                right: 10px;
-                bottom: 10px;
-            }
-        }
     }
 
     .note p {
