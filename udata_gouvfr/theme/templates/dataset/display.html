@@ -1,3 +1,59 @@
 {% extends 'dataset/display.html' %}
 
 {% set community_subtitle = _('Explore with %(certifier)s', certifier=config.SITE_TITLE ) %}
+
+{% block post_dataset_container %}
+<!-- dataset recommendations -->
+<script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch"></script>
+<script type="text/javascript">
+var recoUrl = 'https://raw.githubusercontent.com/etalab/datasets_reco/master/reco_json/';
+// How to get current dataset id? JSON-LD? Wait for DOM load.
+// * 1 dataset
+// var datasetId = '53698e90a3a729239d2034d3';
+// * 4 datasets
+var datasetId = '53698f50a3a729239d2036f5'
+
+function addRecos(recos) {
+    var recoContainer = document.getElementById('dataset-recommendations-container');
+    var recoChild;
+    recos.forEach(function (reco) {
+        recoChild = document.createElement('div');
+        recoChild.setAttribute('data-udata-dataset-id', reco[0]);
+        recoContainer.appendChild(recoChild);
+    })
+}
+
+function addWidgetScript() {
+    var scriptElm = document.createElement('script');
+    scriptElm.type = 'application/javascript';
+    scriptElm.src = '/static/widgets.js';
+    scriptElm.id = 'udata';
+    scriptElm.onload = loadDatasets;
+    document.body.appendChild(scriptElm);
+}
+
+function loadDatasets() {
+    udataScript.loadDatasets();
+}
+
+fetch(recoUrl + datasetId + '.json').then(function (response) {
+    if(response.ok) {
+        return response.json();
+    }
+}).then(function (recos) {
+    if (recos) {
+        recos = recos[datasetId];
+        if (recos) {
+            var recoParent = document.getElementById('dataset-recommendations');
+            recoParent.style.display = 'block';
+            addRecos(recos);
+            addWidgetScript();
+        }
+    }
+});
+</script>
+<div id="dataset-recommendations">
+    <h3>Recommended datasets</h3>
+    <div id="dataset-recommendations-container"></div>
+</div>
+{% endblock %}
