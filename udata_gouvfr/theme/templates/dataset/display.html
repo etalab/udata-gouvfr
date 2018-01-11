@@ -2,7 +2,7 @@
 
 {% set community_subtitle = _('Explore with %(certifier)s', certifier=config.SITE_TITLE ) %}
 
-{% block post_dataset_container %}
+{% block left_column_bottom %}
 <!-- dataset recommendations -->
 <script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch"></script>
 <script type="text/javascript">
@@ -15,13 +15,17 @@ function getDatasetId() {
 }
 
 function addRecos(recos) {
+    var maxRecos = 2;
     var recoContainer = document.getElementById('dataset-recommendations-container');
-    var recoChild;
-    recos.forEach(function (reco) {
-        recoChild = document.createElement('div');
-        recoChild.setAttribute('data-udata-dataset-id', reco[0]);
-        recoContainer.appendChild(recoChild);
-    })
+    var recoChildContainer, recoChildEmbed;
+    recos.splice(0, maxRecos).forEach(function (reco) {
+        recoChildContainer = document.createElement('div');
+        recoChildContainer.classList.add('col-reco', 'col-sm-12', 'col-md-6');
+        recoChildEmbed = document.createElement('div');
+        recoChildEmbed.setAttribute('data-udata-dataset-id', reco[0]);
+        recoChildContainer.appendChild(recoChildEmbed);
+        recoContainer.appendChild(recoChildContainer);
+    });
 }
 
 function addWidgetScript() {
@@ -43,29 +47,28 @@ function fetchRecos(datasetId) {
             return response.json();
         }
     }).then(function (recos) {
+        recos = recos && recos[datasetId];
         if (recos) {
-            recos = recos[datasetId];
-            if (recos) {
-                var recoParent = document.getElementById('dataset-recommendations');
-                recoParent.style.display = 'block';
-                addRecos(recos);
-                addWidgetScript();
-            }
+            addRecos(recos);
+            addWidgetScript();
+            var recoParent = document.getElementById('dataset-recommendations');
+            recoParent.style.display = 'block';
         }
     });
 }
 
 var datasetId = getDatasetId();
 if (datasetId) {
+    // TODO remove me
     // * 1 dataset
     // datasetId = '53698e90a3a729239d2034d3';
-    // * 4 datasets
-    // datasetId = '53698f50a3a729239d2036f5'
+    // * 2 datasets
+    // datasetId = '536991b0a3a729239d203d13'
     fetchRecos(datasetId);
 }
 </script>
-<div id="dataset-recommendations">
-    <h3>Recommended datasets</h3>
+<div id="dataset-recommendations" class="hidden-xs">
+    <h3>See also</h3>
     <div id="dataset-recommendations-container"></div>
 </div>
 {% endblock %}
