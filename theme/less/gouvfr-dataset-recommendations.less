@@ -1,16 +1,24 @@
 #dataset-recommendations {
     display: none;
     .dataset-card {
-        margin-left: 0;
-        margin-right: 0;
-        min-height: 180px;
+        margin: 0 0 1em 0 !important;
+        // min-height: 180px;
     }
-    .col-reco {
-        padding: 0;
-        padding-left: 5px;
-        &:first-child {
-            padding-right: 5px;
-            padding-left: 0;
+
+    .recommendation {
+        margin-bottom: 1em;
+    }
+    
+    @media only screen and (min-device-width: 1200px){
+    
+        #dataset-recommendations-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .recommendation {
+            width: 405px;
         }
     }
 }

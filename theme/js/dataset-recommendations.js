@@ -12,9 +12,11 @@ function addRecos(recos) {
     let recoChildContainer, recoChildEmbed;
     recos.splice(0, maxRecos).forEach((reco) => {
         recoChildContainer = document.createElement('div');
-        recoChildContainer.classList.add('col-reco', 'col-sm-12', 'col-md-6');
+        recoChildContainer.classList.add('recommendation');
+    
         recoChildEmbed = document.createElement('div');
         recoChildEmbed.setAttribute('data-udata-dataset-id', reco[0]);
+    
         recoChildContainer.appendChild(recoChildEmbed);
         recoContainer.appendChild(recoChildContainer);
     });
