@@ -36,7 +36,6 @@ function loadDatasets() {
 }
 
 function fetchRecos(datasetId) {
-    // XXX we can count on fetch polyfill from udata/front/js/mixin.js, right?
     fetch(recoUrl + datasetId + '.json').then((response) => {
         if(response.ok) {
             return response.json();
@@ -49,18 +48,15 @@ function fetchRecos(datasetId) {
             const recoParent = document.getElementById('dataset-recommendations');
             recoParent.style.display = 'block';
         }
+    }).catch((err) => {
+        console.log('Error while fetching recommendations:', err);
     });
 }
 
 global.udataDatasetRecos = {
-    load () {
-        var datasetId = getDatasetId();
+    load() {
+        const datasetId = getDatasetId();
         if (datasetId) {
-            // TODO remove me
-            // * 1 dataset
-            // datasetId = '53698e90a3a729239d2034d3';
-            // * 2 datasets
-            // datasetId = '536991b0a3a729239d203d13'
             fetchRecos(datasetId);
         }
     }
