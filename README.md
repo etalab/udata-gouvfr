@@ -42,11 +42,11 @@ $WORKSPACE
 ├── fs
 ├── udata
 │   ├── ...
-│   └── setup.py
-├── udata-gouvfr
-│   ├── ...
-│   └── setup.py
-└── udata.cfg
+│   ├── setup.py
+│   └── udata.cfg
+└── udata-gouvfr
+    ├── ...
+    └── setup.py
 ```
 
 The following steps use the same Python virtual environment
