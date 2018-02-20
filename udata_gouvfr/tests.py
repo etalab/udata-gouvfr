@@ -183,7 +183,7 @@ class GouvFrHomeDiscourseTest(UnloadTheme):
     modules = []
 
     def test_render_home_with_discourse(self, rmock, client):
-        '''It should render the home page with the latest blog article'''
+        '''It should render the home page with the latest forum topic'''
         data = {
             'categories': [{
                 'id': 1,
@@ -218,14 +218,14 @@ class GouvFrHomeDiscourseTest(UnloadTheme):
         assert 'Title' in response.data.decode('utf8')
 
     def test_render_home_if_discourse_timeout(self, rmock, client):
-        '''It should render the home page when discourse time out'''
+        '''It should render the home page when forum time out'''
         url = '%s/site.json' % DISCOURSE_URL
         rmock.get(url, exc=requests.Timeout('Blog timed out'))
         response = client.get(url_for('site.home'))
         assert200(response)
 
     def test_render_home_if_discourse_error(self, rmock, client):
-        '''It should render the home page when discourse is not available'''
+        '''It should render the home page when forum is not available'''
         url = '%s/site.json' % DISCOURSE_URL
         rmock.get(url, exc=requests.ConnectionError('Error'))
         response = client.get(url_for('site.home'))
