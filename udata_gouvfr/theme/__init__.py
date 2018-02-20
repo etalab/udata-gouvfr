@@ -104,6 +104,7 @@ def get_blog_post(lang):
 @cache.cached(50)
 def get_discourse_posts():
     base_url = current_app.config.get('DISCOURSE_URL')
+    timeout = current_app.config.get('DISCOURSE_TIMEOUT', 15)
     category_id = current_app.config.get('DISCOURSE_CATEGORY_ID')
     listing = current_app.config.get('DISCOURSE_LISTING_TYPE', 'latest')
     limit = current_app.config.get('DISCOURSE_LISTING_LIMIT', 5)
@@ -113,11 +114,15 @@ def get_discourse_posts():
     # Fetch site wide configuration (including all categories labels)
     site_url = '{url}/site.json'.format(url=base_url)
     try:
-        response = requests.get(site_url)
+        response = requests.get(site_url, timeout=timeout)
     except requests.exceptions.RequestException:
         log.exception('Unable to fetch discourses categories')
         return
-    data = response.json()
+    try:
+        data = response.json()
+    except ValueError:
+        log.exception('Unable to parse discourses JSON response')
+        return
 
     # Resolve categories names
     categories = {}
