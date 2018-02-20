@@ -121,7 +121,7 @@ def get_discourse_posts():
     try:
         data = response.json()
     except ValueError:
-        log.exception('Unable to parse discourses JSON response')
+        log.exception('Unable to parse discourse JSON response')
         return
 
     # Resolve categories names
