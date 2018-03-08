@@ -27,7 +27,7 @@ function addRecos(recos) {
         recoContainer.appendChild(recoChildContainer);
     });
 
-    if (!(typeof _paq == "undefined")) {
+    if (!(typeof _paq == 'undefined')) {
       _paq.push(['trackContentImpressionsWithinNode', recoContainer]);
     }
 }
