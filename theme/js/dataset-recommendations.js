@@ -10,8 +10,14 @@ function getDatasetId() {
 function addRecos(recos) {
     const recoContainer = document.getElementById('dataset-recommendations-container');
     let recoChildContainer, recoChildEmbed;
-    recos.splice(0, maxRecos).forEach((reco) => {
+    recos.splice(0, maxRecos).forEach((reco, idx) => {
         recoChildContainer = document.createElement('div');
+
+        recoChildContainer.setAttribute('data-track-content', '');
+        recoChildContainer.setAttribute('data-content-name', 'dataset recommendations');
+        recoChildContainer.setAttribute('data-content-piece', 'reco ' + idx);
+        recoChildContainer.setAttribute('data-content-target', 'datasets/' + reco[0]);
+
         recoChildContainer.classList.add('recommendation');
 
         recoChildEmbed = document.createElement('div');
@@ -20,6 +26,10 @@ function addRecos(recos) {
         recoChildContainer.appendChild(recoChildEmbed);
         recoContainer.appendChild(recoChildContainer);
     });
+
+    if (!(typeof _paq == "undefined")) {
+      _paq.push(['trackContentImpressionsWithinNode', recoContainer]);
+    }
 }
 
 function addWidgetScript() {
