@@ -1,0 +1,11 @@
+{% extends 'search.html' %}
+
+{% block extra_js %}
+{{ super() }}
+<script type="text/javascript">
+  const _paq = _paq || [];
+  const searchCount = {{ datasets.total | default(0) }};
+
+  _paq.push(['setCustomUrl', document.URL + '&search_count=' + searchCount]);
+</script>
+{% endblock %}
