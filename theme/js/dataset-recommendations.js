@@ -8,7 +8,7 @@ function getDatasetId() {
 }
 
 function addRecos(recos) {
-    const paq = _paq || {};
+    window._paq = window._paq || [];
 
     const recoContainer = document.getElementById('dataset-recommendations-container');
     let recoChildContainer, recoChildEmbed;
@@ -30,9 +30,7 @@ function addRecos(recos) {
         recoContainer.appendChild(recoChildContainer);
     });
 
-    if (paq.push) {
-        paq.push(['trackContentImpressionsWithinNode', recoContainer]);
-    }
+    window._paq.push(['trackContentImpressionsWithinNode', recoContainer]);
 }
 
 function addWidgetScript() {
