@@ -1,0 +1,15 @@
+{% extends 'search.html' %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  var _paq = _paq || [];
+
+  {% if datasets %}
+  var searchCount = {{ datasets.total }};
+  {% else %}
+  var searchCount = 0;
+  {% endif %}
+
+  _paq.push(['setCustomUrl', document.URL + '&search_count=' + searchCount]);
+</script>
+{% endblock %}
