@@ -3,6 +3,7 @@
 {% set community_subtitle = _('Explore with %(certifier)s', certifier=config.SITE_TITLE ) %}
 
 {% block extra_js %}
+{{ super() }}
 <script src="{{ theme_static('dataset-recommendations.js') }}" type="text/javascript" onload="udataDatasetRecos.load()"></script>
 {% endblock %}
 
