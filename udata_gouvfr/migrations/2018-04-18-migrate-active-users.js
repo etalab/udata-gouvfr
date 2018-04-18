@@ -2,12 +2,9 @@
  * Ensure active users have a confirmed_at date set.
  */
 
-var count = 0;
-
-db.user.find({active: true, confirmed_at: null}).forEach(function(user) {
-    user.confirmed_at = Date();
-    db.user.save(user);
-    count++;
-});
-
-print(`${count} users migrated.`);
+const result = db.user.update(
+    {active: true, confirmed_at: null},
+    {$set: {confirmed_at: new Date()}},
+    {multi: true}
+);
+print(`${result.nModified} users migrated.`);
