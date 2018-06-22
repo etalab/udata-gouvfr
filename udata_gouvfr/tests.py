@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 import cgi
 import json
 
@@ -641,7 +639,7 @@ class SitemapTest:
                                 section=section, _external=True))
 
         for url in urls:
-            assert '<loc>{url}</loc>'.format(url=url) in response.data
+            assert '<loc>{url}</loc>'.format(url=url) in response.data.decode('utf-8')
 
 
 class SitemapTerritoriesTest:
