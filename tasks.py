@@ -95,7 +95,7 @@ def qa(ctx):
         else:
             success('No lint to fix')
         info('Ensure PyPI can render README and CHANGELOG')
-        readme_results = ctx.run('python3 setup.py check -m -s', pty=True, warn=True, hide=True)
+        readme_results = ctx.run('python setup.py check -m -s', pty=True, warn=True, hide=True)
         if readme_results.failed:
             print(readme_results.stdout)
             error('README and/or CHANGELOG is not renderable by PyPI')
@@ -130,15 +130,15 @@ def i18n(ctx, update=False):
     # Plugin translations (harvesters, views...)
     info('Extract plugin translations')
     with ctx.cd(ROOT):
-        ctx.run('python3 setup.py extract_messages')
+        ctx.run('python setup.py extract_messages')
         set_po_metadata(os.path.join(I18N_ROOT, 'udata-gouvfr.pot'), 'en')
         for lang in LANGUAGES:
             pofile = os.path.join(I18N_ROOT, lang, 'LC_MESSAGES', 'udata-gouvfr.po')
             if not os.path.exists(pofile):
-                ctx.run('python3 setup.py init_catalog -l {}'.format(lang))
+                ctx.run('python setup.py init_catalog -l {}'.format(lang))
                 set_po_metadata(pofile, lang)
             elif update:
-                ctx.run('python3 setup.py update_catalog -l {}'.format(lang))
+                ctx.run('python setup.py update_catalog -l {}'.format(lang))
                 set_po_metadata(pofile, lang)
 
     # Theme translations
@@ -171,7 +171,7 @@ def i18nc(ctx):
     # Plugin translations (harvesters, views...)
     info('Compile plugin translations')
     with ctx.cd(ROOT):
-        ctx.run('python3 setup.py compile_catalog')
+        ctx.run('python setup.py compile_catalog')
 
     # Theme translations
     info('Compile theme translations')
@@ -212,7 +212,7 @@ def pydist(ctx, buildno=None):
 
 
 def perform_dist(ctx, buildno=None):
-    cmd = ['python3 setup.py']
+    cmd = ['python setup.py']
     if buildno:
         cmd.append('egg_info -b {0}'.format(buildno))
     cmd.append('bdist_wheel')
