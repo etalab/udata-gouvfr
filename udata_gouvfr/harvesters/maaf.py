@@ -3,7 +3,7 @@ import logging
 import re
 
 from collections import OrderedDict
-from urlparse import urljoin
+from urllib.parse import urljoin
 
 import chardet
 
