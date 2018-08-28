@@ -85,6 +85,7 @@ jobs:
           root: .
           paths:
             - udata_gouvfr/theme/static
+            - udata_gouvfr/theme/manifest.json
 
   dist:
     docker:
@@ -135,6 +136,8 @@ jobs:
   github:
     docker:
       - image: udata/circleci:py3
+    environment:
+       BASH_ENV: /root/.bashrc
     steps:
       - attach_workspace:
           at: .

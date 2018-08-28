@@ -2,7 +2,19 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Make use of assets manifest for long term caching [#328](https://github.com/etalab/udata-gouvfr/pull/328)
+
+## 1.4.4 (2018-08-27)
+
+- Fix the multisearch labels position [#330](https://github.com/etalab/udata-gouvfr/pull/330)
+
+## 1.4.3 (2018-08-08)
+
+- Fix the navbar toggle button position 🎊 [#327](https://github.com/etalab/udata-gouvfr/pull/327)
+
+## 1.4.2 (2018-07-30)
+
+- Add a reference on the page about SPD [#318](https://github.com/etalab/udata-gouvfr/pull/318)
 
 ## 1.4.1 (2018-06-06)
 
