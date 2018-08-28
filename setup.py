@@ -47,7 +47,7 @@ setup(
     author_email='pypi@data.gouv.fr',
     packages=find_packages(),
     include_package_data=True,
-    python_requires='==2.7.*',
+    python_requires='>=3.5',
     install_requires=pip('install.pip'),
     setup_requires=['setuptools>=38.6.0'],
     tests_require=pip('test.pip'),
