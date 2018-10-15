@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvfr\n"
 "Report-Msgid-Bugs-To: data.gouv@data.gouv.fr\n"
 "POT-Creation-Date: 2018-10-15 17:18+0200\n"
-"PO-Revision-Date: 2018-10-15 15:33\n"
+"PO-Revision-Date: 2018-10-15 16:22\n"
 "Last-Translator: noirbizarre <noirbizarre@gmail.com>\n"
 "Language: fr\n"
 "Language-Team: French\n"
@@ -63,7 +63,7 @@ msgstr "Conditions générales d'utilisation"
 
 #: __init__.py:45
 msgid "Tracking and privacy"
-msgstr ""
+msgstr "Politique de confidentialité"
 
 #: templates/carousel.html:6 templates/home.html:27
 msgid "Best reuse cases"
@@ -123,7 +123,7 @@ msgstr "Utilisateurs"
 
 #: templates/forum.html:15
 msgid "Last post"
-msgstr ""
+msgstr "Dernière publication"
 
 #: templates/forum.html:16
 msgid "Replies"
