@@ -2,7 +2,8 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Add a BAL badge [#347](https://github.com/etalab/udata-gouvfr/pull/347)
+- Remove TOS opt-in subtext [#349](https://github.com/etalab/udata-gouvfr/pull/349)
 
 ## 1.6.0 (2018-10-02)
 
