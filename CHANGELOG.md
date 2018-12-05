@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Remove BAN license []()
 
 ## 1.6.2 (2018-11-17)
 
