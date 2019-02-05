@@ -3,6 +3,7 @@
 ## Current (in progress)
 
 - Remove BAN license [#364](https://github.com/etalab/udata-gouvfr/pull/364)
+- Remove "compte des collectivités" from territories []()
 
 ## 1.6.2 (2018-11-17)
 
