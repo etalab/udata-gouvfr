@@ -485,7 +485,8 @@ class OEmbedsTerritoryAPITest:
             assert md(territory.description, source_tooltip=True) in html
             assert 'Download from local.test' in html
             assert 'Add to your own website' in html
-            if dataset_class not in (TERRITORY_DATASETS['departement']['zonages_dep'], ):
+            if dataset_class not in (
+                    TERRITORY_DATASETS['departement']['zonages_dep'], ):
                 assert 'License: {0}'.format(licence_ouverte.title) in html
                 assert '© {0}'.format(licence_ouverte.id) in html
                 assert (
@@ -520,7 +521,8 @@ class OEmbedsTerritoryAPITest:
             assert md(territory.description, source_tooltip=True) in html
             assert 'Download from local.test' in html
             assert 'Add to your own website' in html
-            if territory_dataset_class not in (TERRITORY_DATASETS['region']['zonages_reg'], ):
+            if territory_dataset_class not in (
+                    TERRITORY_DATASETS['region']['zonages_reg'], ):
                 assert 'License: {0}'.format(licence_ouverte.title) in html
                 assert '© {0}'.format(licence_ouverte.id) in html
                 assert (
