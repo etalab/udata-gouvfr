@@ -17,7 +17,14 @@ body.topic-display {
     }
 
     .tags {
-        padding-left: 30px;
+        @media(min-width: @screen-md-min) {
+            padding-left: 30px;
+        }
+
+        @media(max-width: @screen-md-min) {
+            line-height: 24px;
+        }
+
     }
 
     .topic-toolbar {
