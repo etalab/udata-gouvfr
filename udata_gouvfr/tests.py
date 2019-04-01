@@ -363,6 +363,7 @@ class TerritoriesSettings(GouvFrSettings):
     HANDLED_LEVELS = ('fr:commune', 'fr:departement', 'fr:region')
 
 
+@pytest.mark.usefixtures('clean_db')
 class TerritoriesTest:
     settings = TerritoriesSettings
     modules = []
@@ -411,6 +412,7 @@ class TerritoriesTest:
             assert expected.format(dataset=dataset) in data
 
 
+@pytest.mark.usefixtures('clean_db')
 class OEmbedsTerritoryAPITest:
     settings = TerritoriesSettings
     modules = []
