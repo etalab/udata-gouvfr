@@ -1,5 +1,6 @@
-import cgi
 import json
+
+from html import escape
 
 import pytest
 import requests
@@ -442,7 +443,7 @@ class OEmbedsTerritoryAPITest:
 
             html = data['html']
             assert territory.title in html
-            assert cgi.escape(territory.url) in html
+            assert escape(territory.url) in html
             assert 'alt="{name}"'.format(name=organization.name) in html
             assert md(territory.description, source_tooltip=True) in html
             assert 'Download from local.test' in html
@@ -480,7 +481,7 @@ class OEmbedsTerritoryAPITest:
 
             html = data['html']
             assert territory.title in html
-            assert cgi.escape(territory.url) in html
+            assert escape(territory.url) in html
             assert 'alt="{name}"'.format(name=organization.name) in html
             assert md(territory.description, source_tooltip=True) in html
             assert 'Download from local.test' in html
@@ -516,7 +517,7 @@ class OEmbedsTerritoryAPITest:
 
             html = data['html']
             assert territory.title in html
-            assert cgi.escape(territory.url) in html
+            assert escape(territory.url) in html
             assert 'alt="{name}"'.format(name=organization.name) in html
             assert md(territory.description, source_tooltip=True) in html
             assert 'Download from local.test' in html
