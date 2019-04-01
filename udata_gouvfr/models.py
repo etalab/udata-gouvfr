@@ -27,11 +27,13 @@ NECMERGITUR = 'nec'
 OPENFIELD16 = 'openfield16'
 SPD = 'spd'
 TRANSPORT = 'transport'
+BAL = 'bal'
 Dataset.__badges__[C3] = _('C³')
 Dataset.__badges__[NECMERGITUR] = _('Nec Mergitur')
 Dataset.__badges__[OPENFIELD16] = 'Openfield 16'
 Dataset.__badges__[SPD] = _('Reference Data')
 Dataset.__badges__[TRANSPORT] = _('Transport')
+Dataset.__badges__[BAL] = _('Base Adresse Locale')
 
 BASE_POPULATION_URL = 'https://www.insee.fr/fr/statistiques/tableaux/2021173'
 POPULATION_FILENAME = 'popleg2013_cc_popleg.xls'
@@ -229,53 +231,6 @@ class ZonagesRegionDataset(ZonagesDataset):
     url_template = 'http://sig.ville.gouv.fr/Tableaux/{code}'
 
 
-class ComptesDataset(TerritoryDataset):
-    order = 9
-    title = 'Comptes de la collectivité'
-    # Ministère des finances et des comptes publics.
-    organization_id = '534fff8ea3a7292c64a77f02'
-    description = '''
-        Chiffres Clés, fonctionnement, investissement, fiscalité,
-        autofinancement, endettement.
-    '''.strip()
-    temporal_coverage = {'start': 2000, 'end': 2014}
-    license_id = 'notspecified'
-
-
-class ComptesCommuneDataset(ComptesDataset):
-    id = 'comptes_com'
-    url_template = (
-        'http://alize2.finances.gouv.fr/communes/eneuro/tableau.php'
-        '?icom={icom}&dep=0{dep}&type=BPS&param=0')
-
-    @property
-    def url(self):
-        return self.url_template.format(icom=self.territory.code[2:5],
-                                        dep=self.territory.code[0:2])
-
-
-class ComptesDepartementDataset(ComptesDataset):
-    id = 'comptes_dep'
-    url_template = (
-        'http://alize2.finances.gouv.fr/departements/tableau.php'
-        '?dep=0{dep}')
-
-    @property
-    def url(self):
-        return self.url_template.format(dep=self.territory.code[0:2])
-
-
-class ComptesRegionDataset(ComptesDataset):
-    id = 'comptes_reg'
-    url_template = (
-        'http://alize2.finances.gouv.fr/regions/tableau.php'
-        '?reg=0{reg}&type=BPS')
-
-    @property
-    def url(self):
-        return self.url_template.format(reg=self.territory.code)
-
-
 class BanODBLCommuneDataset(TerritoryDataset):
     order = 10
     id = 'ban_odbl_com'
@@ -299,7 +254,6 @@ TOWN_DATASETS = {
     'emploi_com': EmploiCommuneDataset,
     'logement_com': LogementCommuneDataset,
     'zonages_com': ZonagesCommuneDataset,
-    'comptes_com': ComptesCommuneDataset,
     'ban_odbl_com': BanODBLCommuneDataset,
     'geo_sirene_com': GeoSireneCommuneDataset,
 }
@@ -310,7 +264,6 @@ COUNTY_DATASETS = {
     'emploi_dep': EmploiDepartementDataset,
     'logement_dep': LogementDepartementDataset,
     'zonages_dep': ZonagesDepartementDataset,
-    'comptes_dep': ComptesDepartementDataset,
 }
 REGION_DATASETS = {
     'population_reg': PopulationRegionDataset,
@@ -319,7 +272,6 @@ REGION_DATASETS = {
     'emploi_reg': EmploiRegionDataset,
     'logement_reg': LogementRegionDataset,
     'zonages_reg': ZonagesRegionDataset,
-    'comptes_reg': ComptesRegionDataset,
 }
 
 TERRITORY_DATASETS['commune'].update(TOWN_DATASETS)

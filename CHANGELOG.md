@@ -2,7 +2,31 @@
 
 ## Current (in progress)
 
+- Nothing yet
+
+## 1.6.4 (2019-03-27)
+
+- Updates topic entry page [#382](https://github.com/etalab/udata-gouvfr/pull/382)
+
+## 1.6.3 (2019-03-06)
+
+- Remove "compte des collectivités" from territories [#376](https://github.com/etalab/udata-gouvfr/pull/376)
+- Push discussion under reuses and community resources [378](https://github.com/etalab/udata-gouvfr/pull/378)
+
+## 1.6.2 (2018-11-17)
+
+- Konami code 🥚 [#362](https://github.com/etalab/udata-gouvfr/pull/362) NB: this is not a release worth installing except on [data.gouv.fr](https://data.gouv.fr).
+
+## 1.6.1 (2018-11-05)
+
+- Add a BAL badge [#347](https://github.com/etalab/udata-gouvfr/pull/347)
+- Remove TOS opt-in subtext [#349](https://github.com/etalab/udata-gouvfr/pull/349)
+
+## 1.6.0 (2018-10-02)
+
 - Make use of assets manifest for long term caching [#328](https://github.com/etalab/udata-gouvfr/pull/328)
+- Discussion add card style coherence [#339](https://github.com/etalab/udata-gouvfr/pull/339)
+- Remove a duplicate rule on `.dataset-container h3`
 
 ## 1.4.4 (2018-08-27)
 
