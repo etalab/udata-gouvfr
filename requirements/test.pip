@@ -3,5 +3,5 @@ pytest==4.3.1
 pytest-flask==0.14.0
 pytest-mock==1.10.3
 pytest-sugar==0.9.2
-requests-mock==1.5.2
+requests-mock==1.6.0
 feedgen==0.7.0
