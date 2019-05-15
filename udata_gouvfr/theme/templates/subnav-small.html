@@ -15,7 +15,7 @@
                 {% set action = url_for('search.index') %}
                 {% set placeholder = _('Search') %}
             {% endif %}
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+            <div>
                 {{ site_search(action=action, placeholder=placeholder, territory=territory) }}
             </div>
         </div>
