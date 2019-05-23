@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: udata-gouvfr\n"
 "Report-Msgid-Bugs-To: data.gouv@data.gouv.fr\n"
 "POT-Creation-Date: 2019-05-23 12:50+0200\n"
-"PO-Revision-Date: 2019-05-23 10:52\n"
+"PO-Revision-Date: 2019-05-23 11:03\n"
 "Last-Translator: Axel Haustant (noirbizarre)\n"
 "Language: fr\n"
 "Language-Team: French\n"
@@ -60,7 +60,7 @@ msgstr "Politique de confidentialité"
 
 #: __init__.py:73
 msgid "Data catalog"
-msgstr ""
+msgstr "Catalogue des données"
 
 #: templates/carousel.html:6 templates/home.html:27
 msgid "Best reuse cases"
@@ -217,33 +217,35 @@ msgstr "Explorer avec %(certifier)s"
 
 #: templates/dataset/display.html:11
 msgid "Community contributions"
-msgstr ""
+msgstr "Contributions communautaires"
 
 #: templates/dataset/display.html:18
 msgid "Community resources"
-msgstr ""
+msgstr "Ressources communautaires"
 
 #: templates/dataset/display.html:29
 msgid "Add a community resource"
-msgstr ""
+msgstr "Ajouter une ressource communautaire"
 
 #: templates/dataset/display.html:36
 msgid "You have built a more comprehensive database than those presented here? This is the time to share it!"
-msgstr ""
+msgstr "Vous avez construit une base de données plus complète que celles présentées ici ? C'est le moment de la partager !"
 
 #: templates/dataset/display.html:59
 msgid "You reused these data and published an article, a computer graphics, or an application?\n"
 "                It's time to let you know!\n"
 "                Reference your work in just a few clicks and increase your visibility."
-msgstr ""
+msgstr "Vous avez réutilisé ces données et publié un article, une infographie, ou une application ?\n"
+"C'est le moment de vous faire connaître !\n"
+"Référencez votre travail en quelques clics et augmentez votre visibilité."
 
 #: templates/dataset/display.html:66
 msgid "Discussions"
-msgstr ""
+msgstr "Discussions"
 
 #: templates/dataset/display.html:75
 msgid "Discussion between the organization and the community about this dataset."
-msgstr ""
+msgstr "Discussion entre l'organisation et la communauté à propos de ce jeu de données."
 
 #: templates/mail/base.html:45
 msgid "on your browser."
