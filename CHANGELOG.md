@@ -3,7 +3,7 @@
 ## Current (in progress)
 
 - Set org logo to max width [#403](https://github.com/etalab/udata-gouvfr/pull/403)
-- Add data export link to footer [#404](https://github.com/etalab/udata-gouvfr/pull/404)
+- Add data catalog link to footer [#404](https://github.com/etalab/udata-gouvfr/pull/404)
 
 ## 1.6.6 (2019-05-20)
 

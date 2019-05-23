@@ -70,7 +70,7 @@ if current_app.config.get('EXPORT_CSV_MODELS'):
     else:
         export_url = url_for('datasets.show', dataset=export_dataset,
                              _external=True)
-        footer_links.append(nav.Item(_('Data export'), None, url=export_url))
+        footer_links.append(nav.Item(_('Data catalog'), None, url=export_url))
 
 nav.Bar('gouvfr_footer', footer_links)
 
