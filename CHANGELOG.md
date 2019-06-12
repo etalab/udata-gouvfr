@@ -3,6 +3,7 @@
 ## Current (in progress)
 
 - Add cache for topic display page [#414](https://github.com/etalab/udata-gouvfr/pull/414)
+- Fix card size on dataset page [#418](https://github.com/etalab/udata-gouvfr/pull/418)
 
 ## 1.6.9 (2019-06-07)
 
