@@ -4,6 +4,42 @@
 
 - Nothing yet
 
+## 1.6.11 (2019-07-11)
+
+- New social logo (`og:image`) [#419](https://github.com/etalab/udata-gouvfr/pull/419)
+
+## 1.6.10 (2019-06-26)
+
+- Data catalog: id as ref instead of slug [#415](https://github.com/etalab/udata-gouvfr/pull/415)
+- Add cache for topic display page [#414](https://github.com/etalab/udata-gouvfr/pull/414)
+- Fix card size on dataset page [#418](https://github.com/etalab/udata-gouvfr/pull/418)
+
+## 1.6.9 (2019-06-07)
+
+- Switch removal of related tags in a topic page to a proper `related` jinja tag [#408](https://github.com/etalab/udata-gouvfr/pull/408)
+- Add the homologation of IGN licenses [#412](https://github.com/etalab/udata-gouvfr/pull/412)
+
+## 1.6.8 (2019-05-29)
+
+- Minor edits on SPD [#406](https://github.com/etalab/udata-gouvfr/pull/406)
+- Change certification visual location in cards [#407](https://github.com/etalab/udata-gouvfr/pull/407)
+
+## 1.6.7 (2019-05-23)
+
+- Set org logo to max width [#403](https://github.com/etalab/udata-gouvfr/pull/403)
+- Add data catalog link to footer [#404](https://github.com/etalab/udata-gouvfr/pull/404)
+
+## 1.6.6 (2019-05-20)
+
+- Remove clutter from search bar [#400](https://github.com/etalab/udata-gouvfr/pull/400)
+- Add the homologation of INPI licenses [#402](https://github.com/etalab/udata-gouvfr/pull/402)
+
+## 1.6.5 (2019-05-10)
+
+- Home blog post extraction improvements. Supports both Atom and RSS 2.0, more image tag formats, `media:thumbnail` and enclosures. [#385](https://github.com/etalab/udata-gouvfr/pull/385)
+- Pin version of `requests` [#397](https://github.com/etalab/udata-gouvfr/pull/397)
+- Improve header menu legibility [#388](https://github.com/etalab/udata-gouvfr/pull/388)
+
 ## 1.6.4 (2019-03-27)
 
 - Updates topic entry page [#382](https://github.com/etalab/udata-gouvfr/pull/382)

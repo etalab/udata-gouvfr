@@ -5,42 +5,71 @@ import feedparser
 import requests
 
 from dateutil.parser import parse
-from flask import g, current_app
+from flask import g, current_app, url_for
 
 from udata import theme
 from udata.app import cache, nav
+from udata.models import Dataset
 from udata.i18n import lazy_gettext as _
 
 log = logging.getLogger(__name__)
 
 RE_POST_IMG = re.compile(
-    r'\<img .* src="https?:(?P<src>.+\.(?:png|jpg))" .* />(?P<content>.+)')
+    r'''
+    <img .*? (?:(?:
+        src="(?P<src>https?://.+?)"
+        |
+        srcset="(?P<srcset>.+?)"
+        |
+        sizes="(?P<sizes>.+?)"
+    )\s*)+ .*?/>
+    ''',
+    re.I | re.X | re.S
+)
+
+RE_STRIP_TAGS = re.compile(r'</?(img|br|p|div|ul|li|ol)[^<>]*?>', re.I | re.M)
+
+# Add some html5 allowed attributes
+EXTRA_ATTRIBUTES = ('srcset', 'sizes')
+feedparser._HTMLSanitizer.acceptable_attributes.update(set(EXTRA_ATTRIBUTES))
 
 # Wordpress ATOM timeout
 WP_TIMEOUT = 5
 
+# Feed allowed enclosure type as thumbnails
+FEED_THUMBNAIL_MIMES = ('image/jpeg', 'image/png', 'image/webp')
+
 
 gouvfr_menu = nav.Bar('gouvfr_menu', [
-    nav.Item(_('Discover OpenData'), None, url='https://doc.data.gouv.fr'),
-    nav.Item(_('Data'), 'datasets.list', items=[
-        nav.Item(_('Datasets'), 'datasets.list'),
-        nav.Item(_('Reuses'), 'reuses.list'),
-        nav.Item(_('Organizations'), 'organizations.list'),
-    ]),
+    nav.Item(_('Data'), 'datasets.list'),
+    nav.Item(_('Reuses'), 'reuses.list'),
+    nav.Item(_('Organizations'), 'organizations.list'),
     nav.Item(_('Dashboard'), 'site.dashboard'),
-    # nav.Item(_('Territories'), 'territories.home'),
+    nav.Item(_('Documentation'), None, url='https://doc.data.gouv.fr'),
 ])
 
 theme.menu(gouvfr_menu)
 
-nav.Bar('gouvfr_footer', [
+footer_links = [
     nav.Item(_('Documentation'), None, url='https://doc.data.gouv.fr'),
     nav.Item(_('Reference Data'), 'gouvfr.spd'),
     nav.Item(_('Licences'), 'gouvfr.licences'),
     nav.Item(_('API'), 'apidoc.swaggerui'),
     nav.Item(_('Terms of use'), 'site.terms'),
     nav.Item(_('Tracking and privacy'), 'gouvfr.suivi'),
-])
+]
+export_dataset_id = current_app.config.get('EXPORT_CSV_DATASET_ID')
+if export_dataset_id:
+    try:
+        export_dataset = Dataset.objects.get(id=export_dataset_id)
+    except Dataset.DoesNotExist:
+        pass
+    else:
+        export_url = url_for('datasets.show', dataset=export_dataset,
+                             _external=True)
+        footer_links.append(nav.Item(_('Data catalog'), None, url=export_url))
+
+nav.Bar('gouvfr_footer', footer_links)
 
 NETWORK_LINKS = [
     ('Gouvernement.fr', 'http://www.gouvernement.fr'),
@@ -60,6 +89,15 @@ nav.Bar(
 
 @cache.memoize(50)
 def get_blog_post(lang):
+    '''
+    Extract the latest post summary from an RSS or an Atom feed.
+
+    Image is searched and extracted from (in order of priority):
+      - mediarss `media:thumbnail` attribute
+      - enclosures of image type (first match)
+      - first image found in content
+    Image size is ot taken in account but could in future improvements.
+    '''
     wp_atom_url = current_app.config.get('WP_ATOM_URL')
     if not wp_atom_url:
         return
@@ -77,6 +115,7 @@ def get_blog_post(lang):
             log.error('Error while fetching %s', feed_url, exc_info=True)
             continue
         feed = feedparser.parse(response.content)
+
         if len(feed.entries) > 0:
             break
 
@@ -84,17 +123,36 @@ def get_blog_post(lang):
         return
 
     post = feed.entries[0]
+
     blogpost = {
         'title': post.title,
         'link': post.link,
         'date': parse(post.published)
     }
-    match = RE_POST_IMG.match(post.content[0].value)
-    if match:
-        blogpost.update(image_url=match.group('src'),
-                        summary=match.group('content'))
-    else:
-        blogpost['summary'] = post.summary
+    description = post.get('description', None)
+    content = post.get('content', [{}])[0].get('value') or description
+    summary = post.get('summary', content)
+    blogpost['summary'] = RE_STRIP_TAGS.sub('', summary).strip()
+
+    for thumbnail in post.get('media_thumbnail', []):
+        blogpost['image_url'] = thumbnail['url']
+        break
+
+    if 'image_url' not in blogpost:
+        for enclosure in post.get('enclosures', []):
+            if enclosure.get('type') in FEED_THUMBNAIL_MIMES:
+                blogpost['image_url'] = enclosure['href']
+                break
+
+    if 'image_url' not in blogpost:
+        match = RE_POST_IMG.search(content)
+        if match:
+            blogpost['image_url'] = match.group('src').replace('&amp;', '&')
+            if match.group('srcset'):
+                blogpost['srcset'] = match.group('srcset').replace('&amp;', '&')
+            if match.group('sizes'):
+                blogpost['sizes'] = match.group('sizes')
+
     return blogpost
 
 
