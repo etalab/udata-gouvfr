@@ -2,7 +2,12 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Ajout de l'identifiant SPDX pour la licence Ouverte 2.0 [#437](https://github.com/etalab/udata-gouvfr/pull/437)
+
+## 1.6.12 (2019-09-11)
+
+- Nouvelle section contact dans le pied de page [#428](https://github.com/etalab/udata-gouvfr/pull/428)
+- Suppression du konami code [#429](https://github.com/etalab/udata-gouvfr/pull/429)
 
 ## 1.6.11 (2019-07-11)
 
