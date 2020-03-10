@@ -110,7 +110,7 @@ LIST_KEYS = 'extras', 'resources'
 def extract(element):
     lst = [r for r in map(dictize, element) if isinstance(r[0], str)]
     for key in LIST_KEYS:
-        values = [v for k, v in [r for r in list if r[0] == key]]
+        values = [v for k, v in [r for r in lst if r[0] == key]]
         if values:
             lst = [r for r in lst if r[0] != key] + [(key, values)]
     return lst
