@@ -4,9 +4,9 @@ version: 2
 jobs:
   python:
     docker:
-      - image: udata/circleci:py3
-      - image: mongo:3.2
-      - image: redis
+      - image: udata/circleci:2-alpine
+      - image: circleci/mongo:3.6-stretch-ram
+      - image: redis:alpine
       - image: udata/elasticsearch:2.4.5
     environment:
        BASH_ENV: /root/.bashrc
