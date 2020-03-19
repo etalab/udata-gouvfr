@@ -4,6 +4,10 @@
 
 - Nothing yet
 
+## 2.0.0 (2020-03-11)
+
+- Migrate to python3 🐍 [#453](https://github.com/etalab/udata-gouvfr/pull/453)
+
 ## 1.6.13 (2019-12-13)
 
 - Ajout de l'identifiant SPDX pour la licence Ouverte 2.0 [#437](https://github.com/etalab/udata-gouvfr/pull/437)
