@@ -17,7 +17,7 @@ from udata.core.reuse.factories import ReuseFactory, VisibleReuseFactory
 from udata.core.organization.factories import OrganizationFactory
 from udata.core.spatial.factories import SpatialCoverageFactory
 from udata.frontend.markdown import md
-from udata.models import Badge, PUBLIC_SERVICE
+from udata.models import Badge
 from udata.settings import Testing
 from udata.tests.features.territories.test_territories_process import (
     create_geozones_fixtures
