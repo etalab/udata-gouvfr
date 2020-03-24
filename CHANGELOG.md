@@ -2,6 +2,10 @@
 
 ## Current (in progress)
 
+- Nothing yet
+
+## 2.0.1 (2020-03-24)
+
 - Add covid-19 badge for datasets and reuses [#473](https://github.com/etalab/udata-gouvfr/pull/473)
 
 ## 2.0.0 (2020-03-11)
