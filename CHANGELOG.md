@@ -4,6 +4,14 @@
 
 - Ajout du _flag_ "recherche" pour activer le _widget_ d'experimentation de recherche [#466](https://github.com/etalab/udata-gouvfr/pull/466/commits/9c42b5aa8e6e0e37f471a32182196b989bc41a68)
 
+## 2.0.1 (2020-03-24)
+
+- Add covid-19 badge for datasets and reuses [#473](https://github.com/etalab/udata-gouvfr/pull/473)
+
+## 2.0.0 (2020-03-11)
+
+- Migrate to python3 🐍 [#453](https://github.com/etalab/udata-gouvfr/pull/453)
+
 ## 1.6.13 (2019-12-13)
 
 - Ajout de l'identifiant SPDX pour la licence Ouverte 2.0 [#437](https://github.com/etalab/udata-gouvfr/pull/437)
