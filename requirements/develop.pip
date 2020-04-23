@@ -2,4 +2,4 @@
 flake8==3.7.7
 invoke==1.2.0
 pytest-cov==2.6.1
-readme-renderer[md]==24.0
+readme-renderer[md]==26.0
