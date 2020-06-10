@@ -1,6 +1,14 @@
 {% block banner %}
-    {% set banner_filename = 'banner' %}
-    {% include theme('banners/'+banner_filename+'.html') with context %}
+  {% if banner_activated %}
+    {# {{ banner_activated }} ...  #}
+    {# {{ banner_html_filename }} #}
+    {% if banner_html_filename %}
+      {% set b_filename = banner_html_filename %}
+    {% else %}
+      {% set b_filename = 'banner-default.html' %}
+    {% endif %}
+    {% include theme('banners/'+b_filename) with context %}
+  {% endif %}
 {% endblock %}
 
 {% extends "base.html" %}
