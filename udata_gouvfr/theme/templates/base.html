@@ -1,3 +1,8 @@
+{% block banner %}
+    {% set banner_filename = 'banner' %}
+    {% include theme('banners/'+banner_filename+'.html') with context %}
+{% endblock %}
+
 {% extends "base.html" %}
 
 {% block subnav %}
