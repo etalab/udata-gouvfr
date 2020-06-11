@@ -275,14 +275,20 @@
         .input-group-btn  {
             width: none;
             .btn {
-                height: 34px;
-                background-color: @bg-light;
-                border-radius: 0px;
-                color: #999;
-                border: 1px solid white;
+              background-color: @bg-light;
+              border-radius: 0px;
+              color: #999;
+              border: 1px solid white;
             }
+          }
+          
         }
-
+        
+    &.subnav-large .input-group-btn .btn {
+      height: @search-btn-big;
+    }
+    &.search-top .input-group-btn .btn {
+      height: @search-btn-small;
     }
 
     /**
@@ -514,6 +520,7 @@
     @media(max-width: @grid-float-breakpoint) {
         margin-top: 1px;
     }
+
 }
 
 .search_bar {
