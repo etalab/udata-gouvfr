@@ -2,10 +2,8 @@
   {% if config['BANNER_ACTIVATED'] %}
     {% if config['BANNER_HTML_FILENAME'] %}
       {% set b_filename = config['BANNER_HTML_FILENAME'] %}
-    {% else %}
-      {% set b_filename = 'banner-default.html' %}
     {% endif %}
-    {% include theme('banners/'+b_filename) with context %}
+    {% include theme('banners/{0}'.format(b_filename)) with context %}
   {% endif %}
 {% endblock %}
 
