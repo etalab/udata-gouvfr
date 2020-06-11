@@ -1,7 +1,7 @@
 {% block banner %}
-  {% if banner_activated %}
-    {% if banner_html_filename %}
-      {% set b_filename = banner_html_filename %}
+  {% if config['BANNER_ACTIVATED'] %}
+    {% if config['BANNER_HTML_FILENAME'] %}
+      {% set b_filename = config['BANNER_HTML_FILENAME'] %}
     {% else %}
       {% set b_filename = 'banner-default.html' %}
     {% endif %}
