@@ -4,6 +4,16 @@
         {{ _('Internet Explorer 8 and below are not anymore supported. Please upgrade or change your browser to access the website.') }} <a href="http://browsehappy.com/">{{ _('More information →')}}</a>
     </div>
     <![endif]-->
+
+    {% block banner %}
+      {% if config['BANNER_ACTIVATED'] %}
+        {% if config['BANNER_HTML_FILENAME'] %}
+          {% set b_filename = config['BANNER_HTML_FILENAME'] %}
+        {% endif %}
+        {% include theme('banners/{0}'.format(b_filename)) with context %}
+      {% endif %}
+    {% endblock %}
+
     <div class="container">
         <nav class="navbar navbar-default navbar-static-top">
             <header class="navbar-header">

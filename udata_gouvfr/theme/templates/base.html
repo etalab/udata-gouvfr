@@ -1,12 +1,3 @@
-{% block banner %}
-  {% if config['BANNER_ACTIVATED'] %}
-    {% if config['BANNER_HTML_FILENAME'] %}
-      {% set b_filename = config['BANNER_HTML_FILENAME'] %}
-    {% endif %}
-    {% include theme('banners/{0}'.format(b_filename)) with context %}
-  {% endif %}
-{% endblock %}
-
 {% extends "base.html" %}
 
 {% block subnav %}
