@@ -36,7 +36,6 @@ bower
 node_modules
 /udata_gouvfr/theme/static/
 /udata_gouvfr/theme/manifest.json
-package-lock.json
 
 # Installer logs
 pip-log.txt
