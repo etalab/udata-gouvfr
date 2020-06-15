@@ -5,14 +5,12 @@
     </div>
     <![endif]-->
 
-    {% block banner %}
-      {% if config['BANNER_ACTIVATED'] %}
-        {% if config['BANNER_HTML_FILENAME'] %}
-          {% set b_filename = config['BANNER_HTML_FILENAME'] %}
-        {% endif %}
+    {% if config['BANNER_ACTIVATED'] %}
+      {% block banner %}
+        {% set b_filename = config['BANNER_HTML_FILENAME'] %}
         {% include theme('banners/{0}'.format(b_filename)) with context %}
-      {% endif %}
-    {% endblock %}
+      {% endblock %}
+    {% endif %}
 
     <div class="container">
         <nav class="navbar navbar-default navbar-static-top">
