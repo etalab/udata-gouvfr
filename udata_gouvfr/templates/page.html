@@ -1,12 +1,9 @@
 {% extends theme("base.html") %}
 
-<!-- TODO: -->
 {% set meta = {
-    'title': _('Terms'),
-    'description': _('Terms'),
-    'keywords': [
-        'terms', _('terms'),
-    ],
+    'title': page.title or '',
+    'description': page.description or '',
+    'keywords': page.keywords or [],
 } %}
 
 {% block content %}
@@ -14,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                {{ content|markdown }}
+                {{ page.content|markdown }}
             </div>
         </div>
     </div>

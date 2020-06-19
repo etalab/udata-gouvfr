@@ -1,3 +1,4 @@
+import frontmatter
 import requests
 
 from flask import url_for, redirect, abort, current_app
@@ -67,7 +68,8 @@ def get_page_content(slug):
 @blueprint.route('/pages/<slug>')
 def show_page(slug):
     content = get_page_content(slug)
-    return theme.render('page.html', content=content)
+    page = frontmatter.loads(content)
+    return theme.render('page.html', page=page)
 
 
 @blueprint.route('/dataconnexions/')
