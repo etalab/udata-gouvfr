@@ -65,7 +65,7 @@ def get_page_content(slug):
 
 
 @blueprint.route('/pages/<slug>')
-def show_pages(slug):
+def show_page(slug):
     content = get_page_content(slug)
     return theme.render('page.html', content=content)
 
