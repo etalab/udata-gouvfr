@@ -65,11 +65,23 @@ def get_page_content(slug):
     return response.text
 
 
+def get_object(model, id_or_slug):
+    objects = getattr(model, 'objects')
+    obj = objects.filter(slug=id_or_slug).first()
+    if not obj:
+        obj = objects.filter(id=id_or_slug).first()
+    return obj
+
+
 @blueprint.route('/pages/<slug>')
 def show_page(slug):
     content = get_page_content(slug)
     page = frontmatter.loads(content)
-    return theme.render('page.html', page=page)
+    reuses = [get_object(Reuse, r) for r in page.get('reuses', [])]
+    datasets = [get_object(Dataset, d) for d in page.get('datasets', [])]
+    reuses = [r for r in reuses if r is not None]
+    datasets = [d for d in datasets if d is not None]
+    return theme.render('page.html', page=page, reuses=reuses, datasets=datasets)
 
 
 @blueprint.route('/dataconnexions/')
