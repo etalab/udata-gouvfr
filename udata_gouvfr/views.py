@@ -1,7 +1,10 @@
-from flask import url_for, redirect, abort
+import requests
+
+from flask import url_for, redirect, abort, current_app
 from jinja2.exceptions import TemplateNotFound
 
 from udata import theme
+from udata.app import cache
 from udata.models import Reuse, Organization, Dataset
 from udata.i18n import I18nBlueprint
 from udata.sitemap import sitemap
@@ -44,6 +47,27 @@ def redirect_topics(topic):
 @blueprint.route('/Redevances')
 def redevances():
     return theme.render('redevances.html')
+
+
+@cache.cached(50)
+def get_page_content(slug):
+    repo = current_app.config.get('PAGES_GH_REPO_NAME')
+    if not repo:
+        abort(404)
+    branch = current_app.config.get('PAGES_REPO_BRANCH', 'master')
+    url = f'https://raw.githubusercontent.com/{repo}/{branch}/pages/{slug}.md'
+    # We let the error appear because:
+    # - we dont want to cache false responses
+    # - this is only visible on static page
+    response = requests.get(url, timeout=5)
+    response.raise_for_status()
+    return response.text
+
+
+@blueprint.route('/pages/<slug>')
+def show_pages(slug):
+    content = get_page_content(slug)
+    return theme.render('page.html', content=content)
 
 
 @blueprint.route('/dataconnexions/')
