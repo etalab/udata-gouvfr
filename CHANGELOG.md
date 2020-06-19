@@ -1,5 +1,17 @@
 # Changelog
 
+## Current (in progress)
+
+- Nothing yet
+
+## 2.1.3 (2020-06-16)
+
+- Fix packaging
+
+## 2.1.1 (2020-06-11)
+
+- Adding banner with setting inherited from udata's settings [#480](https://github.com/etalab/udata-gouvfr/pull/480)
+
 ## 2.1.0 (2020-05-13)
 
 - Remove public services metrics [#472](https://github.com/etalab/udata-gouvfr/pull/472)
