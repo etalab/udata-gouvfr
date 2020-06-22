@@ -56,13 +56,14 @@ def get_page_content(slug):
     if not repo:
         abort(404)
     branch = current_app.config.get('PAGES_REPO_BRANCH', 'master')
-    url = f'https://raw.githubusercontent.com/{repo}/{branch}/pages/{slug}.md'
+    raw_url = f'https://raw.githubusercontent.com/{repo}/{branch}/pages/{slug}.md'
+    gh_url = f'https://github.com/{repo}/blob/{branch}/pages/{slug}.md'
     # We let the error appear because:
     # - we dont want to cache false responses
     # - this is only visible on static page
-    response = requests.get(url, timeout=5)
+    response = requests.get(raw_url, timeout=5)
     response.raise_for_status()
-    return response.text
+    return response.text, gh_url
 
 
 def get_object(model, id_or_slug):
@@ -75,13 +76,16 @@ def get_object(model, id_or_slug):
 
 @blueprint.route('/pages/<slug>')
 def show_page(slug):
-    content = get_page_content(slug)
+    content, gh_url = get_page_content(slug)
     page = frontmatter.loads(content)
     reuses = [get_object(Reuse, r) for r in page.get('reuses', [])]
     datasets = [get_object(Dataset, d) for d in page.get('datasets', [])]
     reuses = [r for r in reuses if r is not None]
     datasets = [d for d in datasets if d is not None]
-    return theme.render('page.html', page=page, reuses=reuses, datasets=datasets)
+    return theme.render(
+        'page.html',
+        page=page, reuses=reuses, datasets=datasets, gh_url=gh_url
+    )
 
 
 @blueprint.route('/dataconnexions/')

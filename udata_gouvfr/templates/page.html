@@ -1,4 +1,4 @@
-{% extends theme("base.html") %}
+{% extends theme('base.html') %}
 
 {% set meta = {
     'title': page.title or '',
@@ -6,38 +6,67 @@
     'keywords': page.keywords or [],
 } %}
 
+{% set bundle = 'post' %}
+
+{% set body_class = 'post-display' %}
+
 {% block content %}
-<section class="content">
-    <div class="container">
+<section class="post-section default">
+    <div class="container post-container">
         <div class="row">
-            <div class="col-xs-12">
-                {{ page.content|markdown }}
+
+            <div class="{% if datasets or reuses %}col-sm-8 smaller{% else %}col-xs-12{% endif %}">
+
+                <div class="post-body">
+                    {{ page.content|markdown }}
+                </div>
+
+                {# button bar #}
+                <div class="row main-toolbar"><div class="col-xs-12">
+                    <div class="btn-toolbar pull-right">
+                        <div class="btn-group btn-group-sm">
+                            <a href="{{ gh_url }}" class="btn btn-success">
+                                <span class="fa fa-pencil"></span>
+                                {{ _('Proposer une modification') }}
+                            </a>
+                        </div>
+                    </div>
+                </div></div>
+                {# end button bar #}
+
             </div>
-            {% if datasets %}
-            <h2>Jeux de données</h2>
-            <div class="row">
-                <ul class="card-list">
-                    {% for dataset in datasets %}
-                    <li class="col-md-4 col-sm-6">
-                    {% include theme('dataset/card.html') %}
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
-            {% if reuses %}
-            <h2>Réutilisations</h2>
-            <div class="row">
-                <ul class="card-list">
+            {# end left column #}
+
+            {% if datasets or reuses %}
+            {# Right sidebar #}
+            <aside class="col-sm-4">
+
+                {# Reuses list #}
+                {% if reuses %}
+                <h3>{{ ngettext('Associated reuse', 'Associated reuses', reuses|length) }}</h3>
+                <div class="card-list">
                     {% for reuse in reuses %}
-                    <li class="col-md-4 col-sm-6">
                     {% include theme('reuse/card.html') %}
-                    </li>
                     {% endfor %}
-                </ul>
-            </div>
+                </div>
+                {% endif %}
+                {# end reuses list #}
+
+                {# Datasets list #}
+                {% if datasets %}
+                <h3>{{ ngettext('Associated dataset', 'Associated datasets', datasets|length) }}</h3>
+                <div class="card-list">
+                    {% for dataset in datasets %}
+                    {% include theme('dataset/card.html') %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {# end post list #}
+
+            </aside>
             {% endif %}
         </div>
+
     </div>
 </section>
 {% endblock %}
