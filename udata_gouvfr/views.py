@@ -50,18 +50,25 @@ def redevances():
     return theme.render('redevances.html')
 
 
-@cache.cached(50)
-def get_page_content(slug):
+def get_pages_gh_urls(slug):
     repo = current_app.config.get('PAGES_GH_REPO_NAME')
     if not repo:
         abort(404)
     branch = current_app.config.get('PAGES_REPO_BRANCH', 'master')
     raw_url = f'https://raw.githubusercontent.com/{repo}/{branch}/pages/{slug}.md'
     gh_url = f'https://github.com/{repo}/blob/{branch}/pages/{slug}.md'
+    return raw_url, gh_url
+
+
+@cache.cached(300)
+def get_page_content(slug):
+    raw_url, gh_url = get_pages_gh_urls(slug)
     # We let the error appear because:
     # - we dont want to cache false responses
     # - this is only visible on static page
     response = requests.get(raw_url, timeout=5)
+    if response.status_code == 404:
+        abort(404)
     response.raise_for_status()
     return response.text, gh_url
 
