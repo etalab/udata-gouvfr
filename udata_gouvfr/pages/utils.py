@@ -5,7 +5,7 @@ import requests
 from flask import current_app, abort, url_for
 from mongoengine.errors import ValidationError
 
-from udata.app import cache, nav
+from udata.app import cache
 
 CACHE_DURATION = 300  # in seconds
 log = logging.getLogger(__name__)
@@ -31,7 +31,7 @@ def get_menu_list(menu):
             menu_list = data.get('menu', [])
             if menu in menu_list:
                 page_url = url_for('gouvfr.show_page', slug=page['name'][:-3], _external=True)
-                pages.append(nav.Item(data['title'], None, url=page_url))
+                pages.append((data['title'], page_url))
     return pages
 
 
