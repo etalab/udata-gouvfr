@@ -12,6 +12,8 @@ from udata.app import cache, nav
 from udata.models import Dataset
 from udata.i18n import lazy_gettext as _
 
+from udata_gouvfr.pages.utils import get_menu_list
+
 log = logging.getLogger(__name__)
 
 RE_POST_IMG = re.compile(
@@ -84,6 +86,10 @@ NETWORK_LINKS = [
 nav.Bar(
     'gouvfr_network',
     [nav.Item(label, label, url=url) for label, url in NETWORK_LINKS]
+)
+
+nav.Bar(
+    'gouvfr_pages', get_menu_list('footer')
 )
 
 

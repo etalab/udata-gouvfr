@@ -21,6 +21,21 @@
                     </li>
                     {% endfor %}
                 </ul>
+                <ul>
+                    <!-- TODO add agressive caching -->
+                    {% for item in nav.gouvfr_pages %}
+                    <li>
+                        <a href="{{ '' if item.items else item.url }}">{{ item.label }}</a>
+                        {% if item.items %}
+                        <ul>
+                            {% for subitem in item.items %}
+                            <li><a href="{{ subitem.url }}">{{ subitem.label }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
             </section>
             <section class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
                 <h5>{{ _('Topics') }}</h5>

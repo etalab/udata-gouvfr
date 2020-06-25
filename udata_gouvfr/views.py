@@ -1,15 +1,14 @@
 import frontmatter
-import requests
 
-from flask import url_for, redirect, abort, current_app
+from flask import url_for, redirect, abort
 from jinja2.exceptions import TemplateNotFound
-from mongoengine.errors import ValidationError
 
 from udata import theme
-from udata.app import cache
 from udata.models import Reuse, Organization, Dataset
 from udata.i18n import I18nBlueprint
 from udata.sitemap import sitemap
+
+from udata_gouvfr.pages import utils as putils
 
 from .models import (
     DATACONNEXIONS_5_CANDIDATE, C3, NECMERGITUR, OPENFIELD16, SPD
@@ -51,46 +50,12 @@ def redevances():
     return theme.render('redevances.html')
 
 
-def get_pages_gh_urls(slug):
-    repo = current_app.config.get('PAGES_GH_REPO_NAME')
-    if not repo:
-        abort(404)
-    branch = current_app.config.get('PAGES_REPO_BRANCH', 'master')
-    raw_url = f'https://raw.githubusercontent.com/{repo}/{branch}/pages/{slug}.md'
-    gh_url = f'https://github.com/{repo}/blob/{branch}/pages/{slug}.md'
-    return raw_url, gh_url
-
-
-@cache.cached(300)
-def get_page_content(slug):
-    raw_url, gh_url = get_pages_gh_urls(slug)
-    # We let the error appear because:
-    # - we dont want to cache false responses
-    # - this is only visible on static page
-    response = requests.get(raw_url, timeout=5)
-    if response.status_code == 404:
-        abort(404)
-    response.raise_for_status()
-    return response.text, gh_url
-
-
-def get_object(model, id_or_slug):
-    objects = getattr(model, 'objects')
-    obj = objects.filter(slug=id_or_slug).first()
-    if not obj:
-        try:
-            obj = objects.filter(id=id_or_slug).first()
-        except ValidationError:
-            pass
-    return obj
-
-
 @blueprint.route('/pages/<slug>')
 def show_page(slug):
-    content, gh_url = get_page_content(slug)
+    content, gh_url = putils.get_page_content(slug)
     page = frontmatter.loads(content)
-    reuses = [get_object(Reuse, r) for r in page.get('reuses', [])]
-    datasets = [get_object(Dataset, d) for d in page.get('datasets', [])]
+    reuses = [putils.get_object(Reuse, r) for r in page.get('reuses', [])]
+    datasets = [putils.get_object(Dataset, d) for d in page.get('datasets', [])]
     reuses = [r for r in reuses if r is not None]
     datasets = [d for d in datasets if d is not None]
     return theme.render(
