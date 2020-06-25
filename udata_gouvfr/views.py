@@ -81,7 +81,7 @@ def get_object(model, id_or_slug):
         try:
             obj = objects.filter(id=id_or_slug).first()
         except ValidationError:
-            obj = None
+            pass
     return obj
 
 
