@@ -49,6 +49,13 @@ class StaticPagesTest:
         assert b'dummy_from_cache' in response.data
         assert rmock.call_count == 2
 
+    def test_page_error_empty_cache(self, client, rmock, mocker):
+        mocker.patch.object(cache, 'get', return_value=None)
+        raw_url, gh_url = get_pages_gh_urls('cache1')
+        rmock.get(raw_url, status_code=500)
+        response = client.get(url_for('gouvfr.show_page', slug='cache1'))
+        assert response.status_code == 503
+
     def test_page(self, client, rmock):
         raw_url, gh_url = get_pages_gh_urls('test')
         rmock.get(raw_url, text="""#test""")
@@ -85,6 +92,14 @@ menu:
         assert rmock.call_count == 1
         assert len(menu) == 1
         assert menu[0] == 'dummy_from_cache'
+
+    def test_menu_empty_cache(self, mocker, rmock):
+        url = get_menu_gh_url()
+        mocker.patch.object(cache, 'get', return_value=None)
+        rmock.get(url, status_code=500)
+        menu = get_menu_list('footer')
+        assert rmock.call_count == 1
+        assert len(menu) == 0
 
     def test_menu_cache_timeout(self, mocker, rmock):
         url = get_menu_gh_url()
