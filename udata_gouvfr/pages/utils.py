@@ -7,9 +7,10 @@ from mongoengine.errors import ValidationError
 
 from udata.app import cache
 
+log = logging.getLogger(__name__)
+
 PAGE_CACHE_DURATION = 60 * 5  # in seconds
 MENU_CACHE_DURATION = 60 * 60  # in seconds
-log = logging.getLogger(__name__)
 
 
 def get_menu_gh_url():
