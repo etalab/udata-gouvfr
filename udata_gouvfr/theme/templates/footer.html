@@ -22,7 +22,6 @@
                     {% endfor %}
                 </ul>
                 <ul>
-                    <!-- TODO add agressive caching -->
                     {% for item in nav.gouvfr_pages %}
                     <li>
                         <a href="{{ '' if item.items else item.url }}">{{ item.label }}</a>
