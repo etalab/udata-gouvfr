@@ -88,11 +88,12 @@ nav.Bar(
     [nav.Item(label, label, url=url) for label, url in NETWORK_LINKS]
 )
 
-pages_menu = get_menu_list('footer')
-print('------->', pages_menu)
-nav.Bar(
-    'gouvfr_pages', [nav.Item(pm[0], None, url=pm[1]) for pm in pages_menu]
-)
+# do not attempt to fetch stuff from github when TESTING
+if not current_app.config['TESTING']:
+    pages_menu = get_menu_list('footer')
+    nav.Bar(
+        'gouvfr_pages', [nav.Item(pm[0], None, url=pm[1]) for pm in pages_menu]
+    )
 
 
 @cache.memoize(50)
