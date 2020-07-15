@@ -21,7 +21,7 @@ def get_menu_gh_url():
     return f'https://api.github.com/repos/{repo}/contents/pages?ref={branch}'
 
 
-@cache.cached(MENU_CACHE_DURATION)
+@cache.memoize(MENU_CACHE_DURATION)
 def get_menu_list(menu):
     """
     Build a menu list from github repo
@@ -68,7 +68,7 @@ def get_pages_gh_urls(slug):
     return raw_url, gh_url
 
 
-@cache.cached(PAGE_CACHE_DURATION)
+@cache.memoize(PAGE_CACHE_DURATION)
 def get_page_content(slug):
     '''
     Get a page content from gh repo (md).

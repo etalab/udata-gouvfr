@@ -183,7 +183,7 @@ def _discourse_request(url):
         return
 
 
-@cache.cached(50)
+@cache.memoize(50)
 def get_discourse_posts():
     base_url = current_app.config.get('DISCOURSE_URL')
     category_id = current_app.config.get('DISCOURSE_CATEGORY_ID')
