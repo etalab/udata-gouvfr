@@ -70,9 +70,8 @@ if export_dataset_id:
                              _external=True)
         footer_links.append(nav.Item(_('Data catalog'), None, url=export_url))
 
-key_data_url = url_for('gouvfr.show_page', slug='donnees-cles-par-sujet',
-                       _external=True)
-footer_links.append(nav.Item('Données clés par sujet', None, url=key_data_url))
+footer_links.append(nav.Item('Données clés par sujet', 'gouvfr.show_page',
+                             args={'slug': 'donnees-cles-par-sujet'}))
 
 nav.Bar('gouvfr_footer', footer_links)
 
