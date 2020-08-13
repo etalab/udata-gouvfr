@@ -4,6 +4,27 @@
 
 - Nothing yet
 
+## 2.1.5 (2020-08-05)
+
+- Mise à jour de l'URL de Geo SIRENE [#489](https://github.com/etalab/udata-gouvfr/pull/489)
+- Add footer link to pages summary and page cache [#488](https://github.com/etalab/udata-gouvfr/pull/488)
+
+## 2.1.4 (2020-06-29)
+
+- Add static /pages/* from md in github repo [#483](https://github.com/etalab/udata-gouvfr/pull/483)
+
+## 2.1.3 (2020-06-16)
+
+- Fix packaging
+
+## 2.1.1 (2020-06-11)
+
+- Adding banner with setting inherited from udata's settings [#480](https://github.com/etalab/udata-gouvfr/pull/480)
+
+## 2.1.0 (2020-05-13)
+
+- Remove public services metrics [#472](https://github.com/etalab/udata-gouvfr/pull/472)
+
 ## 2.0.2 (2020-04-22)
 
 - Ajout du _flag_ "recherche" pour activer le _widget_ d'experimentation de recherche [#466](https://github.com/etalab/udata-gouvfr/pull/466/commits/9c42b5aa8e6e0e37f471a32182196b989bc41a68)

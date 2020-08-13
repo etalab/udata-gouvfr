@@ -17,7 +17,7 @@ from udata.core.reuse.factories import ReuseFactory, VisibleReuseFactory
 from udata.core.organization.factories import OrganizationFactory
 from udata.core.spatial.factories import SpatialCoverageFactory
 from udata.frontend.markdown import md
-from udata.models import Badge, PUBLIC_SERVICE
+from udata.models import Badge
 from udata.settings import Testing
 from udata.tests.features.territories.test_territories_process import (
     create_geozones_fixtures
@@ -25,12 +25,11 @@ from udata.tests.features.territories.test_territories_process import (
 from udata.utils import faker
 from udata.tests.helpers import assert200, assert404, assert_redirects, assert_equal_dates
 
-from .models import (
+from udata_gouvfr.models import (
     DATACONNEXIONS_5_CANDIDATE, DATACONNEXIONS_6_CANDIDATE,
     TERRITORY_DATASETS, OPENFIELD16, SPD
 )
-from .views import DATACONNEXIONS_5_CATEGORIES, DATACONNEXIONS_6_CATEGORIES
-from .metrics import PublicServicesMetric
+from udata_gouvfr.views import DATACONNEXIONS_5_CATEGORIES, DATACONNEXIONS_6_CATEGORIES
 
 
 class GouvFrSettings(Testing):
@@ -133,7 +132,7 @@ class GouvFrHomeBlogTest:
 
     @pytest.fixture
     def home(self, mocker, client):
-        from . import theme
+        from udata_gouvfr import theme
 
         def home_client(blogpost):
             mocker.patch.object(theme, 'get_blog_post', return_value=blogpost)
@@ -190,7 +189,7 @@ class GetBlogPostMixin:
 
     @pytest.fixture
     def blogpost(self, app, rmock):
-        from .theme import get_blog_post
+        from udata_gouvfr.theme import get_blog_post
 
         def fixture(feed):
             if isinstance(feed, Exception):
@@ -500,22 +499,6 @@ class GouvFrHomeDiscourseTest:
         rmock.get(url, exc=requests.ConnectionError('Error'))
         response = client.get(url_for('site.home'))
         assert200(response)
-
-
-@pytest.mark.usefixtures('clean_db')
-class GouvFrMetricsTest:
-    '''Check metrics'''
-    settings = GouvFrSettings
-
-    def test_public_services(self):
-        ps_badge = Badge(kind=PUBLIC_SERVICE)
-        public_services = [
-            OrganizationFactory(badges=[ps_badge]) for _ in range(2)
-        ]
-        for _ in range(3):
-            OrganizationFactory()
-
-        assert PublicServicesMetric().get_value() == len(public_services)
 
 
 @pytest.mark.options(DEFAULT_LANGUAGE='en')
