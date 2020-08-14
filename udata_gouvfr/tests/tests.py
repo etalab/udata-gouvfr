@@ -112,6 +112,7 @@ class GouvFrThemeTest:
             'slug': 'slug',
             'owner': 'owner',
             'is_open': 1,
+            'logo': '/logo.png',
         }]
         dataset.save()
 
