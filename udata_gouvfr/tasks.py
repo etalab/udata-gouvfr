@@ -26,7 +26,7 @@ def process_dataset(d_id, apis):
     success(f'Imported {len(apis)} API(s) for {str(dataset)}')
 
 
-@job("apigouvfr-load-apis")
+@job('apigouvfr-load-apis')
 def apigouvfr_load_apis(self):
     '''Load dataset-related APIs from api.gouv.fr'''
     r = requests.get(current_app.config['APIGOUVFR_URL'])
