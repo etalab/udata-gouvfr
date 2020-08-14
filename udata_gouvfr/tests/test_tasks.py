@@ -28,6 +28,11 @@ class ApiGouvFrTasksTest:
         }]
         payload = copy.deepcopy(apis)
         payload[0]['datagouv_uuid'] = [str(dataset.id), 'nope']
+        # missing fields, won't be processed
+        payload.append({
+            'title': 'une autre API',
+            'datagouv_uuid': [str(dataset.id)],
+        })
         rmock.get(url, json=payload)
         apigouvfr_load_apis()
         dataset.reload()
