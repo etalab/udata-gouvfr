@@ -27,7 +27,7 @@ def process_dataset(d_id, apis):
 
 
 @job("apigouvfr-load-apis")
-def load(self):
+def apigouvfr_load_apis(self):
     '''Load dataset-related APIs from api.gouv.fr'''
     r = requests.get(current_app.config['APIGOUVFR_URL'])
     r.raise_for_status()
