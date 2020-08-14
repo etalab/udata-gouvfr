@@ -8,7 +8,10 @@ from udata.commands import success, error
 from udata.core.dataset.models import Dataset
 from udata.tasks import job
 
-from udata_gouvfr import APIGOUVFR_EXTRAS_KEY
+from udata_gouvfr import (
+    APIGOUVFR_EXTRAS_KEY,
+    APIGOUVFR_EXPECTED_FIELDS,
+)
 
 
 def get_dataset(id_or_slug):
@@ -32,13 +35,24 @@ def apigouvfr_load_apis(self):
     r = requests.get(current_app.config['APIGOUVFR_URL'], timeout=10)
     r.raise_for_status()
 
+    # cleanup existing mappings
+    Dataset.objects.filter(**{
+        f'extras__{APIGOUVFR_EXTRAS_KEY}__exists': True,
+    }).update(**{
+        f'unset__extras__{APIGOUVFR_EXTRAS_KEY}': True,
+    })
+
     apis = r.json()
     datasets_apis = defaultdict(list)
     for api in apis:
-        # strictly non open APIs, ignore
-        if api['is_open'] == -1:
-            continue
         d_ids = api.pop('datagouv_uuid', [])
+        if not d_ids:
+            continue
+        if not all([k in api for k in APIGOUVFR_EXPECTED_FIELDS]):
+            error(f'Missing field in payload: {api}')
+            continue
+        if api['openness'] not in current_app.config.get('APIGOUVFR_ALLOW_OPENNESS', []):
+            continue
         for d_id in d_ids:
             if api not in datasets_apis[d_id]:
                 datasets_apis[d_id].append(api)

@@ -12,3 +12,13 @@ PAGES_REPO_BRANCH = 'master'
 
 # api.gouv.fr
 APIGOUVFR_URL = 'https://api.gouv.fr/api/v1/apis'
+APIGOUVFR_EXPECTED_FIELDS = [
+    'title',
+    'tagline',
+    'path',
+    'slug',
+    'owner',
+    'openness',
+    'logo',
+]
+APIGOUVFR_ALLOW_OPENNESS = ['open', 'semi_open']

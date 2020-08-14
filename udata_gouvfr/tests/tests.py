@@ -111,7 +111,7 @@ class GouvFrThemeTest:
             'path': '/path',
             'slug': 'slug',
             'owner': 'owner',
-            'is_open': 1,
+            'openness': 'open',
             'logo': '/logo.png',
         }]
         dataset.save()
