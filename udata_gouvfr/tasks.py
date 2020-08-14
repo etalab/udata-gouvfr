@@ -29,7 +29,7 @@ def process_dataset(d_id, apis):
 @job('apigouvfr-load-apis')
 def apigouvfr_load_apis(self):
     '''Load dataset-related APIs from api.gouv.fr'''
-    r = requests.get(current_app.config['APIGOUVFR_URL'])
+    r = requests.get(current_app.config['APIGOUVFR_URL'], timeout=10)
     r.raise_for_status()
 
     apis = r.json()
