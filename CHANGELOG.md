@@ -3,6 +3,7 @@
 ## Current (in progress)
 
 - Add news link to posts list [#504](https://github.com/etalab/udata-gouvfr/pull/504)
+- Show pointer cursor when hovering on footer contact summary [#506](https://github.com/etalab/udata-gouvfr/pull/506)
 
 ## 2.2.2 (2020-10-16)
 
