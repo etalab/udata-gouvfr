@@ -53,7 +53,7 @@
                     {% endfor %}
 
                     <div class="col-md-4 col-sm-6 col-xs-12">
-                        {% if read_only_mode == False %}
+                        {% if not read_only_mode %}
                         {% include theme('dataset/add-reuse-card.html') %}
                         {% endif %}
 					</div>
