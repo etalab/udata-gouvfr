@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Read Only Mode modifications on theme [#509](https://github.com/etalab/udata-gouvfr/pull/509)
 
 ## 2.2.3 (2020-11-09)
 

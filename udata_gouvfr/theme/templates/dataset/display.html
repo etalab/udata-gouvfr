@@ -23,7 +23,7 @@
                 {% for resource in dataset.community_resources %}
                     {% include theme('dataset/resource/card.html') %}
                 {% endfor %}
-                {% if read_only_mode == False %}
+                {% if not read_only_mode %}
                 <a class="card resource-card add"
                     href="{{ url_for('admin.index', path='community-resource/new/', **{'dataset_id': dataset.id}) }}">
                     <div class="card-logo"><span>+</span></div>
