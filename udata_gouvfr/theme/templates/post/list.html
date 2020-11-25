@@ -4,9 +4,11 @@
 {% set a_content = config['NEWSLETTER_SUB_MESSAGE'] %}
 
 {% block alert_section %}
+{% if config['NEWSLETTER_SUBSCRIPTION_BANNER'] %}
 <div class="container-fluid alert alert-info">
     <div class="container" role="alert">
         <a href="{{ a_link }}">{{ a_content|safe }}</a>
     </div>
 </div>
+{% endif %}
 {% endblock %}

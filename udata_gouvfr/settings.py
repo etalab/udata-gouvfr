@@ -15,5 +15,6 @@ APIGOUVFR_URL = 'https://api.gouv.fr/api/v1/apis'
 APIGOUVFR_ALLOW_OPENNESS = ['open', 'semi_open']
 
 # Newsletter's subscription page's link
+NEWSLETTER_SUBSCRIPTION_BANNER = False
 NEWSLETTER_LINK = ''
 NEWSLETTER_SUB_MESSAGE = ''
