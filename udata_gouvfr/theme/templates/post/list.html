@@ -1,0 +1,12 @@
+{% extends 'post/list.html' %}
+
+{% set a_link = config['NEWSLETTER_LINK'] %}
+{% set a_content = config['NEWSLETTER_SUB_MESSAGE'] %}
+
+{% block alert_section %}
+<div class="container-fluid alert alert-info">
+    <div class="container" role="alert">
+        <a href="{{ a_link }}">{{ a_content|safe }}</a>
+    </div>
+</div>
+{% endblock %}
