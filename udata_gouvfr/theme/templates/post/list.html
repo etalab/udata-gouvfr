@@ -5,9 +5,9 @@
 
 {% block alert_section %}
 {% if config['POST_BANNER_ACTIVATED'] %}
-<div class="container-fluid alert alert-info">
-    <div class="container" role="alert">
-        <a href="{{ a_link }}" style="text-decoration: underline;">{{ a_content|safe }}</a>
+<div class="container-fluid alert-info">
+    <div class="container banner">
+        <a href="{{ a_link }}">{{ a_content|safe }}</a>
     </div>
 </div>
 {% endif %}
