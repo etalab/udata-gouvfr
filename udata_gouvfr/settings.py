@@ -15,6 +15,6 @@ APIGOUVFR_URL = 'https://api.gouv.fr/api/v1/apis'
 APIGOUVFR_ALLOW_OPENNESS = ['open', 'semi_open']
 
 # Newsletter's subscription page's link
-NEWSLETTER_SUBSCRIPTION_BANNER = False
-NEWSLETTER_LINK = ''
-NEWSLETTER_SUB_MESSAGE = ''
+POST_BANNER_ACTIVATED = True
+POST_BANNER_LINK = 'https://infolettres.etalab.gouv.fr/subscribe/rn7y93le1'
+POST_BANNER_MESSAGE = 'Pour ne rien manquer, de l’actualité de data.gouv.fr et de l’open data, inscrivez-vous à notre infolettre.'
