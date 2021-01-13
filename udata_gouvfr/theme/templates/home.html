@@ -66,8 +66,8 @@
             <div class="col-xs-12">
                 <h3>
                     <a href="{{ url_for('gouvfr.show_page', slug='donnees-cles-par-sujet') }}"
-                        title="{{ _('Données clés par sujet') }}">
-                        {{ _('Données clés par sujet') }}
+                        title="Données clés par sujet">
+                        Données clés par sujet
                     </a>
                 </h3>
                 <div class="row">
@@ -75,24 +75,21 @@
                         <li class="col-sm-4 col-xs-12">
                             <a class="card-link" href="{{ url_for('gouvfr.show_page', slug='donnees-coronavirus') }}">
                             <div class="inventory-card green">
-                                <h4 class="inventory-text">Données relatives à la</h4>
-                                <h2 class="inventory-text">COVID-19</h2>
+                                <h4 class="inventory-text">Données relatives à la<span class="inventory-title">COVID-19</span></h4>
                             </div>
                             </a>
                         </li>
                         <li class="col-sm-4 col-xs-12">
                             <a class="card-link" href="{{ url_for('gouvfr.show_page', slug='donnees-des-elections') }}">
                             <div class="inventory-card blue">
-                                <h4 class="inventory-text">Données des</h4>
-                                <h2 class="inventory-text">ÉLECTIONS</h2>
+                                <h4 class="inventory-text">Données des<span class="inventory-title">ÉLECTIONS</span></h4>
                             </div>
                             </a>
                         </li>
                         <li class="col-sm-4 col-xs-12">
                             <a class="card-link" href="{{ url_for('gouvfr.show_page', slug='donnees-comptes-publics') }}">
                             <div class="inventory-card violet">
-                                <h4 class="inventory-text">Données relatives aux</h4>
-                                <h2 class="inventory-text">COMPTES PUBLICS</h2>
+                                <h4 class="inventory-text">Données relatives aux<span class="inventory-title">COMPTES PUBLICS</span></h4>
                             </div>
                             </a>
                         </li>
