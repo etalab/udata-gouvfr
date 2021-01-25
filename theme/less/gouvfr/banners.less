@@ -32,30 +32,37 @@
 
 }
 
+.navbar-banner-red {
+
+    .banner-gradient(#D94444, #900E0E);
+
+    z-index: 1000;
+
+    @media (max-width: @grid-float-breakpoint) {
+        .container {
+            padding: 10px;
+        }
+    }
+
+}
+
 
 .banner {
-  
+
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50px; 
+    min-height: 50px;
 
     p {
         text-align: center;
         color: white;
         font-size: 12px;
         margin-bottom: 0px;
-        
+
         a {
             color: white;
-
-            &.force-underline {
-                text-decoration: underline;
-            }
-
-            &.no-underline {
-                text-decoration: none;
-            }
+            text-decoration: underline;
         }
 
     }

@@ -5,10 +5,20 @@
     </div>
     <![endif]-->
 
+    {% if config['READ_ONLY_MODE'] %}
+    <nav class="navbar navbar-static-top navbar-banner-red">
+        <div class="container banner">
+            <p class="text-center text-white">
+                {{ _('Due to security reasons, the creation of new content is currently disabled.') }}
+            </p>
+        </div>
+    </nav>
+    {% endif %}
+
     {% if config['BANNER_ACTIVATED'] %}
       {% block banner %}
-        {% set b_filename = config['BANNER_HTML_FILENAME'] %}
-        {% include theme('banners/{0}'.format(b_filename)) with context %}
+        {% set b_content = config['BANNER_HTML_CONTENT'] %}
+        {% include theme('banners/generic.html') with context %}
       {% endblock %}
     {% endif %}
 
