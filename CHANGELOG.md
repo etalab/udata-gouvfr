@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Remove tracking in order to avoid having to show gdpr consent banner [#517](https://github.com/etalab/udata-gouvfr/pull/517)
+- Keep tracking to strictly necessary [#517](https://github.com/etalab/udata-gouvfr/pull/517)
 
 ## 2.5.0 (2021-01-25)
 
