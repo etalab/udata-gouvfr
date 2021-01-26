@@ -4,6 +4,10 @@
 
 - Keep tracking to strictly necessary [#517](https://github.com/etalab/udata-gouvfr/pull/517)
 
+## 2.5.1 (2021-01-26)
+
+- New Crowdin translations [#511](https://github.com/etalab/udata-gouvfr/pull/511)
+
 ## 2.5.0 (2021-01-25)
 
 - Add Inventory cards on homepage [#514](https://github.com/etalab/udata-gouvfr/pull/514)
