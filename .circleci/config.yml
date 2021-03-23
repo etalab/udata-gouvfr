@@ -122,17 +122,17 @@ jobs:
             - dist
 
   publish:
-      docker:
-        - image: udata/circleci:2-alpine
-      steps:
-        - attach_workspace:
-            at: .
-        - deploy:
-            name: Publish on PyPI
-            command: |
-              source venv/bin/activate
-              pip install twine
-              twine upload --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" dist/*.whl
+    docker:
+      - image: udata/circleci:2-alpine
+    steps:
+      - attach_workspace:
+          at: .
+      - deploy:
+          name: Publish on PyPI
+          command: |
+            source venv/bin/activate
+            pip install twine
+            twine upload --username "${PYPI_USERNAME}" --password "${PYPI_PASSWORD}" dist/*.whl
 
   github:
     docker:
