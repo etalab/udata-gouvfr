@@ -3,6 +3,21 @@
 {% set community_subtitle = _('Explore with %(certifier)s', certifier=config.SITE_TITLE ) %}
 {% set read_only_mode = config.READ_ONLY_MODE %}
 
+{% block content %}
+{% if 'inspire:identifier' in dataset.extras %}
+<div class="container-fluid alert alert-danger">
+    <div class="container" role="alert">
+        Ce jeu de données est issu de la plateforme <a href="https://geo.data.gouv.fr">geo.data.gouv.fr</a>. 
+        Cette plateforme n'est plus activement maintenue et des anomalies peuvent être présentes sur les données ou les métadonnées.
+        Plus d'informations sur le <a href="">décomissionnement de la plateforme sont disponibles ici.</a>
+    </div>
+</div>
+{% endif %}
+
+{{ super() }}
+
+{% endblock %}
+
 {% block community %}
 <section class="community_container" id="community">
     <header>
