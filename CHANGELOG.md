@@ -4,6 +4,10 @@
 
 - Nothing yet
 
+## 2.5.5 (2021-04-02)
+
+- Thanks for all the fish [#529](https://github.com/etalab/udata-gouvfr/pull/529)
+
 ## 2.5.4 (2021-03-31)
 
 - 🦀
