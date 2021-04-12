@@ -11,60 +11,6 @@
 {% block content %}
 {% cache cache_duration, 'home', g.lang_code %}
 
-{# Datasets section #}
-{% set nb_datasets = current_site.settings.home_datasets|length %}
-{% set dataset_tabs = (
-    ('editorial-datasets', _('Featured datasets'), current_site.settings.home_datasets, {}),
-    ('recent-datasets', _('Latest datasets'), recent_datasets[:nb_datasets], {'sort': '-created'}),
-) %}
-
-<section class="default spaced">
-      <div class="container">
-            {# Dataset tabs #}
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3>{{ _('Datasets') }}</h3>
-                    <ul class="nav nav-pills" data-tabs="tabs">
-                        {% for tab_id, label, _, _ in dataset_tabs %}
-                        <li {% if loop.first %}class="active"{% endif %}>
-                            <a href="#{{tab_id}}" data-toggle="tab">{{ label }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="tab-content">
-
-                    {% for tab_id, label, datasets, kwargs in dataset_tabs  %}
-                    <div class="tab-pane {% if loop.first %}active{% endif %}" id="{{tab_id}}">
-                        <div class="card-list card-list--columned">
-
-                            {% for dataset in datasets %}
-                            <div class="col-xs-12 col-md-4 col-sm-6">
-                                {% include theme('dataset/card.html') %}
-                            </div>
-                            {% endfor %}
-
-                        </div>
-                        <div class="clearfix"></div>
-                        <p class="text-center">
-                            <a href="{{ url_for('datasets.list', **kwargs) }}" class="btn btn-default">
-                                <span class="fa fa-fw fa-list" ></span>
-                                {{ _('See more') }}
-                            </a>
-                        </p>
-                    </div>
-                    {% endfor %}
-
-                </div>
-            </div>
-            {# end Dataset tabs #}
-      </div>
-</section>
-{# End datasets section #}
-
 {# Last inventories section #}
 <section class="default">
     <div class="container">
@@ -109,65 +55,45 @@
 </section>
 {# End last inventories section #}
 
-{# Reuses section #}
-{% set nb_reuses = current_site.settings.home_reuses|length %}
-{% set reuse_tabs = (
-    ('editorial-reuses', _('Featured reuses'), current_site.settings.home_reuses, {}),
-    ('recent-reuses', _('Latest reuses'), recent_reuses[:3], {'sort': '-created'}),
-) %}
+{# Datasets section #}
+{% set nb_datasets = current_site.settings.home_datasets|length %}
+{% set datasets_list = current_site.settings.home_datasets %}
 
 <section class="default spaced">
       <div class="container">
-            {# Reuse tabs #}
+            {# Dataset tabs #}
             <div class="row">
                 <div class="col-xs-12">
                     <h3>
-                        <a href="{{ url_for('reuses.list', sort='-created') }}"
-                            title="{{ _('Latest reuses') }}">
-                            {{ _('Reuses') }}
+                        <a href="{{ url_for('datasets.list', sort='-created') }}">
+                            {{ _('Datasets') }}
                         </a>
                     </h3>
-                    <ul class="nav nav-pills" data-tabs="tabs">
-                        {% for tab_id, label, _, _ in reuse_tabs %}
-                        <li {% if loop.first %}class="active"{% endif %}>
-                            <a href="#{{tab_id}}" data-toggle="tab">{{ label }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
                 </div>
             </div>
 
             <div class="row">
-                <div class="tab-content">
+                <div class="card-list card-list--columned">
 
-                    {% for tab_id, label, reuses, kwargs in reuse_tabs  %}
-                    <div class="tab-pane {% if loop.first %}active{% endif %}" id="{{tab_id}}">
-                        <div class="card-list card-list--columned">
-
-                            {% for reuse in reuses %}
-                            {% set features = ['preview'] %}
-                            <li class="col-sm-4 col-xs-12">
-                                {% include theme('reuse/card.html') %}
-                            </li>
-                            {% endfor %}
-
-                        </div>
-                        <div class="clearfix"></div>
-                        <p class="text-center">
-                            <a href="{{ url_for('datasets.list', **kwargs) }}" class="btn btn-default">
-                                <span class="fa fa-fw fa-list" ></span>
-                                {{ _('See more') }}
-                            </a>
-                        </p>
+                    {% for dataset in datasets_list %}
+                    <div class="col-xs-12 col-md-4 col-sm-6">
+                        {% include theme('dataset/card.html') %}
                     </div>
                     {% endfor %}
 
                 </div>
+                <div class="clearfix"></div>
+                <p class="text-center">
+                    <a href="{{ url_for('datasets.list', **kwargs) }}" class="btn btn-default">
+                        <span class="fa fa-fw fa-list" ></span>
+                        {{ _('See more') }}
+                    </a>
+                </p>
             </div>
-            {# end Reuse tabs #}
+            {# end Dataset tabs #}
       </div>
 </section>
-{# End reuse section #}
+{# End datasets section #}
 
 {% if last_post %}
 {% set post = last_post %}
@@ -200,6 +126,47 @@
     </div>
 </section>
 {% endif %}
+
+{# Reuses section #}
+{% set nb_reuses = current_site.settings.home_reuses|length %}
+{% set reuses_list = current_site.settings.home_reuses %}
+
+<section class="default spaced">
+      <div class="container">
+            {# Reuse tabs #}
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3>
+                        <a href="{{ url_for('reuses.list', sort='-created') }}">
+                            {{ _('Reuses') }}
+                        </a>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="card-list card-list--columned">
+
+                    {% for reuse in reuses_list %}
+                    {% set features = ['preview'] %}
+                    <li class="col-sm-4 col-xs-12">
+                        {% include theme('reuse/card.html') %}
+                    </li>
+                    {% endfor %}
+
+                </div>
+                <div class="clearfix"></div>
+                <p class="text-center">
+                    <a href="{{ url_for('datasets.list', **kwargs) }}" class="btn btn-default">
+                        <span class="fa fa-fw fa-list" ></span>
+                        {{ _('See more') }}
+                    </a>
+                </p>
+            </div>
+            {# end Reuse tabs #}
+      </div>
+</section>
+{# End reuse section #}
 
 {# Blog section #}
 {% if blogpost %}
