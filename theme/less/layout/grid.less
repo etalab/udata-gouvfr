@@ -27,6 +27,7 @@ It's a grid. You know how grids work. Even if you don't, you'll understand in no
 
 `.w-100` can be used to apply a 100% width to an element. `w-auto` does the same for the `auto` value.
 `.mw-100` applies `max-width: 100%` to any element.
+`.no-wrap` applies `flex-wrap: nowrap`.
 
 `.overflow-hidden` and `.overflow-visible` can be used to trigger the corresponding overflow classes for special edge cases where you need a container that can or cannot overflow.
 
@@ -216,6 +217,10 @@ in which case you'll have one column on each side and the main content will span
 .row-inline {
     display: flex;
     flex-wrap: wrap;
+}
+
+.no-wrap {
+    flex-wrap: nowrap;
 }
 
 //Row vertical alignments
