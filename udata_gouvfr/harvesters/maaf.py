@@ -5,8 +5,6 @@ import re
 from collections import OrderedDict
 from urllib.parse import urljoin
 
-import chardet
-
 from lxml import etree, html
 from voluptuous import Schema, Optional, All, Any, Lower, In, Length
 
