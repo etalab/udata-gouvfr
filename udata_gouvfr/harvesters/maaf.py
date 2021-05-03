@@ -142,7 +142,6 @@ class MaafBackend(BaseBackend):
 
     def process(self, item):
         response = self.get(item.remote_id)
-        encoding = chardet.detect(response.content)['encoding']
         xml = self.parse_xml(response.content)
         metadata = xml['metadata']
 
@@ -214,7 +213,6 @@ class MaafBackend(BaseBackend):
 
     def parse_xml(self, xml):
         root = etree.fromstring(xml)
-        print(xml)
         self.xsd.validate(root)
         _, tree = dictize(root)
         return self.validate(tree, schema)
