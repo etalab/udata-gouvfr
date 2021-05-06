@@ -91,11 +91,24 @@ Disclaimer : the search-result component is weird in styling and uses a lot of f
     padding: @spacing-xxs 0;
 
     .card-logo {
+        position: relative;
         flex: 0 0 100px;
         .logo;
 
         img {
             max-width: 100%;
+        }
+
+        //Private or certified badge
+        .dataset-badge {
+            position: absolute;
+            top: -9px;
+            left: -9px;
+
+            svg {
+                width: 24px;
+                height: 24px;
+            }
         }
     }
 
@@ -146,7 +159,7 @@ Disclaimer : the search-result component is weird in styling and uses a lot of f
     //Fancier version for search results, with an hover section for details
     //Disclaimer : the search-result component is weird in styling and uses a lot of fixed pixel values. Please beware if you make any changes in it, you might break responsive.
     &.dataset-search-result {
-        padding: 0 @spacing-xxs; //Unfortunately, we need some sweet borders
+        padding: 0 @spacing-xs; //Unfortunately, we need some sweet borders
 
         border-top: 1px solid @grey-100;
 
