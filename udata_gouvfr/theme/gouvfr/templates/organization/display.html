@@ -29,10 +29,10 @@
         </div>
         {% endif %}
         <div class="row">
-            <div class="col-1">
+            <div class="col-1 col-md-12 text-align-center-md">
                 <img src="{{org.logo|placeholder('organization') }}" alt="{{ org.title }}" class="mw-100 logo" />
             </div>
-            <div class="col-10">
+            <div class="col-10 col-md-12 px-md-md">
                 <div class="row-inline no-wrap align-items-center">
                     {% if org.public_service %}
                     <span class="icon-lg text-align-center mr-sm">{% include theme("svg/certified.svg") %}</span>
@@ -46,17 +46,17 @@
                         <li>
                             {{ follow_btn(org) }}
                         </li>
-                        {% if org.metrics.datasets %}
+                        {% if total_datasets > 0 %}
                         <li class="ml-md">
                             <a href="#organization-datasets" class="text-blue-400">
-                                {{ org.metrics.datasets or 0 }} {{ _('@@Jeux de données') }}
+                                {{ total_datasets }} {{ _('@@Jeux de données') }}
                             </a>
                         </li>
                         {% endif %}
-                        {% if org.metrics.reuses %}
+                        {% if total_reuses > 0 %}
                         <li class="ml-md">
                             <a href="#organization-reuses" class="text-green-400">
-                                {{ org.metrics.reuses or 0 }} {{ _('@@Réutilisations') }}
+                                {{ total_reuses }} {{ _('@@Réutilisations') }}
                             </a>
                         </li>
                         {% endif %}
@@ -72,14 +72,12 @@
     </section>
 </section>
 
-{# FIXME: need to Union private reuses and private datasets and change the search-result template to handle those #}
-{# TODO: check if paginator works, add an empty if for reuses and datasets ? #}
-{# TODO: proper <select> also needed in discussions and footer #}
-{# TODO: liens admin manquant ? #}
-{# TODO: séparateurs verticaux membres #}
+{# TODO: proper <select> also needed in discussions and footer, then sort from URL param #}
+{# TODO: wire the pagination for both lists #}
 
 <section class="organization-secondary">
-    <section id="organization-datasets" class="organization-datasets bg-grey-50 p-xl">
+    {% if datasets and datasets|length > 0 %}
+    <section id="organization-datasets" class="organization-datasets bg-grey-50 p-xl p-md-md">
         <div class="hagrid">
             <div class="row">
                 <div class="col-11 offset-1 row-inline justify-between">
@@ -99,19 +97,21 @@
                     </a>
                     {% endfor %}
                 </div>
-                {{ paginator(datasets) }}
             </div>
+            {{ paginator(datasets) }}
         </div>
     </section>
+    {% endif %}
+    {% if reuses and reuses|length > 0 %}
     <section id="organization-reuses" class="organization-reuses p-xl">
         <div class="container">
             <div>
                 <h2>{{ _('@@Réutilisations') }}<sup>{{ reuses|length or 0 }}</sup></h2>
             </div>
             <div>
-                <ul>
+                <ul class="row">
                     {% for reuse in reuses %}
-                    <li class="col-2 col-lg-6 col-sm-12 text-align-center">
+                    <li class="col-3 col-lg-6 col-sm-12 text-align-center">
                         <a href="{{ url_for('reuses.show', reuse=reuse) }}"
                             title="{{ reuse.title }}">{% include theme('reuse/card.html') %}
                         </a>
@@ -122,21 +122,17 @@
             </div>
         </div>
     </section>
+    {% endif %}
     <section class="organization-members p-xl">
         <div class="container">
             <h2>{{ _('@@Membres') }}<sup>{{ org.members|length or 0 }}</sup></h2>
             <div class="row">
-                {# TODO: card this ? link this ? #}
                 {% for member in org.members %}
-                <a href="" class="unstyled w-100">
-                    <div class="col-4 row-inline align-items-center">
-                        <img src="https://placekitten.com/50/50/" alt="" />
-                        <div class="pl-md">
-                            <strong class="w-100">Mathilde Hoang</strong>
-                            <div><span class="badge mt-xxs">Admin</span></div>
-                        </div>
-                    </div>
-                </a>
+                {% set user = member.user %}
+                {% set role = member.role %}
+                <div
+                    class="col-4 col-md-12 pl-md-0 border-md-0 pb-sm {% if not loop.index0 % 3 == 0 %}border-left pl-lg{% endif %}">
+                    {% include theme('user/card.html') %}</div>
                 {% endfor %}
             </div>
         </div>
@@ -162,7 +158,7 @@
                     </dl>
                 </div>
                 <div class="col-6 col-md-12  my-md-lg">
-                    <h3>{{ _('@@Administration') }}</h3>
+                    <h3>{{ _('@@Actions') }}</h3>
                     <ul class="nav-list">
                         {% if can_edit %}
                         <li class="my-md">
@@ -171,8 +167,8 @@
                         </li>
                         {% endif %}
                         <li class="my-md">
-                            <a href="{{ url_for('organizations.datasets_csv', org=org) }}" class="nav-link">Télécharger
-                                la liste des jeux de données en .csv</a>
+                            <a href="{{ url_for('organizations.datasets_csv', org=org) }}" class="nav-link">{{ _('@@Télécharger
+                                la liste des jeux de données en .csv') }}</a>
                         </li>
                     </ul>
                 </div>
