@@ -96,7 +96,7 @@ nav.Bar(
 )
 
 footer_support_links = [
-    nav.Item(_('Documentation'), None, url='https://doc.data.gouv.fr'),
+    nav.Item(_("Platform's documentation"), None, url='https://doc.data.gouv.fr'),
     nav.Item(_('Open data guides'), None, url='https://guides.etalab.gouv.fr'),
     nav.Item(_('Support'), None, url='https://support.data.gouv.fr/')
 ]
