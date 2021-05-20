@@ -12,10 +12,7 @@
         {{ title }}
       </h4>
       <div class="card-footer">
-        <ul class="card-features fs-xs">
-          <li>252 ressources</li>
-          <li>2 réutilisations</li>
-        </ul>
+        <ul class="card-features fs-xs"></ul>
       </div>
     </div>
   </article>
