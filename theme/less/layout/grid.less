@@ -206,6 +206,10 @@ in which case you'll have one column on each side and the main content will span
     max-width: (12 * @breakpoint-xl)/10;
     margin: auto;
     overflow: hidden;
+
+    @media @query-hg {
+        padding: 0 @spacing-md;
+    }
 }
 
 .row {

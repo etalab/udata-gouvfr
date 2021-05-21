@@ -11,6 +11,7 @@ Because we can't blame anything or anyone for being too white, we came up with a
 
 `.logo` is a very simple utility that adds padding, white background and grey border around logos for consistent display.
 
+
 ```logo.html
 <div class="logo"><img src="..." /></div>
 ```
@@ -20,4 +21,12 @@ Because we can't blame anything or anyone for being too white, we came up with a
     background: white;
     border: 1px solid @grey-50;
     padding: @spacing-sm;
+
+    img {
+        max-width: 100%;
+    }
+
+    @media @query-md {
+        max-width: 140px;
+    }
 }

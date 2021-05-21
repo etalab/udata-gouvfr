@@ -29,10 +29,13 @@
         </div>
         {% endif %}
         <div class="row">
-            <div class="col-1 col-md-12 text-align-center-md">
-                <img src="{{org.logo|placeholder('organization') }}" alt="{{ org.title }}" class="mw-100 logo" />
+            <div class="col-1 col-md-6 logo">
+                <img src="{{org.logo|placeholder('organization') }}" alt="{{ org.title }}" />
             </div>
-            <div class="col-10 col-md-12 px-md-md">
+            <div class="hidden visible-md col align-items-center justify-end">
+                {{ follow_btn(org) }}
+            </div>
+            <div class="col-10 col-md-12 mt-md-sm">
                 <div class="row-inline no-wrap align-items-center">
                     {% if org.public_service %}
                     <span class="icon-lg text-align-center mr-sm">{% include theme("svg/certified.svg") %}</span>
@@ -43,11 +46,11 @@
                 </div>
                 <div class="mt-xs">
                     <ul class="row-inline align-items-center f-bold">
-                        <li>
+                        <li class="hidden-md">
                             {{ follow_btn(org) }}
                         </li>
                         {% if total_datasets > 0 %}
-                        <li class="ml-md">
+                        <li class="ml-md ml-md-0">
                             <a href="#organization-datasets" class="text-blue-400">
                                 {{ total_datasets }} {{ _('@@Jeux de données') }}
                             </a>
