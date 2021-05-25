@@ -2,6 +2,10 @@
 
 ## Current (in progress)
 
+- Nothing yet
+
+## 2.6.0 (2021-05-25)
+
 - [maaf] fix encoding issue [#531](https://github.com/etalab/udata-gouvfr/pull/531)
 - Add link to support page [#532](https://github.com/etalab/udata-gouvfr/pull/532)
 - UX enhancement [#525](https://github.com/etalab/udata-gouvfr/pull/525):
