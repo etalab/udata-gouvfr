@@ -56,7 +56,21 @@ Content on the site can be styled with Markdown. Ready made styles are provided 
     blockquote {
         margin-left: 0;
         padding-left: @spacing-md;
-        border-left: 2px solid @grey-100;
+
+        position: relative;
+
+        &:before {
+            content: " ";
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            width: 5px;
+            height: 100%;
+
+            background-color: @blue-400;
+            border-radius: 2px;
+        }
     }
 
     pre {
