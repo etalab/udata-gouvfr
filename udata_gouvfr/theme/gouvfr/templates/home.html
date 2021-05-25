@@ -37,7 +37,7 @@
                 {% if last_post %}
                 {% set post = last_post %}
                 {% set image = post.image|placeholder('post') %}
-                <div class="hero-news mb-xl" style="background-image: url('{{image}}')">
+                <div class="hero-news hero-image mb-xl" style="background-image: url('{{image}}')">
                     <div class="news-content">
                         <strong class="text-yellow-100 fs-md">{{ _('News in data') }}</strong>
                         <h2 class="my-md text-white fs-hg">{{ post.name }}</h2>
