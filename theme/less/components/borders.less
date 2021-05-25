@@ -12,6 +12,7 @@ Round all the things with this collection of border-radii
 ```rounded.html
 <img src="..."  class="rounded-circle" />
 <img src="..."  class="rounded-0" />
+<img src="..."  class="rounded-xxs" />
 ```
 
 ## Solid border
@@ -49,11 +50,15 @@ Colors modifiers are available, limited supply :
     border-radius: 50%;
 }
 
+.rounded-xxs {
+    border-radius: @spacing-xxs;
+}
+
 .rounded-0 {
     border-radius: 0;
 }
 
-@defaultBorder: 1px solid @grey-50;
+@defaultBorder: 1px solid @grey-200;
 
 .border {
     border: @defaultBorder;
