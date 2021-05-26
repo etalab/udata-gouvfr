@@ -22,6 +22,7 @@ It's a grid. You know how grids work. Even if you don't, you'll understand in no
 #### Inline-row
 
 `.row-inline` can be used to create an inline "row" without margin. It simply sets a `display: flex` and `flex-wrap: wrap`.
+It's also available for each responsive breakpoint with `.row-inline-{breakpoint}` classes.
 
 ### Utilities
 
@@ -34,6 +35,7 @@ It's a grid. You know how grids work. Even if you don't, you'll understand in no
 ### Auto layout
 
 By default, `.col` classes allow for an easy auto-layout : they all take an equal space within the row.
+They're also available for each responsive breakpoint with `.col-{breakpoint}` classes.
 
 ```grid-auto.html
 <div class="container">
@@ -223,6 +225,16 @@ in which case you'll have one column on each side and the main content will span
     flex-wrap: wrap;
 }
 
+each(@breakpoints, .(@bk, @_k, @_i) {
+    @var: 'query-@{bk}';
+
+    @media @@var {
+        .row-inline-@{bk} {
+            .row-inline;
+        }
+    }
+});
+
 .no-wrap {
     flex-wrap: nowrap;
 }
@@ -339,6 +351,10 @@ each(@breakpoints, .(@bk, @_k, @_i) {
 
         .offset-@{bk}-0 {
             margin-left: @gutter;
+        }
+
+        .col-@{bk} {
+            .col;
         }
     }
 });
