@@ -27,17 +27,15 @@
         {{ _('Published on %(date)s',date=post.published|dateformat(format='long')) }}
     </p>
     {% else %}
-    {# TODO : this #}
-    <small class="private" title="{{ _('Draft') }}"
-        v.popover.literal="{{ _('This post is a draft and will not be visible by other users') }}"
-        popover-trigger="hover" popover-placement="top">{{ _('Draft') }}</small>
+    <div class="well well-grey-100 py-sm my-lg">
+        {{ _('This post is a draft and will not be visible by other users') }}
+    </div>
     {% endif %}
     {% if post.deleted %}
-    <small class="deleted" title="{{ _('Deleted') }}"
-        v-popover.literal="{{ _('This post has been deleted. This will be permanent in the next 24 hours') }}"
-        popover-trigger="hover" popover-placement="top">{{ _('Deleted') }}</small>
+    <div class="well well-grey-100 py-sm my-lg">
+        {{ _('This post has been deleted. This will be permanent in the next 24 hours') }}
+    </div>
     {% endif %}
-    {# endtodo #}
     <div class="markdown">
         <blockquote>
             {{ post.headline|mdstrip(300) }}
@@ -56,25 +54,6 @@
 <div class="container markdown pb-lg" v-pre>
     <div>{{ post.content|markdown }}</div>
 </div>
-
-{# TODO : do something with that ?
-<div class="row main-toolbar">
-    <div class="col-xs-12">
-        <div class="btn-toolbar pull-right">
-            {% if sysadmin %}
-            <div class="btn-group btn-group-sm">
-                <a href="{{ url_for('admin.index', path='post/{id}/'.format(id=post.id)) }}"
-                    class="btn btn-success">
-                    <span class="fa fa-pencil"></span>
-                    {{ _('Edit') }}
-                </a>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-</div>
-{# end button bar #}
-
 
 {% if post.datasets %}
 <div class="container mt-md">
@@ -103,6 +82,20 @@
         </li>
         {% endfor %}
     </ul>
+</div>
+{% endif %}
+
+{% if sysadmin %}
+<div class="container mt-hg">
+    <div class="col-6 col-md-12">
+        <h2 class="fs-xxl">{{ _('@@Actions') }}</h2>
+        <ul class="nav-list">
+            <li class="my-md">
+                <a class="nav-link"
+                    href="{{ url_for('admin.index', path='post/{id}/'.format(id=post.id)) }}">{{ _('Edit') }}</a>
+            </li>
+        </ul>
+    </div>
 </div>
 {% endif %}
 
