@@ -18,6 +18,8 @@ Because we can't blame anything or anyone for being too white, we came up with a
 */
 
 .logo {
+    display: inline-block;
+    position: relative;
     background: white;
     border: 1px solid @grey-50;
     padding: @spacing-sm;
@@ -28,5 +30,17 @@ Because we can't blame anything or anyone for being too white, we came up with a
 
     @media @query-md {
         max-width: 140px;
+    }
+
+    //Private or certified badge or whatever
+    .logo-badge {
+        position: absolute;
+        top: -9px;
+        left: -9px;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
     }
 }
