@@ -35,13 +35,27 @@
                         {% include theme('svg/logotype.svg') %}
                     </a>
                 </div>
-                <div class="col hidden-xl login-box row-inline justify-end">
+                <div class="col login-box row-inline justify-end align-items-center">
+                    {% if current_user.is_authenticated %}
+                    <div class="row-inline align-items-center">
+                        <img src="{{ current_user|avatar_url(24) }}" alt="{{ current_user.fullname }}"
+                            class="mr-xs rounded-circle" />
+                        <span>{{ current_user.fullname }} </span>
+                    </div>
+                    <a href="{{ url_for('admin.index') }}"
+                        title="{{ _('Administration') }}">{% include theme('svg/administration.svg') %}{{ _('Administration') }}
+                    </a>
+                    <a href="{{ url_for('security.logout') }}"
+                        title="{{ _('Logout') }}">{% include theme('svg/login.svg') %}{{ _('Logout') }}
+                    </a>
+                    {% else %}
                     <a href="{{ url_for('security.login', next=request.url) }}"
                         title="{{ _('@@Sign In') }}">{% include theme('svg/login.svg') %}{{ _('@@Se connecter') }}
                     </a>
                     <a href="{{ url_for('security.register', next=request.url) }}"
                         title="{{ _('@@Register') }}">{% include theme('svg/register.svg') %}{{ _("@@S'enregistrer") }}
                     </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
