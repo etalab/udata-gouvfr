@@ -10,20 +10,6 @@
 
 {% set bundle = 'search' %}
 
-{% set a_link = config['POST_BANNER_LINK'] %}
-{% set a_content = config['POST_BANNER_MESSAGE'] %}
-
-{# TODO : what is this how to display dis #}
-{% block alert_section %}
-{% if config['POST_BANNER_ACTIVATED'] %}
-<div class="container-fluid alert-info alert">
-    <div class="container" role="alert">
-        <a href="{{ a_link }}">{{ a_content|safe }}</a>
-    </div>
-</div>
-{% endif %}
-{% endblock %}
-
 {% block breadcrumb %}
 <li class="active">
     {{ _('Posts') }}
@@ -39,12 +25,16 @@
     <h1 class="mb-0">{{ _('Posts') }}</h1>
 </div>
 <div class="alert-info bg-blue-400 text-white my-xl">
-    <div class="hagrid">
-        <p>Pour ne rien manquer, de l’actualité de data.gouv.fr et de l’open data, inscrivez-vous à <a href="" title=""
-                class="f-bold text-white text-decoration-underline">notre infolettre</a>.</p>
+    <div class="container">
+        <p>{{ _('@@Pour ne rien manquer, de l’actualité de data.gouv.fr et de l’open data, inscrivez-vous à')}}
+            <a href="https://infolettres.etalab.gouv.fr/subscribe/rn7y93le1" title="{{ _('@@Subscribe') }}"
+                class="f-bold text-white text-decoration-underline">
+                {{ _('@@notre infolettre.')}}
+            </a>
+        </p>
     </div>
 </div>
-<div class="hagrid">
+<div class="container">
     <div class="row">
         {% for post in posts %}
         <div class="col-4 col-lg-6 col-sm-12">
