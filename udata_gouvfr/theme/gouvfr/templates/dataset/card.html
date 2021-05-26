@@ -6,7 +6,7 @@
     <div class="card-logo">
         <img src="{{ dataset.organization.logo(100, external=True)|placeholder('organization', external=True) }}"
             alt="{{ dataset.organization.name }}" />
-        <div class="dataset-badge">
+        <div class="logo-badge">
             {% if dataset.private %}
             {% include theme('svg/private.svg') %}
             {% else %}

@@ -16,7 +16,7 @@ Vue. -->
         :src="owner.logo_thumbnail"
         :alt="owner.name"
       />
-      <div class="dataset-badge">
+      <div class="logo-badge">
         <span v-html="private" v-if="private" />
         <span v-html="certified" v-else-if="organization.public_service" />
       </div>
