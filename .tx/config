@@ -1,8 +1,8 @@
 [main]
 host = https://www.transifex.com
 
-[udata-gouvfr.python]
-file_filter = udata_gouvfr/translations/<lang>/LC_MESSAGES/udata-gouvfr.po
-source_file = udata_gouvfr/translations/udata-gouvfr.pot
+[udata-front.python]
+file_filter = udata_front/translations/<lang>/LC_MESSAGES/udata-front.po
+source_file = udata_front/translations/udata-front.pot
 source_lang = en
 type = PO
