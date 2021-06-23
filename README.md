@@ -60,7 +60,7 @@ pip install -e udata-front
 Modify your local `udata.cfg` configuration file as following:
 
 ```python
-PLUGINS = ['gouvfr']
+PLUGINS = ['front']
 THEME = 'gouvfr'
 ```
 

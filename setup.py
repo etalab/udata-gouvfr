@@ -56,14 +56,14 @@ setup(
     },
     entry_points={
         'udata.themes': [
-            'front = udata_front.theme.gouvfr',
+            'gouvfr = udata_front.theme.gouvfr',
         ],
         'udata.models': [
             'front = udata_front.models',
         ],
         'udata.front': 'front = udata_front.frontend',
         'udata.apis': [
-            'gouvfr_oembed = udata_front.views.oembed',
+            'front_oembed = udata_front.views.oembed',
         ],
         'udata.harvesters': [
             'maaf = udata_front.harvesters.maaf:MaafBackend',

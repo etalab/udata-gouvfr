@@ -15,7 +15,7 @@ from udata_front.tests.frontend import GouvfrFrontTestCase
 class GouvFrTerritoriesSettings(TerritoriesSettings):
     TEST_WITH_THEME = True
     TEST_WITH_PLUGINS = True
-    PLUGINS = ['gouvfr']
+    PLUGINS = ['front']
     THEME = 'gouvfr'
 
 
