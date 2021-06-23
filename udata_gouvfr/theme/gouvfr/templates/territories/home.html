@@ -26,32 +26,3 @@
     </div>
 </div>
 {% endblock %}
-
-{% block extra_js %}
-<script>
-    var defaultCenter = [47, 2];
-    var defaultZoom = 6;
-    var tilelayer = L.tileLayer(uData.config.map.tiles.url, uData.config.map.tiles.config);
-    var map = L.map('map-nav', {
-        center: defaultCenter,
-        zoom: defaultZoom,
-        zoomControl: false
-    });
-    L.geoJson({
-        {
-            geojson | tojson
-        }
-    }, {
-        onEachFeature: function (feature, layer) {
-            layer.on('click', function () {
-                window.location = '/fr/territories/region/' + feature.properties.code +
-                    '@' + feature.properties.validity.start + '/' +
-                    feature.properties.slug + '/';
-            })
-        }
-    }).addTo(map);
-    tilelayer.addTo(map);
-    map.setView(defaultCenter, defaultZoom);
-
-</script>
-{% endblock %}
