@@ -336,3 +336,11 @@ msgstr ""
 #: __init__.py:50
 msgid "Contact us"
 msgstr "Nous contacter"
+
+#: __init__.py:76
+msgid "Featured datasets by topic"
+msgstr "Données clés par sujet"
+
+#: templates/page.html:53
+msgid "Suggest a modification"
+msgstr "Proposer une modification"

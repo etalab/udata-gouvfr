@@ -73,7 +73,7 @@ if export_dataset_id:
                              _external=True)
         footer_links.append(nav.Item(_('Data catalog'), None, url=export_url))
 
-footer_links.append(nav.Item('Données clés par sujet', 'gouvfr.show_page',
+footer_links.append(nav.Item(_('Featured datasets by topic'), 'gouvfr.show_page',
                              args={'slug': 'donnees-cles-par-sujet'}))
 
 nav.Bar('gouvfr_footer', footer_links)

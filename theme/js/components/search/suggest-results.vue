@@ -20,7 +20,7 @@ Used by the suggest feature to display typeahead-style results when you type you
         :title="$t('Search all datasets')"
       >
         <h2>
-          Jeux de données <sup>{{ results?.datasets?.length || 0 }}</sup>
+          {{ $t("Datasets") }} <sup>{{ results?.datasets?.length || 0 }}</sup>
         </h2>
         <span v-html="arrow" />
       </a>
@@ -63,7 +63,7 @@ Used by the suggest feature to display typeahead-style results when you type you
         :title="$t('Search in reuses')"
       >
         <h2>
-          Réutilisations <sup>{{ results?.reuses?.length || 0 }}</sup>
+          {{ $t("Reuses") }} <sup>{{ results?.reuses?.length || 0 }}</sup>
         </h2>
         <span v-html="arrow" />
       </a>
