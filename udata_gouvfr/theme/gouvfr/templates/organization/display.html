@@ -144,7 +144,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-6 col-md-12">
-                    <h3>{{ _('Technical Information') }}</h3>
+                    <h3>{{ _('Technical details') }}</h3>
                     <dl class="text-grey-300 fs-sm">
                         <div>
                             <dt class="f-light">ID</dt>
@@ -155,7 +155,7 @@
                             <dd class="f-bold m-0">{{ org.created_at|dateformat(format='long') }}</dd>
                         </div>
                         <div>
-                            <dt class="f-light">{{ _('Update date') }}</dt>
+                            <dt class="f-light">{{ _('Modification date') }}</dt>
                             <dd class="f-bold m-0">{{ org.last_modified|dateformat(format='long') }}</dd>
                         </div>
                     </dl>
@@ -170,8 +170,7 @@
                         </li>
                         {% endif %}
                         <li class="my-md">
-                            <a href="{{ url_for('organizations.datasets_csv', org=org) }}" class="nav-link">{{ _('Download
-                                list of .csv datasets') }}</a>
+                            <a href="{{ url_for('organizations.datasets_csv', org=org) }}" class="nav-link">{{ _('Download list of datasets as csv file') }}</a>
                         </li>
                     </ul>
                 </div>

@@ -4,7 +4,7 @@
       class="my-md my-md-xs fs-xl"
       :onChange="handleSearchChange"
       :value="queryString"
-      :placeholder="$t('Search for datasets...')"
+      :placeholder="$t('Search for data...')"
       ref="input"
     />
     <div

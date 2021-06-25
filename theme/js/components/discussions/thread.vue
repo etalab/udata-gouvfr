@@ -59,7 +59,7 @@
           @click.stop="displayForm"
           tabindex="0"
         >
-          {{ $t("Respond") }}
+          {{ $t("Reply") }}
         </a>
         <thread-reply
           :subjectId="id"

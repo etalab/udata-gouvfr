@@ -11,7 +11,7 @@
             <div class="row-inline justify-between">
               {{
                 $t(
-                  "You are viewing a specific discussion about this dataset"
+                  "You are seeing a specific discussion about this dataset"
                 )
               }}
               <a

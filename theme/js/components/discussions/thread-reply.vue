@@ -1,6 +1,6 @@
 <template>
   <div class="thread-reply">
-    <strong class="fs-sm">{{ $t("Respond to the discussion") }}</strong>
+    <strong class="fs-sm">{{ $t("Reply to the discussion") }}</strong>
     <form @submit.prevent="submit" class="my-sm">
       <textarea v-model="comment" :placeholder="$t('Comment')" />
       <footer class="row-inline justify-between align-items-center">

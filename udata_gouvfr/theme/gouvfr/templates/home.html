@@ -19,18 +19,18 @@
                 <div class="mt-md mt-lg-sm">
                     <h4>{{ _('Featured topics') }}</h4>
                     <a href="{{ url_for('gouvfr.spd') }}" class=" btn-venti bg-blue-470">
-                        {{ _('Données de') }}
-                        <strong>{{ _('Référence') }}</strong>
+                        Données de
+                        <strong>Référence</strong>
                     </a>
                     <a href="{{ url_for('gouvfr.show_page', slug='donnees-coronavirus') }}"
                         class="btn-venti my-md bg-blue-450">
-                        {{ _('Données relatives à la') }}
-                        <strong>{{ _('COVID-19') }}</strong>
+                        Données relatives à la
+                        <strong>COVID-19</strong>
                     </a>
                     <a href="{{ url_for('gouvfr.show_page', slug='donnees-comptes-publics') }}"
                         class="btn-venti bg-green-350">
-                        {{ _('Données relatives aux') }}
-                        <strong>{{ _('Comptes Publics') }}</strong>
+                        Données relatives aux
+                        <strong>Comptes Publics</strong>
                     </a>
                 </div>
             </div>
@@ -122,7 +122,7 @@
 {# Reuses section #}
 {% set nb_reuses = current_site.settings.home_reuses|length %}
 {% set reuses_tabs = (
-    ('best-reuses', _('Etalab selection'), current_site.settings.home_reuses, {}),
+    ('best-reuses', _('Etalab\'s selection'), current_site.settings.home_reuses, {}),
     ('latest-reuses', _('Latest reuses'), recent_reuses[:3], {'sort': '-created'}),
 ) %}
 

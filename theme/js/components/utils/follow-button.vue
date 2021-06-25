@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     toggleFollow: function () {
-      this.$auth(this.$t("You must be connected to follow."));
+      this.$auth(this.$t("You must be connected to add a favourite."));
 
       this.loading = true;
 
