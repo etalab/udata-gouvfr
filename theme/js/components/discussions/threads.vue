@@ -88,9 +88,9 @@ const log = console.log;
 const URL_REGEX = /discussion-([a-f0-9]{24})-?([0-9]+)?$/i;
 
 const sorts = [
-  { name: i18n.global.t("Topic creation"), key: "-created" },
+  { name: i18n.global.t("Discussion creation"), key: "-created" },
   {
-    name: i18n.global.t("Last response"),
+    name: i18n.global.t("Last reply"),
     key: "-discussion.posted_on",
   },
 ];

@@ -5,7 +5,7 @@
       <textarea v-model="comment" :placeholder="$t('Comment')" />
       <footer class="row-inline justify-between align-items-center">
         <span class="text-grey-300 fs-sm">
-          {{ $t("Answer as") }}
+          {{ $t("Reply as") }}
           <Author :author="user" />
         </span>
         <input
