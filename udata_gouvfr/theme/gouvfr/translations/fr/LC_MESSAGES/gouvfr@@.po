@@ -159,7 +159,7 @@ msgid "URL"
 msgstr "URL"
 
 #: templates/dataset/resource/card.html:69
-msgid "Stable URL"
+msgid "Permalink"
 msgstr "URL stable"
 
 #: templates/dataset/resource/card.html:73 templates/reuse/display.html:104
@@ -296,8 +296,8 @@ msgid "Actions"
 msgstr "Actions"
 
 #: templates/organization/producer-panel.html:22
-msgid "Follow the producer"
-msgstr "Suivre le producteur"
+msgid "Add the producer as favourite"
+msgstr "Ajouter le producteur en favori"
 
 #: templates/territories/territory.html:16 templates/territories/home.html:14
 msgid ""
