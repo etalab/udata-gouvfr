@@ -59,7 +59,7 @@ Vue. -->
       </li>
       <li>
         <strong>{{ metrics.followers || 0 }}</strong>
-        {{ $tc("followers", metrics.followers || 0) }}
+        {{ $tc("favourites", metrics.followers || 0) }}
       </li>
     </ul>
   </article>

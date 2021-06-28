@@ -131,8 +131,8 @@ msgid "Search reuses"
 msgstr "Rechercher dans les réutilisations"
 
 #: templates/dataset/search-result.html:74
-msgid "followers"
-msgstr "abonnés"
+msgid "favourites"
+msgstr "favoris"
 
 #: templates/dataset/resource/card.html:10
 msgid "Edit button"
