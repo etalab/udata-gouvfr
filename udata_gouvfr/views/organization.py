@@ -67,8 +67,6 @@ class OrganizationDetailView(OrgView, DetailView):
     def get_context(self):
         context = super(OrganizationDetailView, self).get_context()
 
-        params_datasets_page = 1
-        params_reuses_page = 1
         params_datasets_page = request.args.get('datasets_page', 1, type=int)
         params_reuses_page = request.args.get('reuses_page', 1, type=int)
 
