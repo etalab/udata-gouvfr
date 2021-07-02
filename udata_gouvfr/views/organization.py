@@ -69,11 +69,8 @@ class OrganizationDetailView(OrgView, DetailView):
 
         params_datasets_page = 1
         params_reuses_page = 1
-        try:
-            params_datasets_page = int(request.args.get('datasets_page', 1) or 1)
-            params_reuses_page = int(request.args.get('reuses_page', 1) or 1)
-        except ValueError:
-            pass
+        params_datasets_page = request.args.get('datasets_page', 1, type=int)
+        params_reuses_page = request.args.get('reuses_page', 1, type=int)
 
         can_edit = EditOrganizationPermission(self.organization)
         can_view = OrganizationPrivatePermission(self.organization)
