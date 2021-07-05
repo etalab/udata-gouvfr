@@ -90,7 +90,7 @@ def _load_views(app, module):
 
 
 VIEWS = ['gouvfr', 'dataset', 'organization', 'follower', 'post',
-         'reuse', 'search', 'site', 'territories', 'topic', 'user', 'schema']
+         'reuse', 'search', 'site', 'territories', 'topic', 'user']
 
 
 def init_app(app):
@@ -100,6 +100,9 @@ def init_app(app):
     theme.init_app(app)
 
     from . import helpers, error_handlers  # noqa
+
+    if app.config['RESOURCES_SCHEMAS_ENABLED']:
+        VIEWS.append('schema')
 
     for view in VIEWS:
         _load_views(app, 'udata_gouvfr.views.{}'.format(view))

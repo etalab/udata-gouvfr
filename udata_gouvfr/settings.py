@@ -2,6 +2,7 @@
 Default settings for udata-gouvfr
 """
 
+RESOURCES_SCHEMAS_ENABLED = True
 # Frontend banner parameters
 BANNER_ACTIVATED = False
 BANNER_HTML_CONTENT = ''
