@@ -90,7 +90,7 @@ def _load_views(app, module):
 
 
 VIEWS = ['gouvfr', 'dataset', 'organization', 'follower', 'post',
-         'reuse', 'search', 'site', 'territories', 'topic', 'user']
+         'reuse', 'search', 'site', 'territories', 'topic', 'user', 'schema']
 
 
 def init_app(app):
@@ -106,7 +106,6 @@ def init_app(app):
 
     # Load all plugins views and blueprints
     for module in entrypoints.get_enabled('udata.views', app).values():
-        print(module)
         _load_views(app, module)
 
     # Optionally register debug views
