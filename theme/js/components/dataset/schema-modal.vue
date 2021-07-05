@@ -1,5 +1,6 @@
 <template>
   <vue-final-modal class="modal-wrapper">
+    <!-- FIXME: style in css -->
     <div class="modal-body" style="color: #000000">
       <p>
         <span>Cette ressource est associée au schéma <b>{{ resource_schema.name }}</b></span>
