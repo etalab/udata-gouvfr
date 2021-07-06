@@ -101,7 +101,7 @@ def init_app(app):
 
     from . import helpers, error_handlers  # noqa
 
-    if app.config['RESOURCES_SCHEMAS_ENABLED']:
+    if app.config['RESOURCES_SCHEMAGOUVFR_ENABLED']:
         VIEWS.append('schema')
 
     for view in VIEWS:
