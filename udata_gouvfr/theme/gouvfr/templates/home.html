@@ -18,7 +18,7 @@
                 <h1 class="mt-0">{{ _('Open platform for French public data') }}</h1>
                 <div class="mt-md mt-lg-sm">
                     <h4>{{ _('Featured topics') }}</h4>
-                    <a href="{{ url_for('gouvfr.spd') }}" class=" btn-venti bg-blue-470">
+                    <a href="{{ url_for('gouvfr.show_page', slug='spd/reference') }}" class=" btn-venti bg-blue-470">
                         Données de
                         <strong>Référence</strong>
                     </a>
@@ -27,10 +27,10 @@
                         Données relatives à la
                         <strong>COVID-19</strong>
                     </a>
-                    <a href="{{ url_for('gouvfr.show_page', slug='donnees-comptes-publics') }}"
+                    <a href="{{ url_for('gouvfr.show_page', slug='donnees-logement-urbanisme') }}"
                         class="btn-venti bg-green-350">
-                        Données relatives aux
-                        <strong>Comptes Publics</strong>
+                        Données relatives au
+                        <strong>Logement et à l'Urbanisme</strong>
                     </a>
                 </div>
             </div>
@@ -88,7 +88,7 @@
 ) %}
 
 <section class="datasets pb-hg pt-md bg-grey-50">
-    <div class="hagrid">
+    <div class="hagrid overflow-visible">
         {# Dataset tabs #}
         <div class="row justify-between">
             <div class="col-auto">

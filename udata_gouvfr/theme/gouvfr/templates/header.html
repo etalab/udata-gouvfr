@@ -1,3 +1,17 @@
+<div class="bg-blue-350">
+    <div class="hagrid banner">
+        <div class="row align-items-center text-align-center-sm">
+            <p class="text-white">
+                {{ _("Welcome to the new <i>beta</i> version of data.gouv.fr! <a href='{learn_more}'>Learn more</a>, go back to <a href='{legacy}'>the old version</a> or <a href='{feedback}'>send us some feedback</a>.").format(
+                    learn_more='#',
+                    legacy='https://legacy.data.gouv.fr',
+                    feedback='https://github.com/etalab/data.gouv.fr/issues/new?labels=feedback-beta',
+                ) }}
+            </p>
+        </div>
+    </div>
+</div>
+
 <section class="site-header" ref="header">
     <!--[if lte IE 8]>
         <div class="iewarning">
@@ -5,7 +19,6 @@
             <a href="http://browsehappy.com/">{{ _('More information →')}}</a>
         </div>
     <![endif]-->
-
     <header class="header-brand py-sm">
         <div class="hagrid">
             <div class="row align-items-center">
@@ -72,8 +85,8 @@
                 </nav>
                 <div class="col-3 hidden-xl search-box">
                     <form action="/search" class="w-100 row-inline justify-between"
-                        @click.capture.prevent="$refs.suggest.startSearch()">
-                        <input type="text" name="q" placeholder="{{ _('Search') }}" />
+                        @focus.capture.prevent="$refs.suggest.startSearch()" tabindex="0">
+                        <input type="text" @keypress.prevent name="q" placeholder="{{ _('Search') }}" />
                         <button type="submit" aria-label="{{ _('Search') }}">
                             {% include theme('svg/search.svg') %}
                         </button>

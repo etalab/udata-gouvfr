@@ -4,24 +4,23 @@
         <div class="hagrid">
             <div class="row">
                 <div class="col-3 col-lg-12">
-                    <h4>Thématiques</h4>
+                    <h4>{{ _('The Open Data') }}</h4>
                     <ul class="fs-sm">
-                        <li><a href="" title="" class="unstyled">COVID-19</a></li>
-                        <li><a href="" title="" class="unstyled">COVID-20</a></li>
-                        <li><a href="" title="" class="unstyled">COVID-19</a></li>
-                        <li><a href="" title="" class="unstyled">La fin du monde</a></li>
-                        <li><a href="" title="" class="unstyled">Les trucs cools qu'on fait parfois</a></li>
+                        {% for item in nav.gouvfr_opendata %}
+                        <li class="fs-sm">
+                            <a class="unstyled" href="{{ item.url }}" title="{{ item.label }}">{{ item.label }}</a>
+                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="col-3 col-lg-12 mt-lg-lg">
-                    <h4>Un autre truc genre données de référence</h4>
+                    <h4>{{ _('Support') }}</h4>
                     <ul class="fs-sm">
-                        <li><a href="" title="" class="unstyled">Les données de référence du COVID</a></li>
-                        <li><a href="" title="" class="unstyled">Documentation Python 2.3</a></li>
-                        <li><a href="" title="" class="unstyled">How to make Elasticearch work</a></li>
-                        <li><a href="" title="" class="unstyled">How to index Geo Zones</a></li>
-                        <li><a href="" title="" class="unstyled">Aluminum melting point</a></li>
-                        <li><a href="" title="" class="unstyled">3rd degree burn treatment</a></li>
+                        {% for item in nav.gouvfr_support %}
+                        <li class="fs-sm">
+                            <a class="unstyled" href="{{ item.url }}" title="{{ item.label }}">{{ item.label }}</a>
+                        </li>
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="col-3 col-lg-12 mt-lg-lg">
@@ -33,19 +32,31 @@
                             </a>
                         </li>
                         <li class="ml-xl">
-                            <a href="https://fb.me/etalab" title="Facebook">
-                                {% include theme('svg/socials/facebook.svg') %}
+                            <a href="https://www.linkedin.com/company/etalab" title="Linkedin">
+                                {% include theme('svg/socials/linkedin.svg') %}
                             </a>
                         </li>
                         <li class="ml-xl">
-                            <a href="https://github.com/etalab" title="github">
+                            <a href="https://github.com/etalab" title="Github">
                                 {% include theme('svg/socials/github.svg') %}
+                            </a>
+                        </li>
+                    </ul>
+                    <ul  class="row-inline my-lg">
+                        <li class="fs-sm">
+                            <a href="{{ url_for('datasets.recent_feed') }}" title="RSS" class="unstyled">
+                                RSS
+                            </a>
+                        </li>
+                        <li class="ml-xl fs-sm">
+                            <a href="https://infolettres.etalab.gouv.fr/subscribe/rn7y93le1" title="{{ _('Newsletter') }}" class="unstyled">
+                                {{ _('Newsletter') }}
                             </a>
                         </li>
                     </ul>
                     <p class="text-black fs-sm">
                         Sauf mention contraire, tous les contenus de ce site sont sous licence
-                        <a href="" title="">etalab-2.0</a>
+                        <a href="https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf" title="">etalab-2.0</a>
                     </p>
                 </div>
                 <div class="col-3 col-lg-12 mt-lg-lg self-center">
@@ -57,7 +68,7 @@
                     <p class="text-black fs-sm">
                         <span>{{ _('A DINUM department') }}</span>
                         <a href="https://numerique.gouv.fr" title="{{ _('DINUM website') }}"
-                            class="f-bold unstyled">numerique.gouv.fr</a>
+                            class="f-bold unstyled w-100">numerique.gouv.fr</a>
                     </p>
                     <ul class="engines mt-md fs-xs text-grey-300">
                         <li>
@@ -82,8 +93,7 @@
         <div class="hagrid">
             <div class="row">
                 <div class="col-4 col-lg-12 marianne-logo">
-                    <a href="{{ url_for('site.home') }}" title="{{ _('Go back to home page') }}"
-                        class="mw-100">
+                    <a href="{{ url_for('site.home') }}" title="{{ _('Go back to home page') }}" class="mw-100">
                         {% include theme('svg/marianne.svg') %}
                     </a>
                 </div>
@@ -116,9 +126,6 @@
                 </li>
                 {% endfor %}
             </ul>
-            <div class="col col-lg-12 mt-lg-md text-align-right text-align-center-lg">
-                © République Française
-            </div>
         </div>
     </footer>
 </section>

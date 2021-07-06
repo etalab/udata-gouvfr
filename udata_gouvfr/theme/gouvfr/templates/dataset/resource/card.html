@@ -28,12 +28,12 @@
                             aria-label="{{_('See more details')}}" aria-controls="resource-{{resource.id}}"
                             class="accordion-button">{% include theme('svg/chevron.svg') %}</a></li>
                     {% if resource.preview_url %}
-                    <li><a href="#" class="btn-action"
+                    <li><a href="#" class="btn-action" title="{{ _('Preview') }}"
                             @click.prevent="$showModal('preview', {url: '{{ resource.preview_url }}'}, true)">{% include theme('svg/actions/eye.svg') %}</a>
                     </li>
                     {% endif %}
-                    <li><a @click.prevent href="#" title="{{ _('Copy permalink to clipboard') }}"
-                            v-clipboard="'{{resource.latest}}'"
+                    <li><a @click.prevent href="#" id="{{resource.id}}-copy"
+                            title="{{ _('Copy permalink to clipboard') }}" data-clipboard-text="{{resource.latest}}"
                             class="btn-action">{% include theme('svg/actions/copy.svg') %}</a></li>
                     {% if resource.format == 'url' %}
                     <li><a href="{{ resource.latest }}" class="btn-action"
