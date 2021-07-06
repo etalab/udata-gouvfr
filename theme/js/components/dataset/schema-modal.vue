@@ -4,9 +4,7 @@
       <h2>Schéma associé</h2>
       <p>
         <span>Cette ressource est associée au schéma <b>{{ resource_schema.name }}</b></span>
-        <div v-if="resource_schema.version">
-          <span>, version {{ resource_schema.version }}, </span>
-        </div>
+        <span v-if="resource_schema.version">, version {{ resource_schema.version }},</span>
        <span> ce qui signifie que le producteur a déclaré qu'elle en respectait la spécification.</span>
       </p>
 
