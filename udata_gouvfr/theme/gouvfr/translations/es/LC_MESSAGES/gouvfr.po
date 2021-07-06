@@ -1,4 +1,4 @@
-pull/578msgid ""
+msgid ""
 msgstr ""
 "Project-Id-Version: udata-gouvfr\n"
 "Report-Msgid-Bugs-To: data.gouv@data.gouv.fr\n"
