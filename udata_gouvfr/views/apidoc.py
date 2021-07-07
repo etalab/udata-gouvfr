@@ -1,4 +1,4 @@
-from flask import url_for, redirect, render_template
+from flask import url_for, redirect
 from udata.i18n import I18nBlueprint
 from udata.api import api
 from udata_gouvfr import theme
