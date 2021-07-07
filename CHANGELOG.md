@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Move apidoc blueprint from udata to udata-gouvfr [#584](https://github.com/etalab/udata-gouvfr/pull/584)
 
 ## 3.0.0 (2021-07-07)
 
