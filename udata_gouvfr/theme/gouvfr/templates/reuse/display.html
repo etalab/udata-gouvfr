@@ -88,11 +88,11 @@
         <div class="callout p-hg p-md-md mb-lg bg-green-300">
             <div id="reuse-producer" class="tab-content hagrid active">
                 {% if reuse.organization %}
-                {% with organization=reuse.organization %}
+                {% with organization=reuse.organization, producer_type='organization' %}
                 {% include theme('organization/producer-panel.html') %}
                 {% endwith %}
                 {% elif reuse.owner %}
-                {% with organization=reuse.owner, details_view = url_for("users.show", user=reuse.owner, _external=True) %}
+                {% with organization=reuse.owner, producer_type='owner' %}
                 {% include theme('organization/producer-panel.html') %}
                 {% endwith %}
                 {% endif %}
@@ -110,7 +110,7 @@
                         <dt class="f-bold text-grey-400">{{ _('Tags') }}</dt>
                         <dd>
                             {% for tag in reuse.tags %}
-                            <a href="{{ url_for('reuses.list', tag=tag) }}"><span class="tag">{{ tag }}</span></a>
+                            <span class="tag">{{ tag }}</span>
                             {% endfor %}
                         </dd>
                     </div>
@@ -168,8 +168,7 @@
             <div class="col-6 col-md-12 my-md-lg">
                 <h2 class="fs-xxl">{{ _('Embed') }}</h2>
                 <p class="text-grey-300 fs-sm">
-                    Embed is cool, embed is life. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore,
-                    consectetur adipisicing elit.
+                    {{ _('You can easily embed this reuse on your website by pasting this snippet in your html page.') }}
                 </p>
                 {{ integrate_btn(reuse) }}
             </div>

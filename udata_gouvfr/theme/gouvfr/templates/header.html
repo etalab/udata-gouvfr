@@ -1,3 +1,17 @@
+<div class="bg-blue-350">
+    <div class="hagrid banner">
+        <div class="row align-items-center text-align-center-sm">
+            <p class="text-white">
+                {{ _("Welcome to the new <i>beta</i> version of data.gouv.fr! <a href='{learn_more}'>Learn more</a>, go back to <a href='{legacy}'>the old version</a> or <a href='{feedback}'>send us some feedback</a>.").format(
+                    learn_more='https://www.data.gouv.fr/fr/posts/nouvelle-vie-nouvelle-peau-pour-data-gouv-fr/' if g.lang_code == 'fr' else 'https://www.data.gouv.fr/{lang}/posts/en-data-gouv-fr-graphic-redesign/'.format(lang=g.lang_code),
+                    legacy='https://legacy.data.gouv.fr',
+                    feedback='https://support.data.gouv.fr/particulier/retour-plateforme',
+                ) }}
+            </p>
+        </div>
+    </div>
+</div>
+
 <section class="site-header" ref="header">
     <!--[if lte IE 8]>
         <div class="iewarning">
@@ -5,7 +19,6 @@
             <a href="http://browsehappy.com/">{{ _('More information →')}}</a>
         </div>
     <![endif]-->
-
     <header class="header-brand py-sm">
         <div class="hagrid">
             <div class="row align-items-center">
