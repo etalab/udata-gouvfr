@@ -16,5 +16,4 @@ def default_api():
 
 @blueprint.route('/apidoc/')
 def apidoc_index():
-    print('ZZIJDJDZIZDJDZJ')
     return theme.render('apidoc.html')
