@@ -85,10 +85,6 @@ def inject_cache_duration():
 def _load_views(app, module):
     views = module if inspect.ismodule(module) else import_module(module)
     blueprint = getattr(views, 'blueprint', None)
-    print('---------------------')
-    print(module)
-    print(blueprint)
-    print('---------------------')
     if blueprint:
         app.register_blueprint(blueprint)
 
