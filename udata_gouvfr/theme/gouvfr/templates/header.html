@@ -29,6 +29,8 @@
                 </div>
                 <nav class="col hidden visible-xl mobile-menu row-inline justify-end self-start">
                     <a href="/datasets" title="{{ _('Search') }}" class="mr-md">
+                        <!-- TODO: re-add suggest on mobile when fixed -->
+                        <!-- @click.capture.prevent="$refs.suggest.startSearch()" -->
                         {% include theme('svg/search.svg') %}
                     </a>
                     <a href="#" @click.capture.prevent="$refs.header.classList.add('mobile-menu-open')"
