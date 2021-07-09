@@ -32,7 +32,7 @@
                         @click.capture.prevent="$refs.suggest.startSearch()">
                         {% include theme('svg/search.svg') %}
                     </a>
-                    <a href="#" @click.capture.prevent="$refs.header.classList.add('mobile-menu-open'); if ($refs.suggest.active) {$refs.suggest.stop();}"
+                    <a href="#" @click.capture.prevent="$refs.header.classList.add('mobile-menu-open'); if ($refs.suggest.active) $refs.suggest.stop();"
                         title="{{ _('Open menu') }}">
                         {% include theme('svg/burger-menu.svg') %}
                     </a>
