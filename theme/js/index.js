@@ -18,6 +18,9 @@ import Modals from "./plugins/modals";
 import i18n from "./plugins/i18n";
 import filters from "./plugins/filters";
 
+// Catch all errors
+import './sentry';
+
 const app = createApp({});
 
 app.use(Api);
