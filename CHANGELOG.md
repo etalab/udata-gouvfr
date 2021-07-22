@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Resources descriptions are no longer truncated [#596](https://github.com/etalab/udata-gouvfr/pull/596)
 
 ## 3.0.2 (2021-07-19)
 
