@@ -2,6 +2,12 @@
 
 ## Current (in progress)
 
+- Resources descriptions are no longer truncated [#596](https://github.com/etalab/udata-gouvfr/pull/596)
+- Fix URL for dataset search params [#595](https://github.com/etalab/udata-gouvfr/pull/595)
+
+## 3.0.2 (2021-07-19)
+
+- Add organization search [#593](https://github.com/etalab/udata-gouvfr/pull/593)
 - Fix reuses filters issue [#592](https://github.com/etalab/udata-gouvfr/pull/592)
 - Remove suggest on mobile [#590](https://github.com/etalab/udata-gouvfr/pull/590)
 - Added homepage "venti" button for the new inventory [#591](https://github.com/etalab/udata-gouvfr/pull/591)
