@@ -96,6 +96,7 @@ def render_territory(territory):
         return abort(404)
 
     is_present_territory = territory.valid_at(date.today())
+
     # Retrieve the present territory if not presently valid.
     present_territory = None
     if not is_present_territory:
