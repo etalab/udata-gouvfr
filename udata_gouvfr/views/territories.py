@@ -96,12 +96,14 @@ def render_territory(territory):
         return abort(404)
 
     is_present_territory = territory.valid_at(date.today())
-
     # Retrieve the present territory if not presently valid.
     present_territory = None
     if not is_present_territory:
-        present_territory = GeoZone.objects.valid_at(date.today()).get(
-            level=territory.level, ancestors__contains=territory.id)
+        try:
+            present_territory = GeoZone.objects.valid_at(date.today()).get(
+                level=territory.level, ancestors__contains=territory.id)
+        except GeoZone.DoesNotExist:
+            abort(404)
 
     # Only display dynamic datasets for present territories.
     base_datasets = []
