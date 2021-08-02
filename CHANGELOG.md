@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Replace mdstrip filter with markdown in resources descriptions [#606](https://github.com/etalab/udata-gouvfr/pull/606)
 
 ## 3.0.3 (2021-07-30)
 
