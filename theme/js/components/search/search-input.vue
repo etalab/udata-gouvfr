@@ -8,6 +8,7 @@ category: Suggest
 
 It's an input that calls the passed `onChange` function on each change.
 You can also pass it a `value` prop that will populate the field.
+If the redirectUrl prop is passed, it will redirect on Submit.
 -->
 
 <template>
@@ -57,6 +58,7 @@ export default {
     stop: Function,
     value: String,
     placeholder: String,
+    redirectUrl: String,
   },
   data() {
     return {
@@ -75,6 +77,10 @@ export default {
         preventScroll: true,
       });
     },
+    onSubmit() {
+      if (this.redirectUrl)
+        window.location.href = this.redirectUrl;
+    }
   },
 };
 </script>
