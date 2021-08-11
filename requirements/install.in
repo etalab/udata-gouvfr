@@ -1,4 +1,4 @@
-udata@https://20986-19141754-gh.circle-artifacts.com/0/dist/udata-3.0.4.dev20986-py2.py3-none-any.whl
+udata==3.0.4.dev21044
 feedparser==5.2.1
 python-frontmatter==0.5.0
 sentry-sdk[flask] >= 1.1.0

@@ -268,7 +268,7 @@ tlds==2021080900
     # via udata
 typing-extensions==3.10.0.0
     # via importlib-metadata
-https://20986-19141754-gh.circle-artifacts.com/0/dist/udata-3.0.4.dev20986-py2.py3-none-any.whl
+udata==3.0.4.dev21044
     # via -r requirements/install.in
 ujson==1.35
     # via udata
