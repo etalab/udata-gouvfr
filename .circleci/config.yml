@@ -24,8 +24,6 @@ jobs:
           command: |
             virtualenv venv
             source venv/bin/activate
-            pip install -r requirements/install.pip
-            pip install -r requirements/test.pip
             pip install -r requirements/develop.pip
             pip install -e .
       - save_cache:

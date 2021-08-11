@@ -1,4 +1,4 @@
--c install.in
+-r install.in
 
 mock==3.0.5
 pytest==4.6.3

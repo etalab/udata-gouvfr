@@ -1,4 +1,4 @@
--c test.in
+-r test.in
 
 flake8==3.7.7
 invoke==1.2.0
