@@ -86,9 +86,9 @@
 {# Datasets section #}
 {% set nb_datasets = current_site.settings.home_datasets|length %}
 {% set dataset_tabs = (
-    ('editorial-datasets', _('Featured datasets'), current_site.settings.home_datasets, {}),
-    ('recent-datasets', _('Latest datasets'), recent_datasets[:nb_datasets], {'sort': '-created'}),
-    ('reference-datasets', _('Reference datasets'), spd_datasets, {}),
+    ('editorial-datasets', _('Featured data'), current_site.settings.home_datasets, {}),
+    ('recent-datasets', _('Latest data'), recent_datasets[:nb_datasets], {'sort': '-created'}),
+    ('reference-datasets', _('Reference data'), spd_datasets, {}),
 ) %}
 
 <section class="datasets pb-hg pt-md bg-grey-50">
@@ -126,7 +126,7 @@
 {# Reuses section #}
 {% set nb_reuses = current_site.settings.home_reuses|length %}
 {% set reuses_tabs = (
-    ('best-reuses', _('Etalab\'s selection'), current_site.settings.home_reuses, {}),
+    ('best-reuses', _('Featured reuses'), current_site.settings.home_reuses, {}),
     ('latest-reuses', _('Latest reuses'), recent_reuses[:3], {'sort': '-created'}),
 ) %}
 
