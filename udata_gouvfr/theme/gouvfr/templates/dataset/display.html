@@ -4,12 +4,13 @@
 {% from theme('macros/issues.html') import issues_btn with context %}
 {% from theme('macros/breadcrumb.html') import breadcrumb with context %}
 
+## FIXME: remove inspire:indentifier robots condition when geo.data.gouv.fr is shutdown
 {% set meta = {
     'title': dataset.full_title,
     'description': dataset.description|mdstrip(60)|forceescape,
     'image': dataset.organization and dataset.organization.logo(external=True) or '',
     'keywords': [_('dataset')] + dataset.tags,
-    'robots': 'noindex, nofollow' if dataset.is_hidden else '',
+    'robots': 'noindex, nofollow' if dataset.is_hidden or 'inspire:identifier' in dataset.extras else '',
 } %}
 
 {% set bundle = 'dataset' %}
@@ -62,7 +63,18 @@
         {{ _('Archived') }}
     </span>
     {% endif %}
-    <h1 class="fs-hg mb-0">{{ dataset.title }}
+    {# FIXME: remove when geo.data.gouv.fr is shutdown #}
+    {% if 'inspire:identifier' in dataset.extras %}
+    <div class="well well-orange-200 py-sm mb-lg">
+        ⚠️ {{ _("This dataset is handled by the <a href='{geo_link}'>geo.data.gouv.fr</a> platform.
+        This platform is not actively maintained and as a result, you may find some bogus data or metadata.
+        More information about <a href='{blog_link}'>the shutdown of geo.data.gouv.fr is available here.</a>").format(
+            geo_link='https://geo.data.gouv.fr',
+            blog_link='https://www.data.gouv.fr/fr/posts/extinction-de-geo-data-gouv-fr/',
+        ) }}
+    </div>
+    {% endif %}
+    <h1 class="mb-0">{{ dataset.title }}
         {% if dataset.acronym %}<small>{{ dataset.acronym }}</small>{% endif %}
     </h1>
     <div class="my-md">
@@ -82,7 +94,8 @@
                     date=dataset.created_at|dateformat(format='long'),
                     update=dataset.last_update|dateformat(format='long'),
                     author=dataset.owner.fullname
-                %}This dataset has been published on the initiative and under the responsibility of {{author}}<br />Published on {{date}} and updated on {{update}}{% endtrans %}
+                %}This dataset has been published on the initiative and under the responsibility of
+            {{author}}<br />Published on {{date}} and updated on {{update}}{% endtrans %}
         </div>
         {% endif %}
     </div>
@@ -304,7 +317,6 @@
     </div>
 </section>
 
-{% include theme('participez/participez.html') %}
 {% block community %}
 <section class="community_container bg-grey-400 text-white py-hg" id="community">
     <header>
@@ -364,7 +376,7 @@
         <div class="row mt-xl pt-md-md reuse-cards">
             {% for reuse in reuses %}
             {% set features = ['preview'] %}
-            <div class="col-3 col-md-4">
+            <div class="col-3 col-md-6">
                 {% include theme('reuse/card.html') %}
             </div>
             {% endfor %}
