@@ -2,7 +2,7 @@
 
 ## Current (in progress)
 
-- Nothing yet
+- Change banner trigger for geo.data.gouv.fr [#618](https://github.com/etalab/udata-gouvfr/pull/618)
 
 ## 3.0.5 (2021-08-12)
 
