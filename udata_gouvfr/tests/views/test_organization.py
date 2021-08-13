@@ -108,11 +108,10 @@ class OrganizationBlueprintTest(GouvfrFrontTestCase):
         rendered_reuses = self.get_context_variable('reuses')
         self.assertEqual(len(rendered_reuses), 0)
 
-        rendered_private_datasets = self.get_context_variable(
-            'private_datasets')
+        rendered_private_datasets = [dataset for dataset in rendered_datasets if dataset.private]
         self.assertEqual(len(rendered_private_datasets), 0)
 
-        rendered_private_reuses = self.get_context_variable('private_reuses')
+        rendered_private_reuses = [reuse for reuse in rendered_reuses if reuse.private]
         self.assertEqual(len(rendered_private_reuses), 0)
 
     def test_render_display_with_private_datasets(self):
@@ -129,12 +128,11 @@ class OrganizationBlueprintTest(GouvfrFrontTestCase):
 
         self.assert200(response)
         rendered_datasets = self.get_context_variable('datasets')
-        self.assertEqual(len(rendered_datasets), 0)
-
-        rendered_private_datasets = self.get_context_variable(
-            'private_datasets')
-        self.assertEqual(len(rendered_private_datasets),
+        self.assertEqual(len(rendered_datasets),
                          len(datasets) + len(private_datasets))
+
+        rendered_private_datasets = [dataset for dataset in rendered_datasets if dataset.private]
+        self.assertEqual(len(rendered_private_datasets), len(private_datasets))
 
     def test_render_display_with_reuses(self):
         '''It should render the organization page with some reuses'''
@@ -160,11 +158,11 @@ class OrganizationBlueprintTest(GouvfrFrontTestCase):
 
         self.assert200(response)
         rendered_reuses = self.get_context_variable('reuses')
-        self.assertEqual(len(rendered_reuses), 0)
-
-        rendered_private_reuses = self.get_context_variable('private_reuses')
-        self.assertEqual(len(rendered_private_reuses),
+        self.assertEqual(len(rendered_reuses),
                          len(reuses) + len(private_reuses))
+
+        rendered_private_reuses = [reuse for reuse in rendered_reuses if reuse.private]
+        self.assertEqual(len(rendered_private_reuses), len(private_reuses))
 
     def test_render_display_with_followers(self):
         '''It should render the organization page with followers'''
