@@ -1,7 +1,7 @@
 {% set banner_activated = config['BANNER_ACTIVATED'] %}
 {% if banner_activated %}
 {% block banner %}
-    {% set banner_message = config['FR_BANNER_MESSAGE'] if g.lang_code == "fr" else config['EN_BANNER_MESSAGE'] %}
+    {% set banner_message = config['BANNER_HTML_CONTENT_FR'] if g.lang_code == "fr" else config['BANNER_HTML_CONTENT_EN'] %}
     {% include theme('banners/generic.html') with context %}
 {% endblock %}
 {% endif %}
