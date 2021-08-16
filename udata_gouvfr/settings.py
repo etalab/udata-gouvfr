@@ -9,7 +9,8 @@ SCHEMA_CATALOG_URL = 'https://schema.data.gouv.fr/schemas/schemas.json'
 
 # Frontend banner parameters
 BANNER_ACTIVATED = False
-BANNER_HTML_CONTENT = ''
+EN_BANNER_HTML_CONTENT = ''
+FR_BANNER_HTML_CONTENT = ''
 
 # Static pages from github repo
 PAGES_GH_REPO_NAME = 'etalab/datagouvfr-pages'
