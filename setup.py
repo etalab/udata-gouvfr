@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 import os
+import re
+
 
 from setuptools import setup, find_packages
 
@@ -12,8 +14,12 @@ def file_content(filename):
 
 
 def pip(filename):
-    """Return path to pip requirements file"""
-    return file_content(os.path.join('requirements', filename))
+    '''Return content of pip requirements file
+    As per https://packaging.python.org/discussions/install-requires-vs-requirements/,
+    also removes the version on _udata_ pinning if any.
+    '''
+    reqs = file_content(os.path.join('requirements', filename)).splitlines()
+    return [re.sub(r'(==.*)', '', r) if r.startswith('udata') else r for r in reqs]
 
 
 long_description = '\n'.join((
@@ -35,7 +41,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     python_requires='>=3.7',
-    install_requires=pip('install.pip'),
+    install_requires=pip('install.in'),
     entry_points={
         'udata.themes': [
             'gouvfr = udata_gouvfr.theme.gouvfr',
