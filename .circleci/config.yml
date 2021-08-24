@@ -7,8 +7,8 @@ jobs:
       - image: udata/circleci:2-alpine
     steps:
       - add_ssh_keys:
-        fingerprints:
-          - 0f:6a:bf:3e:f5:85:d5:41:ca:77:ef:85:7f:f8:b5:9e
+          fingerprints:
+            - 0f:6a:bf:3e:f5:85:d5:41:ca:77:ef:85:7f:f8:b5:9e
       # FIXME: do we need this? ${CIRCLE_BRANCH} seems ok
       - run:
           name: Get the base reference branch
