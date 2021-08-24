@@ -214,7 +214,7 @@ passlib==1.7.4
     # via
     #   flask-security-too
     #   udata
-pillow==7.0.0
+pillow==8.0.0
     # via
     #   pydenticon
     #   udata
