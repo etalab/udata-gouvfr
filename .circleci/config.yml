@@ -36,7 +36,7 @@ jobs:
             git config --global user.email "robot@data.gouv.fr"
             git config --global user.name "Circle CI"
             (git ls-files -m|grep -E "(install|test|develop).pip" \
-              && git commit requirements/*.pip -m "[skip ci] update deps" && git push origin ${CIRCLE_BRANCH}) || true
+              && git commit requirements/*.pip -m "[auto] update deps" && git push origin ${CIRCLE_BRANCH} && exit 1) || true
       - run:
           name: Install python dependencies
           command: |
