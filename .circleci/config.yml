@@ -40,8 +40,11 @@ jobs:
           command: |
             git config --global user.email "robot@data.gouv.fr"
             git config --global user.name "Circle CI"
-            (git ls-files -m|grep -E "(install|test|develop).pip" \
-              && git commit requirements/*.pip -m "[auto] update deps" && git push origin ${CIRCLE_BRANCH}) || true
+            ( \
+              git ls-files -m|grep -E "(install|test|develop).pip" \
+              && git commit requirements/*.pip -m "[auto] update deps" \
+              && git push origin ${CIRCLE_BRANCH} \
+            ) || true
       - persist_to_workspace:
           root: .
           paths:
