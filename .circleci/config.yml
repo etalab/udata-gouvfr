@@ -23,15 +23,18 @@ jobs:
             virtualenv venv
             source venv/bin/activate
             pip install pip-tools
+      - run:
           name: Force udata's version to latest master
           command: |
             sed -i'' 's/udata.=.*/udata@git+https:\/\/github.com\/opendatateam\/udata.git/' requirements/install.in
+      - run:
           name: Compile python dependencies against udata@master
           command: |
             source venv/bin/activate
             pip-compile requirements/install.in --output-file=requirements/install.pip
             pip-compile requirements/test.in --output-file=requirements/test.pip
             pip-compile requirements/develop.in --output-file=requirements/develop.pip
+      - run:
           name: Commit any change in compiled *.pip
           command: |
             git config --global user.email "robot@data.gouv.fr"
