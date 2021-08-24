@@ -2,6 +2,43 @@
 version: 2
 
 jobs:
+  deps:
+    docker:
+      - image: udata/circleci:2-alpine
+    steps:
+      - add_ssh_keys:
+        fingerprints:
+          - 0f:6a:bf:3e:f5:85:d5:41:ca:77:ef:85:7f:f8:b5:9e
+      # FIXME: do we need this? ${CIRCLE_BRANCH} seems ok
+      - run:
+          name: Get the base reference branch
+          command: export BASE_BRANCH=$(base_branch)
+      - restore_cache:
+          keys:
+          - py-cache-v13-{{ arch }}-{{ .Branch }}
+          - py-cache-v13-{{ arch }}-{{ .Environment.BASE_BRANCH }}
+      - run:
+          name: Create venv and install pip-tools
+          command: |
+            virtualenv venv
+            source venv/bin/activate
+            pip install pip-tools
+          name: Force udata's version to latest master
+          command: |
+            sed -i'' 's/udata.=.*/udata@git+https:\/\/github.com\/opendatateam\/udata.git/' requirements/install.in
+          name: Compile python dependencies against udata@master
+          command: |
+            source venv/bin/activate
+            pip-compile requirements/install.in --output-file=requirements/install.pip
+            pip-compile requirements/test.in --output-file=requirements/test.pip
+            pip-compile requirements/develop.in --output-file=requirements/develop.pip
+          name: Commit any change in compiled *.pip
+          command: |
+            git config --global user.email "robot@data.gouv.fr"
+            git config --global user.name "Circle CI"
+            (git ls-files -m|grep -E "(install|test|develop).pip" \
+              && git commit requirements/*.pip -m "[auto] update deps" && git push origin ${CIRCLE_BRANCH}) || true
+
   python:
     docker:
       - image: udata/circleci:2-alpine
@@ -12,31 +49,8 @@ jobs:
        BASH_ENV: /root/.bashrc
     steps:
       - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - 0f:6a:bf:3e:f5:85:d5:41:ca:77:ef:85:7f:f8:b5:9e
-      - run:
-          name: Get the base reference branch
-          command: export BASE_BRANCH=$(base_branch)
-      - restore_cache:
-          keys:
-          - py-cache-v13-{{ arch }}-{{ .Branch }}
-          - py-cache-v13-{{ arch }}-{{ .Environment.BASE_BRANCH }}
-      - run:
-          name: Compile python dependencies against udata@master
-          command: |
-            virtualenv venv
-            source venv/bin/activate
-            pip install pip-tools
-            # force udata to latest master
-            sed -i'' 's/udata.=.*/udata@git+https:\/\/github.com\/opendatateam\/udata.git/' requirements/install.in
-            pip-compile requirements/install.in --output-file=requirements/install.pip
-            pip-compile requirements/test.in --output-file=requirements/test.pip
-            pip-compile requirements/develop.in --output-file=requirements/develop.pip
-            git config --global user.email "robot@data.gouv.fr"
-            git config --global user.name "Circle CI"
-            (git ls-files -m|grep -E "(install|test|develop).pip" \
-              && git commit requirements/*.pip -m "[auto] update deps" && git push origin ${CIRCLE_BRANCH} && exit 1) || true
+      - attach_workspace:
+          at: .
       - run:
           name: Install python dependencies
           command: |
@@ -155,7 +169,13 @@ workflows:
   version: 2
   build:
     jobs:
+      - deps:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
       - python:
+          requires:
+            - deps
           filters:
             tags:
               only: /v[0-9]+(\.[0-9]+)*/
