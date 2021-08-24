@@ -10,15 +10,10 @@ attrs==21.2.0
     # via
     #   -c requirements/install.pip
     #   pytest
-blinker==1.4
-    # via
-    #   -c requirements/install.pip
-    #   sentry-sdk
 certifi==2021.5.30
     # via
     #   -c requirements/install.pip
     #   requests
-    #   sentry-sdk
 chardet==3.0.4
     # via
     #   -c requirements/install.pip
@@ -29,15 +24,10 @@ click==7.0
     #   flask
 feedgen==0.7.0
     # via -r requirements/test.in
-feedparser==5.2.1
-    # via
-    #   -c requirements/install.pip
-    #   -r requirements/install.in
 flask==1.1.4
     # via
     #   -c requirements/install.pip
     #   pytest-flask
-    #   sentry-sdk
 idna==2.10
     # via
     #   -c requirements/install.pip
@@ -90,45 +80,27 @@ python-dateutil==2.8.1
     # via
     #   -c requirements/install.pip
     #   feedgen
-python-frontmatter==0.5.0
-    # via
-    #   -c requirements/install.pip
-    #   -r requirements/install.in
-pyyaml==5.4.1
-    # via
-    #   -c requirements/install.pip
-    #   python-frontmatter
 requests==2.24.0
     # via
     #   -c requirements/install.pip
     #   requests-mock
 requests-mock==1.7.0
     # via -r requirements/test.in
-sentry-sdk[flask]==1.3.1
-    # via
-    #   -c requirements/install.pip
-    #   -r requirements/install.in
 six==1.16.0
     # via
     #   -c requirements/install.pip
     #   mock
     #   pytest
     #   python-dateutil
-    #   python-frontmatter
     #   requests-mock
 typing-extensions==3.10.0.0
     # via
     #   -c requirements/install.pip
     #   importlib-metadata
-git+https://github.com/opendatateam/udata.git
-    # via
-    #   -c requirements/install.pip
-    #   -r requirements/install.in
 urllib3==1.25.11
     # via
     #   -c requirements/install.pip
     #   requests
-    #   sentry-sdk
 wcwidth==0.2.5
     # via pytest
 werkzeug==0.16.1

@@ -10,38 +10,12 @@ atomicwrites==1.4.0
     #   pytest
 attrs==21.2.0
     # via
-    #   -c requirements/install.pip
     #   -c requirements/test.pip
     #   pytest
 bleach==3.1.0
-    # via
-    #   -c requirements/install.pip
-    #   readme-renderer
-blinker==1.4
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   sentry-sdk
-certifi==2021.5.30
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   requests
-    #   sentry-sdk
+    # via readme-renderer
 cffi==1.14.6
-    # via
-    #   -c requirements/install.pip
-    #   cmarkgfm
-chardet==3.0.4
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   requests
-click==7.0
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   flask
+    # via cmarkgfm
 cmarkgfm==0.6.0
     # via readme-renderer
 coverage==5.5
@@ -50,62 +24,17 @@ docutils==0.17.1
     # via readme-renderer
 entrypoints==0.3
     # via flake8
-feedgen==0.7.0
-    # via
-    #   -c requirements/test.pip
-    #   -r requirements/test.in
-feedparser==5.2.1
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   -r requirements/install.in
 flake8==3.7.7
     # via -r requirements/develop.in
-flask==1.1.4
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   pytest-flask
-    #   sentry-sdk
-idna==2.10
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   requests
 importlib-metadata==4.6.3
     # via
-    #   -c requirements/install.pip
     #   -c requirements/test.pip
     #   pluggy
     #   pytest
 invoke==1.2.0
     # via -r requirements/develop.in
-itsdangerous==1.1.0
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   flask
-jinja2==2.10.3
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   flask
-lxml==4.4.2
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   feedgen
-markupsafe==2.0.1
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   jinja2
 mccabe==0.6.1
     # via flake8
-mock==3.0.5
-    # via
-    #   -c requirements/test.pip
-    #   -r requirements/test.in
 more-itertools==8.8.0
     # via
     #   -c requirements/test.pip
@@ -125,109 +54,40 @@ py==1.10.0
 pycodestyle==2.5.0
     # via flake8
 pycparser==2.20
-    # via
-    #   -c requirements/install.pip
-    #   cffi
+    # via cffi
 pyflakes==2.1.1
     # via flake8
 pygments==2.9.0
     # via readme-renderer
 pyparsing==2.4.7
     # via
-    #   -c requirements/install.pip
     #   -c requirements/test.pip
     #   packaging
 pytest==4.6.3
     # via
     #   -c requirements/test.pip
-    #   -r requirements/test.in
     #   pytest-cov
-    #   pytest-flask
-    #   pytest-mock
 pytest-cov==2.6.1
     # via -r requirements/develop.in
-pytest-flask==0.15.0
-    # via
-    #   -c requirements/test.pip
-    #   -r requirements/test.in
-pytest-mock==2.0.0
-    # via
-    #   -c requirements/test.pip
-    #   -r requirements/test.in
-python-dateutil==2.8.1
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   feedgen
-python-frontmatter==0.5.0
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   -r requirements/install.in
-pyyaml==5.4.1
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   python-frontmatter
 readme-renderer[md]==24.0
     # via -r requirements/develop.in
-requests==2.24.0
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   requests-mock
-requests-mock==1.7.0
-    # via
-    #   -c requirements/test.pip
-    #   -r requirements/test.in
-sentry-sdk[flask]==1.3.1
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   -r requirements/install.in
 six==1.16.0
     # via
-    #   -c requirements/install.pip
     #   -c requirements/test.pip
     #   bleach
-    #   mock
     #   pytest
-    #   python-dateutil
-    #   python-frontmatter
     #   readme-renderer
-    #   requests-mock
 typing-extensions==3.10.0.0
     # via
-    #   -c requirements/install.pip
     #   -c requirements/test.pip
     #   importlib-metadata
-git+https://github.com/opendatateam/udata.git
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   -r requirements/install.in
-urllib3==1.25.11
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   requests
-    #   sentry-sdk
 wcwidth==0.2.5
     # via
     #   -c requirements/test.pip
     #   pytest
 webencodings==0.5.1
-    # via
-    #   -c requirements/install.pip
-    #   bleach
-werkzeug==0.16.1
-    # via
-    #   -c requirements/install.pip
-    #   -c requirements/test.pip
-    #   flask
-    #   pytest-flask
+    # via bleach
 zipp==3.5.0
     # via
-    #   -c requirements/install.pip
     #   -c requirements/test.pip
     #   importlib-metadata
