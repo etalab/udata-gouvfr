@@ -15,11 +15,10 @@ def file_content(filename):
 
 def pip(filename):
     '''Return content of pip requirements file
-    As per https://packaging.python.org/discussions/install-requires-vs-requirements/,
-    also removes the version on _udata_ pinning if any.
+    Remove udata@xxx pinning if any, but preserves udata==xxx
     '''
     reqs = file_content(os.path.join('requirements', filename)).splitlines()
-    return [re.sub(r'(==.*)', '', r) if r.startswith('udata') else r for r in reqs]
+    return [re.sub(r'(\@.*)', '', r) if r.startswith('udata') else r for r in reqs]
 
 
 long_description = '\n'.join((

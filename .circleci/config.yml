@@ -24,12 +24,12 @@ jobs:
             virtualenv venv
             source venv/bin/activate
             pip install pip-tools
+      # - run:
+      #     name: Force udata's version to latest master
+      #     command: |
+      #       sed -i'' 's/udata.=.*/udata@git+https:\/\/github.com\/opendatateam\/udata.git/' requirements/install.in
       - run:
-          name: Force udata's version to latest master
-          command: |
-            sed -i'' 's/udata.=.*/udata@git+https:\/\/github.com\/opendatateam\/udata.git/' requirements/install.in
-      - run:
-          name: Compile python dependencies against udata@master
+          name: Compile python dependencies against udata
           command: |
             source venv/bin/activate
             pip-compile requirements/install.in --output-file=requirements/install.pip
