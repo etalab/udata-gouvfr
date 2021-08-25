@@ -13,10 +13,11 @@ def file_content(filename):
         return ifile.read()
 
 
-def pip(filename):
+def get_requirements():
     '''Return content of pip requirements file
     Remove udata@xxx pinning if any, but preserves udata==xxx
     '''
+    filename = 'install.in' if not os.getenv('UDATA_BUILD_LATEST') else 'install.pip'
     reqs = file_content(os.path.join('requirements', filename)).splitlines()
     return [re.sub(r'(\@.*)', '', r) if r.startswith('udata') else r for r in reqs]
 
@@ -40,7 +41,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     python_requires='>=3.7',
-    install_requires=pip('install.in'),
+    install_requires=get_requirements(),
     entry_points={
         'udata.themes': [
             'gouvfr = udata_gouvfr.theme.gouvfr',
