@@ -9,10 +9,10 @@ jobs:
       - run:
           name: Check conditions
           command: |
-          if [[ $CIRCLE_TAG ]]; then
-            echo "This a tag build, do not compute deps"
-            circleci step halt
-          fi
+            if [[ $CIRCLE_TAG ]]; then
+              echo "This a tag build, do not compute deps"
+              circleci step halt
+            fi
       - checkout
       - add_ssh_keys:
           fingerprints:
