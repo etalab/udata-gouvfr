@@ -6,6 +6,13 @@ jobs:
     docker:
       - image: udata/circleci:2-alpine
     steps:
+      - run:
+          name: Check conditions
+          command: |
+          if [[ $CIRCLE_TAG ]]; then
+            echo "This a tag build, do not compute deps"
+            circleci step halt
+          fi
       - checkout
       - add_ssh_keys:
           fingerprints:
