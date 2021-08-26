@@ -1,0 +1,3 @@
+# this file is used by the CI to output precise udata requirements
+# and apply the correct constraints to install.pip when releasing
+udata@git+https://github.com/opendatateam/udata.git

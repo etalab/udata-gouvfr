@@ -155,8 +155,9 @@ jobs:
             if [[ $CIRCLE_TAG ]]; then
                 # This is a tagged release
                 # upgrade udata to latest pypi release
-                pip-compile --upgrade-package udata requirements/install.in --output-file=requirements/install.pip
-                UDATA_BUILD_LATEST=1 inv pydist
+                pip-compile --upgrade-package udata requirements/udata.in --output-file=requirements/udata.pip
+                pip-compile requirements/install.in --output-file=requirements/install.pip
+                inv pydist
             elif [[ "$CIRCLE_BRANCH" == feature/* ]]; then
                 # This is a feature branch
                 inv pydist -b $CIRCLE_BUILD_NUM+${CIRCLE_BRANCH#*/}

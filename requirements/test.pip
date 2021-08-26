@@ -7,17 +7,13 @@
 atomicwrites==1.4.0
     # via pytest
 attrs==21.2.0
-    # via
-    #   -c requirements/install.pip
-    #   pytest
+    # via pytest
 certifi==2021.5.30
     # via
     #   -c requirements/install.pip
     #   requests
 chardet==3.0.4
-    # via
-    #   -c requirements/install.pip
-    #   requests
+    # via requests
 click==7.0
     # via
     #   -c requirements/install.pip
@@ -29,12 +25,9 @@ flask==1.1.4
     #   -c requirements/install.pip
     #   pytest-flask
 idna==2.10
-    # via
-    #   -c requirements/install.pip
-    #   requests
+    # via requests
 importlib-metadata==4.6.3
     # via
-    #   -c requirements/install.pip
     #   pluggy
     #   pytest
 itsdangerous==1.1.0
@@ -46,9 +39,7 @@ jinja2==2.10.3
     #   -c requirements/install.pip
     #   flask
 lxml==4.4.2
-    # via
-    #   -c requirements/install.pip
-    #   feedgen
+    # via feedgen
 markupsafe==2.0.1
     # via
     #   -c requirements/install.pip
@@ -64,9 +55,7 @@ pluggy==0.13.1
 py==1.10.0
     # via pytest
 pyparsing==2.4.7
-    # via
-    #   -c requirements/install.pip
-    #   packaging
+    # via packaging
 pytest==4.6.3
     # via
     #   -r requirements/test.in
@@ -77,26 +66,19 @@ pytest-flask==0.15.0
 pytest-mock==2.0.0
     # via -r requirements/test.in
 python-dateutil==2.8.1
-    # via
-    #   -c requirements/install.pip
-    #   feedgen
+    # via feedgen
 requests==2.24.0
-    # via
-    #   -c requirements/install.pip
-    #   requests-mock
+    # via requests-mock
 requests-mock==1.7.0
     # via -r requirements/test.in
 six==1.16.0
     # via
-    #   -c requirements/install.pip
     #   mock
     #   pytest
     #   python-dateutil
     #   requests-mock
 typing-extensions==3.10.0.0
-    # via
-    #   -c requirements/install.pip
-    #   importlib-metadata
+    # via importlib-metadata
 urllib3==1.25.11
     # via
     #   -c requirements/install.pip
@@ -109,6 +91,4 @@ werkzeug==0.16.1
     #   flask
     #   pytest-flask
 zipp==3.5.0
-    # via
-    #   -c requirements/install.pip
-    #   importlib-metadata
+    # via importlib-metadata

@@ -3,7 +3,6 @@
 import os
 import re
 
-
 from setuptools import setup, find_packages
 
 
@@ -17,8 +16,8 @@ def get_requirements():
     '''Return content of pip requirements file
     Remove udata@xxx pinning if any, but preserves udata==xxx
     '''
-    filename = 'install.in' if not os.getenv('UDATA_BUILD_LATEST') else 'install.pip'
-    reqs = file_content(os.path.join('requirements', filename)).splitlines()
+    reqs = file_content(os.path.join('requirements', 'udata.pip')).splitlines() + \
+           file_content(os.path.join('requirements', 'install.pip')).splitlines()
     return [re.sub(r'(\@.*)', '', r) if r.startswith('udata') else r for r in reqs]
 
 
@@ -27,7 +26,6 @@ long_description = '\n'.join((
     file_content('CHANGELOG.md'),
     ''
 ))
-
 
 setup(
     name='udata-gouvfr',
