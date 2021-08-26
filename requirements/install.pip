@@ -34,12 +34,16 @@ markupsafe==2.0.1
     # via
     #   -c requirements/udata.pip
     #   jinja2
-python-frontmatter==1.0.0
+python-frontmatter==0.5.0
     # via -r requirements/install.in
 pyyaml==5.4.1
     # via python-frontmatter
 sentry-sdk[flask]==1.3.1
     # via -r requirements/install.in
+six==1.16.0
+    # via
+    #   -c requirements/udata.pip
+    #   python-frontmatter
 urllib3==1.25.11
     # via
     #   -c requirements/udata.pip

@@ -73,6 +73,7 @@ requests-mock==1.7.0
     # via -r requirements/test.in
 six==1.16.0
     # via
+    #   -c requirements/install.pip
     #   mock
     #   pytest
     #   python-dateutil
