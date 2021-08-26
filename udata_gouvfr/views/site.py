@@ -83,7 +83,7 @@ def home():
     context = {
         'spd_datasets': Dataset.objects.filter(badges__kind='spd'),
         'recent_datasets': Dataset.objects.visible(),
-        'recent_reuses': Reuse.objects(featured=True).visible(),
+        'recent_reuses': Reuse.objects().visible(),
         'last_post': Post.objects.published().first()
     }
     processor = theme.current.get_processor('home')
