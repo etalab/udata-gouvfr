@@ -31,14 +31,11 @@ jobs:
             virtualenv venv
             source venv/bin/activate
             pip install pip-tools
-      # - run:
-      #     name: Force udata's version to latest master
-      #     command: |
-      #       sed -i'' 's/udata.=.*/udata@git+https:\/\/github.com\/opendatateam\/udata.git/' requirements/install.in
       - run:
           name: Compile python dependencies against udata
           command: |
             source venv/bin/activate
+            pip-compile requirements/udata.in --output-file=requirements/udata.pip
             pip-compile requirements/install.in --output-file=requirements/install.pip
             pip-compile requirements/test.in --output-file=requirements/test.pip
             pip-compile requirements/develop.in --output-file=requirements/develop.pip
@@ -73,7 +70,10 @@ jobs:
           name: Install python dependencies
           command: |
             source venv/bin/activate
-            pip install -r requirements/install.pip -r requirements/test.pip -r requirements/develop.pip
+            pip install -r requirements/udata.pip \
+                        -r requirements/install.pip \
+                        -r requirements/test.pip \
+                        -r requirements/develop.pip
             pip install -e .
       - save_cache:
           key: py-cache-v13-{{ arch }}-{{ .Branch }}
@@ -155,7 +155,8 @@ jobs:
             if [[ $CIRCLE_TAG ]]; then
                 # This is a tagged release
                 # upgrade udata to latest pypi release
-                pip-compile --upgrade-package udata requirements/udata.in --output-file=requirements/udata.pip
+                echo "udata" > requirements/udata.in
+                pip-compile requirements/udata.in --output-file=requirements/udata.pip
                 pip-compile requirements/install.in --output-file=requirements/install.pip
                 inv pydist
             elif [[ "$CIRCLE_BRANCH" == feature/* ]]; then

@@ -13,11 +13,11 @@ def file_content(filename):
 
 
 def get_requirements():
-    '''Return content of pip requirements file
-    Remove udata@xxx pinning if any, but preserves udata==xxx
-    '''
-    reqs = file_content(os.path.join('requirements', 'udata.pip')).splitlines() + \
+    '''Return content of pip requirements file with very custom logic'''
+    # use udata.in vs .pip in order not to duplicate udata's requirements
+    reqs = file_content(os.path.join('requirements', 'udata.in')).splitlines() + \
            file_content(os.path.join('requirements', 'install.pip')).splitlines()
+    # remove udata@xxx pinning if any (dev), but preserves udata==xxx (release)
     return [re.sub(r'(\@.*)', '', r) if r.startswith('udata') else r for r in reqs]
 
 
