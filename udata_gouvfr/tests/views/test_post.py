@@ -6,7 +6,7 @@ from udata.core.post.factories import PostFactory
 from udata.tests.helpers import assert200
 from udata.utils import faker
 
-from udata_gouvfr.tests import GouvFrSettings
+from udata_front.tests import GouvFrSettings
 
 
 @pytest.mark.usefixtures('clean_db')

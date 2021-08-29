@@ -7,8 +7,8 @@ from flask import url_for, render_template_string, g, Blueprint
 from udata.i18n import I18nBlueprint
 from udata.models import db
 from udata.tests.helpers import assert_urls_equal, full_url
-from udata_gouvfr.frontend.helpers import in_url
-from udata_gouvfr.tests import GouvFrSettings
+from udata_front.frontend.helpers import in_url
+from udata_front.tests import GouvFrSettings
 
 
 def iso2date(string):

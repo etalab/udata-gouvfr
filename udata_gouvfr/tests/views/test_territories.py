@@ -9,7 +9,7 @@ from udata.tests.features.territories import (
     create_geozones_fixtures, create_old_new_regions_fixtures,
     TerritoriesSettings
 )
-from udata_gouvfr.tests.frontend import GouvfrFrontTestCase
+from udata_front.tests.frontend import GouvfrFrontTestCase
 
 
 class GouvFrTerritoriesSettings(TerritoriesSettings):

@@ -18,7 +18,7 @@ from udata import assets
 from udata.models import db
 from udata.i18n import format_date, _, pgettext, get_current_locale
 from udata.utils import camel_to_lodash
-from udata_gouvfr.theme import theme_static_with_version
+from udata_front.theme import theme_static_with_version
 
 log = logging.getLogger(__name__)
 

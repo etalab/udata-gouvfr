@@ -3,8 +3,8 @@ import pytest
 from flask import Blueprint, render_template_string, url_for
 
 from udata.tests.helpers import assert200
-from udata_gouvfr.frontend import template_hook
-from udata_gouvfr.tests import GouvFrSettings
+from udata_front.frontend import template_hook
+from udata_front.tests import GouvFrSettings
 
 bp = Blueprint('hooks_tests', __name__, url_prefix='/hooks_tests')
 

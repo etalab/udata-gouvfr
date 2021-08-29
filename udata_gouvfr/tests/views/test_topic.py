@@ -3,8 +3,8 @@
 # from udata.core.dataset.factories import VisibleDatasetFactory
 # from udata.core.reuse.factories import VisibleReuseFactory
 # from udata.core.topic.factories import TopicFactory
-# from udata_gouvfr.tests import GouvFrSettings
-# from udata_gouvfr.tests.frontend import GouvfrFrontTestCase
+# from udata_front.tests import GouvFrSettings
+# from udata_front.tests.frontend import GouvfrFrontTestCase
 
 
 # class TopicsBlueprintTest(GouvfrFrontTestCase):

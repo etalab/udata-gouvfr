@@ -1,4 +1,4 @@
-{% cache cache_duration, 'footer', g.lang_code|default(config.DEFAULT_LANGUAGE)|string,'-'.join((package_version('udata'), package_version('udata-gouvfr'))) %}
+{% cache cache_duration, 'footer', g.lang_code|default(config.DEFAULT_LANGUAGE)|string,'-'.join((package_version('udata'), package_version('udata-front'))) %}
 <section class="footer">
     <footer class="footer-links bg-grey-50 text-black py-hg py-lg-xl" role="contentinfo">
         <div class="hagrid">
@@ -79,10 +79,10 @@
                         </li>
                         <li>
                             <a href="https://github.com/etalab/udata-gouvfr/" title="{{ _('Data.gouv.fr extension') }}"
-                                class="unstyled">udata-gouvfr</a>
-                            <a href="https://pypi.org/project/udata-gouvfr/{{ package_version('udata-gouvfr') }}/"
+                                class="unstyled">udata-front</a>
+                            <a href="https://pypi.org/project/udata-front/{{ package_version('udata-front') }}/"
                                 title="{{ _('Deployed version') }}"
-                                class="unstyled">{{ package_version('udata-gouvfr') }}</a>
+                                class="unstyled">{{ package_version('udata-front') }}</a>
                         </li>
                     </ul>
                 </div>

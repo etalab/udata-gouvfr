@@ -1,5 +1,5 @@
 """
-Default settings for udata-gouvfr
+Default settings for udata-front
 """
 
 # TODO: move this back to an extension

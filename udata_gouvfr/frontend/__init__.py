@@ -71,7 +71,7 @@ def inject_hooks():
 
 @front.app_context_processor
 def inject_current_theme():
-    from udata_gouvfr import theme
+    from udata_front import theme
     return {'current_theme': theme.current}
 
 
@@ -94,7 +94,7 @@ VIEWS = ['gouvfr', 'dataset', 'organization', 'follower', 'post',
 
 
 def init_app(app):
-    from udata_gouvfr import theme
+    from udata_front import theme
 
     nav.init_app(app)
     theme.init_app(app)
@@ -105,7 +105,7 @@ def init_app(app):
         VIEWS.append('schema')
 
     for view in VIEWS:
-        _load_views(app, 'udata_gouvfr.views.{}'.format(view))
+        _load_views(app, 'udata_front.views.{}'.format(view))
 
     # Load all plugins views and blueprints
     for module in entrypoints.get_enabled('udata.views', app).values():

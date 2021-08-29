@@ -6,14 +6,14 @@ from flask import url_for, redirect, abort, current_app
 from jinja2.exceptions import TemplateNotFound
 from mongoengine.errors import ValidationError
 
-from udata_gouvfr import theme
-from udata_gouvfr.theme import theme_static_with_version
+from udata_front import theme
+from udata_front.theme import theme_static_with_version
 from udata.app import cache
 from udata.models import Reuse, Dataset
 from udata.i18n import I18nBlueprint
 
-from udata_gouvfr import APIGOUVFR_EXTRAS_KEY
-from udata_gouvfr.frontend import template_hook
+from udata_front import APIGOUVFR_EXTRAS_KEY
+from udata_front.frontend import template_hook
 
 log = logging.getLogger(__name__)
 

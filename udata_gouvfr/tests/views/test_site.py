@@ -13,8 +13,8 @@ from udata.core.dataset.factories import DatasetFactory, ResourceFactory
 from udata.core.organization.factories import OrganizationFactory
 from udata.core.site.models import current_site
 from udata.core.reuse.factories import ReuseFactory
-from udata_gouvfr.tests import GouvFrSettings
-from udata_gouvfr.tests.frontend import GouvfrFrontTestCase
+from udata_front.tests import GouvFrSettings
+from udata_front.tests.frontend import GouvfrFrontTestCase
 
 
 class SiteViewsTest(GouvfrFrontTestCase):

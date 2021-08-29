@@ -20,7 +20,7 @@ def _load_theme(request, _configure_application):
 
     if app.config['THEME'] != 'default':
         # Unload theme to allow multiple run with initialization
-        from udata_gouvfr import theme
+        from udata_front import theme
         with app.app_context():
             theme_module = theme.current.entrypoint.module_name
 

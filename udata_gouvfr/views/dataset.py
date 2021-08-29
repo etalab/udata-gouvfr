@@ -9,10 +9,10 @@ from udata.core.dataset.search import DatasetSearch
 from udata.core.dataset.permissions import ResourceEditPermission, DatasetEditPermission
 from udata.core.site.models import current_site
 
-from udata_gouvfr.theme import render as render_template
+from udata_front.theme import render as render_template
 from udata.sitemap import sitemap
 from udata.i18n import I18nBlueprint, lazy_gettext as _
-from udata_gouvfr.views.base import DetailView, SearchView
+from udata_front.views.base import DetailView, SearchView
 
 
 blueprint = I18nBlueprint('datasets', __name__, url_prefix='/datasets')

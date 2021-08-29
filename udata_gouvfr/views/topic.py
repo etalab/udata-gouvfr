@@ -5,7 +5,7 @@
 # from udata.models import Topic
 # from udata.sitemap import sitemap
 # from udata.utils import multi_to_dict
-# from udata_gouvfr import theme
+# from udata_front import theme
 
 # from udata.core.dataset.search import DatasetSearch
 # from udata.core.reuse.search import ReuseSearch

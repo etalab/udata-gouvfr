@@ -13,8 +13,8 @@ from udata.core.user.factories import UserFactory
 from udata.core.organization.factories import OrganizationFactory
 from udata.utils import faker
 from udata.tests.helpers import capture_mails, assert_starts_with
-from udata_gouvfr.tests import GouvFrSettings
-from udata_gouvfr.tests.frontend import GouvfrFrontTestCase
+from udata_front.tests import GouvFrSettings
+from udata_front.tests.frontend import GouvfrFrontTestCase
 
 
 class IssuesMailsTest(GouvfrFrontTestCase):

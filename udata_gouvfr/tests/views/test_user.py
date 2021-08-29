@@ -5,8 +5,8 @@ from udata.core.user.factories import UserFactory, AdminFactory
 from udata.core.dataset.factories import DatasetFactory, ResourceFactory
 from udata.core.reuse.factories import ReuseFactory
 from udata.core.organization.factories import OrganizationFactory
-from udata_gouvfr.tests import GouvFrSettings
-from udata_gouvfr.tests.frontend import GouvfrFrontTestCase
+from udata_front.tests import GouvFrSettings
+from udata_front.tests.frontend import GouvfrFrontTestCase
 
 
 class UserBlueprintTest(GouvfrFrontTestCase):

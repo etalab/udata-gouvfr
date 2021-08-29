@@ -4,8 +4,8 @@ from udata.i18n import I18nBlueprint
 from udata.models import Post
 from udata.sitemap import sitemap
 from udata.core.post.permissions import PostEditPermission
-from udata_gouvfr import theme
-from udata_gouvfr.views.base import ListView
+from udata_front import theme
+from udata_front.views.base import ListView
 
 blueprint = I18nBlueprint('posts', __name__, url_prefix='/posts')
 

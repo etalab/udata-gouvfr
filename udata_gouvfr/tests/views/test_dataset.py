@@ -12,8 +12,8 @@ from udata.core.user.factories import UserFactory
 from udata.core.organization.factories import OrganizationFactory
 from udata.models import Follow
 
-from udata_gouvfr.tests import GouvFrSettings
-from udata_gouvfr.tests.frontend import GouvfrFrontTestCase
+from udata_front.tests import GouvFrSettings
+from udata_front.tests.frontend import GouvfrFrontTestCase
 
 
 class DatasetBlueprintTest(GouvfrFrontTestCase):

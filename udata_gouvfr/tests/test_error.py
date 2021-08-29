@@ -1,7 +1,7 @@
 from flask import abort, url_for, Blueprint
 
-from udata_gouvfr.tests import GouvFrSettings
-from udata_gouvfr.tests.frontend import GouvfrFrontTestCase
+from udata_front.tests import GouvFrSettings
+from udata_front.tests.frontend import GouvfrFrontTestCase
 
 errors = Blueprint('errors', __name__)
 

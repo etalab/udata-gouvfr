@@ -8,7 +8,7 @@ from udata.commands import success, error
 from udata.core.dataset.models import Dataset
 from udata.tasks import job
 
-from udata_gouvfr import (
+from udata_front import (
     APIGOUVFR_EXTRAS_KEY,
     APIGOUVFR_EXPECTED_FIELDS,
 )

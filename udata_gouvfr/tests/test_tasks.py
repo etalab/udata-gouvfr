@@ -4,9 +4,9 @@ import pytest
 from flask import current_app
 
 from udata.core.dataset.factories import DatasetFactory
-from udata_gouvfr import APIGOUVFR_EXTRAS_KEY
-from udata_gouvfr.tests import GouvFrSettings
-from udata_gouvfr.tasks import apigouvfr_load_apis
+from udata_front import APIGOUVFR_EXTRAS_KEY
+from udata_front.tests import GouvFrSettings
+from udata_front.tasks import apigouvfr_load_apis
 
 
 @pytest.mark.usefixtures('clean_db')

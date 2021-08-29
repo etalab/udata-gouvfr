@@ -4,7 +4,7 @@ from werkzeug.exceptions import HTTPException
 
 from udata.api import api, API
 from udata.models import db, Dataset, GeoZone, TERRITORY_DATASETS
-from udata_gouvfr import theme
+from udata_front import theme
 
 oembed_parser = api.parser()
 oembed_parser.add_argument(

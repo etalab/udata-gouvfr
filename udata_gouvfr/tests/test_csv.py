@@ -1,7 +1,7 @@
 from flask import url_for
 
-from udata_gouvfr.tests.frontend import GouvfrFrontTestCase
-from udata_gouvfr.tests import GouvFrSettings
+from udata_front.tests.frontend import GouvfrFrontTestCase
+from udata_front.tests import GouvFrSettings
 
 from udata.tests.frontend.test_csv import blueprint as testcsv
 

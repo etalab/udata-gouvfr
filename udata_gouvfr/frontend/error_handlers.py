@@ -3,8 +3,8 @@ import logging
 from sentry_sdk import last_event_id
 
 from udata.auth import PermissionDenied
-from udata_gouvfr import theme
-from udata_gouvfr.frontend import front
+from udata_front import theme
+from udata_front.frontend import front
 
 log = logging.getLogger(__name__)
 

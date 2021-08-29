@@ -24,9 +24,9 @@ from udata.utils import faker
 from udata.tests.helpers import assert200, assert404, assert_redirects, assert_equal_dates
 from udata.frontend.markdown import md
 
-from udata_gouvfr import APIGOUVFR_EXTRAS_KEY
-from udata_gouvfr.models import SPD, TERRITORY_DATASETS
-from udata_gouvfr.tests import GouvFrSettings
+from udata_front import APIGOUVFR_EXTRAS_KEY
+from udata_front.models import SPD, TERRITORY_DATASETS
+from udata_front.tests import GouvFrSettings
 
 
 class GouvFrThemeTest:
@@ -122,7 +122,7 @@ class GouvFrHomeBlogTest:
 
     @pytest.fixture
     def home(self, mocker, client):
-        from udata_gouvfr import theme
+        from udata_front import theme
 
         def home_client(blogpost):
             mocker.patch.object(theme, 'get_blog_post', return_value=blogpost)
@@ -179,7 +179,7 @@ class GetBlogPostMixin:
 
     @pytest.fixture
     def blogpost(self, app, rmock):
-        from udata_gouvfr.theme import get_blog_post
+        from udata_front.theme import get_blog_post
 
         def fixture(feed):
             if isinstance(feed, Exception):

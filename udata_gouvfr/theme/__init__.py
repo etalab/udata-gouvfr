@@ -171,7 +171,7 @@ def init_app(app):
             assets.register_manifest('theme', theme.manifest)
 
     # Hook into flask security to user themed auth pages
-    app.config.setdefault('SECURITY_RENDER', 'udata_gouvfr.theme:render')
+    app.config.setdefault('SECURITY_RENDER', 'udata_front.theme:render')
 
     @app.context_processor
     def inject_current_theme():

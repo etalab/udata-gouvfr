@@ -3,7 +3,7 @@ from flask.views import MethodView
 
 from udata import search, auth
 from udata.utils import not_none_dict
-from udata_gouvfr import theme
+from udata_front import theme
 
 
 class Templated(object):

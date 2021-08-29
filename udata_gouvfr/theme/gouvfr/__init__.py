@@ -7,10 +7,10 @@ import requests
 from dateutil.parser import parse
 from flask import g, current_app, url_for
 
-from udata_gouvfr import theme
+from udata_front import theme
 from udata.app import cache
 from udata.models import Dataset
-from udata_gouvfr.frontend import nav
+from udata_front.frontend import nav
 from udata.i18n import lazy_gettext as _
 
 
