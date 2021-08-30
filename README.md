@@ -24,7 +24,7 @@ Create a local configuration file `udata.cfg` in your **udata** directory
 (or where your UDATA_SETTINGS point out) or modify an existing one as following:
 
 ```python
-PLUGINS = ['gouvfr']
+PLUGINS = ['front']
 THEME = 'gouvfr'
 ```
 
@@ -66,7 +66,7 @@ pip install -e . -r requirements/test.pip -r requirements/develop.pip
 Modify your local `udata.cfg` configuration file as following:
 
 ```python
-PLUGINS = ['gouvfr']
+PLUGINS = ['front']
 THEME = 'gouvfr'
 ```
 

@@ -44,17 +44,17 @@ setup(
             'gouvfr = udata_front.theme.gouvfr',
         ],
         'udata.models': [
-            'gouvfr = udata_front.models',
+            'front = udata_front.models',
         ],
-        'udata.front': 'gouvfr = udata_front.frontend',
+        'udata.front': 'front = udata_front.frontend',
         'udata.apis': [
-            'gouvfr_oembed = udata_front.views.oembed',
+            'front_oembed = udata_front.views.oembed',
         ],
         'udata.harvesters': [
             'maaf = udata_front.harvesters.maaf:MaafBackend',
         ],
         'udata.tasks': [
-            'gouvfr = udata_front.tasks',
+            'front = udata_front.tasks',
         ],
     },
     license='LGPL',

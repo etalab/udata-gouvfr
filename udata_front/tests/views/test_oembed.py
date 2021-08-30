@@ -180,7 +180,7 @@ class OEmbedSettings(Testing):
     ACTIVATE_TERRITORIES = True
     TEST_WITH_THEME = True
     TEST_WITH_PLUGINS = True
-    PLUGINS = ['gouvfr']
+    PLUGINS = ['front']
     THEME = 'gouvfr'
 
 
