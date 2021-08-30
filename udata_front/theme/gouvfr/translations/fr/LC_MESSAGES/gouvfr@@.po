@@ -1,7 +1,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: udata-gouvfr-fr-en\n"
+"Project-Id-Version: udata-front-fr-en\n"
 "Report-Msgid-Bugs-To: data.gouv@data.gouv.fr\n"
 "POT-Creation-Date: 2021-06-23 12:18+0200\n"
 "PO-Revision-Date: 2021-06-23 13:55\n"
@@ -13,10 +13,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Generated-By: Babel 2.8.0\n"
-"X-Crowdin-File: /main-theme-translate/udata_gouvfr/theme/gouvfr/translations/gouvfr@@.pot\n"
+"X-Crowdin-File: /main-theme-translate/udata_front/theme/gouvfr/translations/gouvfr@@.pot\n"
 "X-Crowdin-File-ID: 112\n"
 "X-Crowdin-Language: en\n"
-"X-Crowdin-Project: udata-gouvfr-fr-en\n"
+"X-Crowdin-Project: udata-front-fr-en\n"
 "X-Crowdin-Project-ID: 461514\n"
 
 #: templates/footer.html:58
