@@ -298,6 +298,7 @@ xmltodict==0.12.0
     # via udata
 zxcvbn==4.4.28
     # via udata
+sentry-sdk[flask] >= 1.1.0
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
