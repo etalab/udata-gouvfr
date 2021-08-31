@@ -4,7 +4,7 @@
 
 - Add About in header [#623](https://github.com/etalab/udata-gouvfr/pull/623)
 - Add link to profile in admin for sysadmin [#624](https://github.com/etalab/udata-gouvfr/pull/624)
-- Fix latest reuses on homepage [#628](https://github.com/etalab/udata-gouvfr/pull/628)
+- Show correct number of latest reuses on homepage [#628](https://github.com/etalab/udata-gouvfr/pull/628)
 
 ## 3.0.7 (2021-08-17)
 
