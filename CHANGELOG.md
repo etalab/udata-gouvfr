@@ -5,6 +5,7 @@
 - Add About in header [#623](https://github.com/etalab/udata-gouvfr/pull/623)
 - Add link to profile in admin for sysadmin [#624](https://github.com/etalab/udata-gouvfr/pull/624)
 - Use pip-tools for dependency management [#626](https://github.com/etalab/udata-gouvfr/pull/626)
+- Remove 'Sort by' button on organization pages [#632](https://github.com/etalab/udata-gouvfr/pull/632)
 
 ## 3.0.7 (2021-08-17)
 
