@@ -61,7 +61,7 @@ setup(
     zip_safe=False,
     keywords='udata opendata portal etalab',
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 7 - Inactive",
         "Programming Language :: Python",
         "Environment :: Web Environment",
         "Operating System :: OS Independent",
