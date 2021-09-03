@@ -2,7 +2,7 @@
 
 udata customizations for Etalab / Data.gouv.fr.
 
-**Note:** This is a [udata][] extension, you should read the [udata documentation][udata-doc] first.
+**Note:** This project is not maintained anymore. Consider using [Udata-Front](https://github.com/etalab/udata-front) as an alternative.
 
 ## Compatibility
 
