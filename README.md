@@ -1,8 +1,8 @@
 # udata-gouvfr
 
-udata customizations for Etalab / Data.gouv.fr.
+**Note: This project is not maintained anymore. Consider using [udata-front](https://github.com/etalab/udata-front) as an alternative.**
 
-**Note:** This project is not maintained anymore. Consider using [Udata-Front](https://github.com/etalab/udata-front) as an alternative.
+udata customizations for Etalab / Data.gouv.fr.
 
 ## Compatibility
 
