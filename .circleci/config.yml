@@ -199,24 +199,24 @@ workflows:
       - deps:
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /(v[0-9]+(\.[0-9]+)*|example-tag)/
       - python:
           requires:
             - deps
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /(v[0-9]+(\.[0-9]+)*|example-tag)/
       - assets:
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /(v[0-9]+(\.[0-9]+)*|example-tag)/
       - dist:
           requires:
             - python
             - assets
           filters:
             tags:
-              only: /v[0-9]+(\.[0-9]+)*/
+              only: /(v[0-9]+(\.[0-9]+)*|example-tag)/
       - publish:
           requires:
             - dist
